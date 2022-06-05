@@ -1,0 +1,43 @@
+.planet__icon {
+    margin-top: 80px;
+    margin-right: 10px;
+    float: right; 
+}
+
+.header__btn {
+    width: 38px;
+    margin-top: 65px;
+    float: right;
+}
+
+.btn-white {
+    border: 1px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.btn-white:hover {
+    background: #fff;
+    color: #000;
+    transition: all ease 0.5s;
+}
+
+.btn-white.btn-login:hover span {
+    content: url('../../assets/images/login-dark.svg');
+}
+
+.btn-white.btn-login {
+    height: 50px;
+    width: 50px;
+    padding: 14px;
+}
+
+.btn-white.btn-login .icon__login {
+    content: url('../../assets/images/login-white.svg');
+    height: 20px;
+    width: 20px;
+    background: transparent;
+}
