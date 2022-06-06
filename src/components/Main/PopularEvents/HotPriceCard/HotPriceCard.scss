@@ -1,7 +1,7 @@
 .card-wrap {
     display: inline-block;
-    margin-left: 20px;
-    margin-top: 40px;
+    margin-left: 18px;
+    margin-top: 20px;
     text-align: left;
 }
 
@@ -24,6 +24,8 @@
     border-radius: 10px;
     border: 4px solid #ffffff40;
     background: radial-gradient(63.11% 63.11% at 31.97% 19.67%,#ffffffb3 0,#fff0 69.79%,#fff0 100%),radial-gradient(51.85% 189.49% at 50% 50%,#ffc800 0,red 100%);
+    text-decoration: none;
+    color: #140050;
 }
 
 .card-title__large {
@@ -100,13 +102,13 @@
 }
 
 .btn-dart.btn-cart .icon__cart {
-    content: url('../../assets/images/cart-dart.svg');
+    content: url('../../../../assets/images/cart-dart.svg');
     height: 20px;
     width: 20px;
 }
 
 .btn-dart.btn-cart .icon__cart:hover {
-    content: url('../../assets/images/cart-gray.svg');
+    content: url('../../../../assets/images/cart-gray.svg');
 }
 
 .btn-dart:hover {

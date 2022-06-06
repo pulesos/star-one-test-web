@@ -1,4 +1,4 @@
-import HotPriceCard from '../../HotPriceCard/HotPriceCard'
+import HotPriceCard from './HotPriceCard/HotPriceCard'
 import molnia from '../../../assets/images/molnia.svg'
 import './PopularEvents.scss'
 
