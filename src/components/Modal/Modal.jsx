@@ -17,16 +17,16 @@ const Modal = ({modalActive, setModalActive}) => {
                 <form class="form-signin">
                     <div id="firebaseui-auth-container"></div>
                     <div className="btn__soc">
-                        <button className='btn__facebook' disabled>
-                            <img src={facebook} height='25' alt='facebook'/>
+                        <button className='btn btn-primary' disabled>
+                            <img src={facebook} height='25' alt='facebook' className='btn__img'/>
                             Войти с помощью Facebook
                         </button>
-                        <a className='btn__google'>
-                            <img src={google} height="25" alt="google" /> 
+                        <a className='btn btn-light'>
+                            <img src={google} height="25" alt="google" className='btn__img'/> 
                             <span className="googl2">Войти с помощью Google</span>
                         </a>
-                        <button className='btn__apple' disabled>
-                            <img src={apple} height="25" alt="apple"/>
+                        <button className='btn btn-dark' disabled>
+                            <img src={apple} height="25" alt="apple" className='btn__img'/>
                             Войти с помощью Apple
                         </button>
                     </div>

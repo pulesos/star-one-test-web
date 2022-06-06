@@ -2,8 +2,8 @@ import './Logotype.scss'
 
 const Logotype = () => {
     return (
-        <a className="logotype" href='/'>
-            <div className="logotype__img">
+        <div className="logotype">
+            <a className="logotype__img" href='/'>
                 <svg width="340" height="139" className="logo_svg" viewBox="0 0 375 139" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d_532:85)">
                 <path
@@ -150,8 +150,8 @@ const Logotype = () => {
                 </linearGradient>
             </defs>
             </svg>
-            </div>
-        </a>
+            </a>
+        </div>
     )
 }
 
