@@ -23,10 +23,10 @@ const Footer = () => {
                 <div className="footer__right">
                     <div className="footer__icons">
                         <a href="#">
-                            <img src={appStore} height="62" alt="AppStore" />
+                            <img src={appStore} height="50" alt="AppStore" />
                         </a>
                         <a href="#">
-                            <img src={googlePlay} height="62" alt="Google Play" />
+                            <img src={googlePlay} height="50" alt="Google Play" />
                         </a>
                     </div>
                 </div>
