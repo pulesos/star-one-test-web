@@ -1,0 +1,33 @@
+.categories__wrapper {
+    margin-top: 50px;
+    margin-bottom: 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.categories__content {
+    border-radius: 10px;
+    padding: 15px;
+    transition: all .5s ease;
+    height: 260px;
+    margin-bottom: 25px;
+    background: #fff;
+    border: 0;
+    text-decoration: none;
+}
+
+.categories__title {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    color: #140050;
+}
+
+.categories__img {
+    margin-top: 5px;
+    max-height: 170px;
+    width: 100%;
+    display: block;
+    object-fit: contain;
+}

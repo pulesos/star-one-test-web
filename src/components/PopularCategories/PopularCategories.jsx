@@ -1,4 +1,4 @@
-import molnia from '../../../assets/images/category.svg'
+import molnia from '../../assets/images/category.svg'
 import './PopularCategories.scss'
 import SliderItem from './SliderItem/SliderItem'
 

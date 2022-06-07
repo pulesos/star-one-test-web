@@ -1,0 +1,79 @@
+.coin__wrapper {
+    margin-bottom: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card__coin {
+    border-radius: 10px;
+    margin-top: 10px;
+    transition: all .5s ease;
+    height: 260px;
+    width: 295px;
+    background: #fff;
+    border: 0;
+    position: relative;
+    min-width: 0;
+    word-wrap: break-word;
+}
+
+.card-body__coin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card__picture__coin {
+    margin-top: 35px;
+}
+
+.card-stars {
+    margin-top: 10px;
+    position: absolute;
+    margin-left: 10px;
+    font-weight: 700;
+}
+
+.card-body__price__coin {
+    font-weight: 700;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.btn-dart.btn-cart-coin {
+    height: 50px;
+    width: 50px;
+    margin-top: -25px;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #140050;
+    position: relative;
+    max-width: 145px;
+    transition: all .5s ease;
+    margin-left: 230px;;
+}
+
+.btn-dart.btn-cart {
+    height: 50px;
+    width: 50px;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #140050;
+    position: relative;
+    max-width: 145px;
+    transition: all .5s ease;
+    float: right;
+}
+
+.btn-dart.btn-cart-coin .icon__cart {
+    content: url('../../assets/images/cart-dart.svg');
+    height: 20px;
+    width: 20px;
+}
+
+.btn-dart.btn-cart-coin .icon__cart:hover {
+    content: url('../../assets/images/cart-gray.svg');
+}

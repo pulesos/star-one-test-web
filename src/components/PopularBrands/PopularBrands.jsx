@@ -1,5 +1,5 @@
 import Brands from './Brands/Brands'
-import brand from '../../../assets/images/brand.svg'
+import brand from '../../assets/images/brand.svg'
 import './PopularBrands.scss'
 
 const PopularBrands = () => {

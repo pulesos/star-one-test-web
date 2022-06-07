@@ -2,8 +2,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './SliderItem.scss'
-import prev from '../../../../assets/images/prev.svg'
-import next from '../../../../assets/images/next.svg'
+import prev from '../../../assets/images/prev.svg'
+import next from '../../../assets/images/next.svg'
 import { useRef } from "react";
 
 
@@ -48,7 +48,7 @@ const SliderItem = (props) => {
     ]
   };
 
-  const hotelCards = [
+  const items = [
     {
       imageSrc:
         'https://images.unsplash.com/photo-1461092746677-7b4afb1178f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
@@ -122,10 +122,10 @@ const SliderItem = (props) => {
         <button className="nextArrow" onClick={() => slider?.current?.slickNext()}><img src={next} alt='next'/></button>
         </div>
         <Slider ref={slider} {...settings}>
-          {hotelCards.map((card, index) => (
+          {items.map((item, index) => (
             <a className="slider__content" href='#' key={index}>
-              <h2 className="slider__title">{card.title}</h2>
-              <img className="slider__img" alt={card.title} src={card.imageSrc} />
+              <h2 className="slider__title">{item.title}</h2>
+              <img className="slider__img" alt={item.title} src={item.imageSrc} />
             </a>
           ))}
         </Slider>

@@ -1,7 +1,7 @@
-import MenuBottom from "./MenuBottom/MenuBottom"
-import PopularBrands from "./PopularBrands/PopularBrands"
-import PopularCategories from "./PopularCategories/PopularCategories"
-import PopularEvents from "./PopularEvents/PopularEvents"
+import MenuBottom from "../../components/MenuBottom/MenuBottom"
+import PopularBrands from "../../components/PopularBrands/PopularBrands"
+import PopularCategories from "../../components/PopularCategories/PopularCategories"
+import PopularEvents from "../../components/PopularEvents/PopularEvents"
 
 
 const MainPage = () => {

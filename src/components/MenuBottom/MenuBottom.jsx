@@ -1,8 +1,8 @@
-import winnersDark from '../../../assets/images/winners-dark.svg'
-import archiveDark from '../../../assets/images/archive-dark.svg'
-import question from '../../../assets/images/question.svg'
-import companyDark from '../../../assets/images/company-dark.svg'
-import quest from '../../../assets/images/quest.svg'
+import winnersDark from '../../assets/images/winners-dark.svg'
+import archiveDark from '../../assets/images/archive-dark.svg'
+import question from '../../assets/images/question.svg'
+import companyDark from '../../assets/images/company-dark.svg'
+import quest from '../../assets/images/quest.svg'
 import './MenuBottom.scss'
 
 const MenuBottom = () => {

@@ -1,8 +1,8 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import quest from '../../../../assets/images/quest.svg'
-import sony from '../../../../assets/images/sony.png'
+import quest from '../../../assets/images/quest.svg'
+import sony from '../../../assets/images/sony.png'
 import './HotPriceCard.scss'
 
 const HotPriceCard = ({items}) => {
@@ -47,7 +47,7 @@ const HotPriceCard = ({items}) => {
         <>  
             <Slider {...settings}>
                 {items.map(item => 
-                    <div className="card-wrap">
+                    <div className="card-wrap" key={item.id}>
                         <div className="card">
                             <a className="card-title card-title__hot">
                                 <h5 className="card-title__large">

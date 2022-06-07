@@ -1,0 +1,24 @@
+.pay {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.pay__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.pay__item {
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    height: 90px;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}

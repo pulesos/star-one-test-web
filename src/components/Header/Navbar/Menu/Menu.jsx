@@ -10,7 +10,7 @@ const Menu = ({items, active, setActive}) => {
             <div className="menu__content">
                 <ul>
                     {items.map(item =>
-                        <li>
+                        <li key={item.id}>
                             <Link to={item.href}>{item.value}</Link>
                         </li>
                         
