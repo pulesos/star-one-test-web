@@ -4,7 +4,7 @@ import PopularCategories from "./PopularCategories/PopularCategories"
 import PopularEvents from "./PopularEvents/PopularEvents"
 
 
-const Main = () => {
+const MainPage = () => {
     return (
         <>
             <PopularEvents/>
@@ -15,4 +15,4 @@ const Main = () => {
     )
 }
 
-export default Main
+export default MainPage

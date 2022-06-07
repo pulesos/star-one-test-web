@@ -1,5 +1,6 @@
 import './Menu.scss'
 import close from '../../../../assets/images/close-white.svg'
+import { Link } from 'react-router-dom'
 
 const Menu = ({items, active, setActive}) => {
     return (  
@@ -10,7 +11,7 @@ const Menu = ({items, active, setActive}) => {
                 <ul>
                     {items.map(item =>
                         <li>
-                            <a href={item.href}>{item.value}</a>
+                            <Link to={item.href}>{item.value}</Link>
                         </li>
                         
                     )}
