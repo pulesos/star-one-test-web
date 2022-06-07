@@ -1,0 +1,36 @@
+.footer__text {
+    font-size: 18px;
+    color: #fff;
+}
+
+.footer__text.year {
+    margin-left: -210px;
+    top: 57px;
+    position: absolute;
+}
+
+.footer__center {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.starone {
+    position: relative;
+}
+
+.footer__center svg {
+    width: 80%;
+}
+
+.footer__right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.footer__icons img {
+    margin-left: 10px;
+}
