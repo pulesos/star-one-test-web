@@ -1,0 +1,45 @@
+.card-wrap__archive {
+    display: inline-block;
+    margin-left: 18px;
+    text-align: left;
+}
+
+.card__archive {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    transition: all .5s ease;
+    height: 450px;
+    width: 295px;
+    margin-bottom: 25px;
+    background: #fff;
+    border: 0;
+    position: relative;
+    min-width: 0;
+    word-wrap: break-word;
+
+}
+
+.card-title.card-title__archive {
+    padding-top: 5px;
+    border-radius: 10px;
+    border: 4px solid #ffffff40;
+    background: radial-gradient(63.11% 63.11% at 31.97% 19.67%,#ffffffb3 0,#fff0 69.79%,#fff0 100%),radial-gradient(51.85% 189.49% at 50% 50%,#e1ddd0 0,#875f7e 100%);
+    text-decoration: none;
+    color: #140050;
+}
+
+.archive__price {
+    color: red;
+    text-align: center;
+    font-weight: 700;
+    font-size: 28px;
+}
+
+.card-body__archive__bottom {
+    margin-top: 22px;
+}
+
+.card__label__archive {
+    margin-top: -10px;
+}

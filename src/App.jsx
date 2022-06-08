@@ -5,11 +5,14 @@ import Banner from './components/Banner/Banner';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Modal from './components/Modal/Modal';
+import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
+import ArchivePage from './pages/ArchivePage/ArchivePage';
 import BuyCreditsPage from './pages/BuyCreditsPage/BuyCreditsPage';
 import CategoriesPage from './pages/CategoriesPage/CategoriesPage';
 import HotPricePage from './pages/HotPricePage/HotPricePage';
 import MainPage from './pages/MainPage/MainPage';
 import TopPricePage from './pages/TopPricePage/TopPricePage';
+import WinnersPage from './pages/WinnersPage/WinnersPage';
 
 function App() {
   const [modalActive, setModalActive] = useState(false)
@@ -24,6 +27,9 @@ function App() {
             <Route path='/hotprice' element={<HotPricePage/>}/>
             <Route path='/topprice' element={<TopPricePage/>}/>
             <Route path='/products' element={<CategoriesPage/>}/>
+            <Route path='/events/archive' element={<ArchivePage/>}/>
+            <Route path='/events/winners' element={<WinnersPage/>}/>
+            <Route path='/company' element={<AboutUsPage/>}/>
           </Routes>
           <Modal modalActive={modalActive} setModalActive={setModalActive}/>
           <Banner/>
