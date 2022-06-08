@@ -2,7 +2,7 @@ import archive from '../../assets/images/archive.svg'
 import ArchiveCard from '../../components/ArchiveCard/ArchiveCard'
 import './ArchivePage.scss'
 
-const ArchivePage = () => {
+const ArchivePage = ({setModalActive}) => {
     const items = [
         {id: 1, price: 252, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150},
         {id: 2, price: 254, category: 'НАУШНИКИ', name: 'Apple AirPods Pro', oldPrice: 260},
@@ -19,7 +19,7 @@ const ArchivePage = () => {
                     <span>Архив акций</span>
                     <button className="btn events1 btn-white">События</button>
                 </h3>
-                <ArchiveCard/>
+                <ArchiveCard setModalActive={setModalActive}/>
             </section>
         </>
     )

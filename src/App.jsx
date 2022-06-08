@@ -23,12 +23,12 @@ function App() {
           <Header setModalActive={setModalActive}/>
           <Banner/>
           <Routes>
-            <Route path='/' element={<MainPage/>}/>
-            <Route path='/products/buy-credit' element={<BuyCreditsPage/>}/>
-            <Route path='/hotprice' element={<HotPricePage/>}/>
-            <Route path='/topprice' element={<TopPricePage/>}/>
+            <Route path='/' element={<MainPage setModalActive={setModalActive}/>}/>
+            <Route path='/products/buy-credit' element={<BuyCreditsPage setModalActive={setModalActive}/>}/>
+            <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive}/>}/>
+            <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive}/>}/>
             <Route path='/products' element={<CategoriesPage/>}/>
-            <Route path='/events/archive' element={<ArchivePage/>}/>
+            <Route path='/events/archive' element={<ArchivePage setModalActive={setModalActive}/>}/>
             <Route path='/events/winners' element={<WinnersPage/>}/>
             <Route path='/company' element={<AboutUsPage/>}/>
           </Routes>

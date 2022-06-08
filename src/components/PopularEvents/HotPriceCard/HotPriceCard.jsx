@@ -2,10 +2,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import quest from '../../../assets/images/quest.svg'
-import sony from '../../../assets/images/sony.png'
+
 import './HotPriceCard.scss'
 
-const HotPriceCard = ({items}) => {
+const HotPriceCard = ({items, setModalActive}) => {
     let settings = {
         dots: true,
         infinite: true,
@@ -64,11 +64,11 @@ const HotPriceCard = ({items}) => {
                                 <div className="card-body__name">
                                     <a href="/card-1.html" className='bold'>{item.name}</a>
                                 </div>
-                                <img className="card__picture" src={sony}
+                                <img className="card__picture" src={item.image}
                                         alt="sony"/>
                                 <div className="card-body__bottom">
                                     <div className="card-body__price">{item.oldPrice} $</div>
-                                    <button className="btn btn-dart btn-cart">
+                                    <button className="btn btn-dart btn-cart" onClick={() => setModalActive(true)}>
                                         <span className="icon__cart"></span>
                                     </button>
                                 </div>

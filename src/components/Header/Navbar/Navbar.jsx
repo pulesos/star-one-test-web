@@ -12,8 +12,7 @@ function Navbar() {
       {id: 4, value: 'Top Price', href: '/topprice'},
       {id: 5, value: 'Категории', href: '/products'},
       {id: 6, value: 'Архив событий', href: '/events/archive'},
-      {id: 7, value: 'Победители', href: '/events/winners'},
-      {id: 8, value: 'О нас', href: '/company'},
+      {id: 7, value: 'О нас', href: '/company'},
     ]
 
     const privateItems = [

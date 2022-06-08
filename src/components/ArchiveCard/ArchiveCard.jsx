@@ -2,7 +2,7 @@ import quest from '../../assets/images/quest.svg'
 import sony from '../../assets/images/sony.png'
 import './ArchiveCard.scss'
 
-const ArchiveCard = () => {
+const ArchiveCard = ({setModalActive}) => {
 
     const items = [
         {id: 1, price: 252, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150},
@@ -19,7 +19,7 @@ const ArchiveCard = () => {
                     <div className="card__archive">
                         <a className="card-title card-title__archive">
                             <h5 className="card-title__large">
-                                Top Price
+                                Завершён
                             </h5>
                             <p className="archive__price">{item.price} $</p>
                         </a>
@@ -32,7 +32,7 @@ const ArchiveCard = () => {
                                     alt="sony"/>
                             <div className="card-body__archive__bottom">
                                 <div className="card-body__price">{item.oldPrice} $</div>
-                                <button className="btn btn-dart btn-cart">
+                                <button className="btn btn-dart btn-cart" onClick={() => setModalActive(true)}>
                                     <span className="icon__cart"></span>
                                 </button>
                             </div>

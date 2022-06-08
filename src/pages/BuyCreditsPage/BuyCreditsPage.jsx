@@ -3,7 +3,7 @@ import Coins from '../../components/Coins/Coins'
 import PaymentMethod from '../../components/PaymentMethod/PaymentMethod'
 import './BuyCreditsPage.scss'
 
-const BuyCreditsPage = () => {
+const BuyCreditsPage = ({setModalActive}) => {
     return (
         <>
             <section className='buy__credits'>
@@ -11,7 +11,7 @@ const BuyCreditsPage = () => {
                 <img className="mr-2" src={product} alt="top events" width="28" height="28" />
                 <span>Ходы</span>
             </h3>
-            <Coins/>
+            <Coins setModalActive={setModalActive}/>
             <h3 className="events__title">
                     <img className="mr-2" src={product} alt="pay" width="28" height="28" />
                     <span>Способы оплаты</span>

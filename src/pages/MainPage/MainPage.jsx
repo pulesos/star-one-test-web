@@ -5,8 +5,8 @@ import PopularCategories from "../../components/PopularCategories/PopularCategor
 import PopularEvents from "../../components/PopularEvents/PopularEvents"
 
 
-const MainPage = () => {
-    const user = true
+const MainPage = ({setModalActive}) => {
+    const user = false
     return (
         <>
             {user ? 
@@ -19,7 +19,7 @@ const MainPage = () => {
                 </>
                 :
                 <>
-                    <PopularEvents/>
+                    <PopularEvents setModalActive={setModalActive}/>
                     <PopularCategories/>
                     <PopularBrands/>
                     <MenuBottom/>

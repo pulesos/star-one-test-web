@@ -3,7 +3,7 @@ import close from '../../../../assets/images/close-white.svg'
 import { Link } from 'react-router-dom'
 
 const Menu = ({publicItems, privateItems, active, setActive}) => {
-    const user = true;
+    const user = false;
     return (  
         <div className={active ? 'menu active' : 'menu'} onClick={() => setActive(false)}>
             <img src={close} className={active ? 'btn__close active' : 'btn__close'} alt="close" onClick={() => setActive(false)}/>

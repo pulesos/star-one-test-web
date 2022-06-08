@@ -9,7 +9,7 @@ import coin100 from '../../assets/images/coin100.jpg'
 
 import './Coins.scss'
 
-const Coins = () => {
+const Coins = ({setModalActive}) => {
     const items = [
         {id: 1, stars: '500 stars', image: coin500, price: 450},
         {id: 2, stars: '25 stars', image: coin25, price: 25},
@@ -32,7 +32,7 @@ const Coins = () => {
                         <div className="mt-md-4 mt-0 d-flex justify-content-between align-items-center">
                             <div className="card-body__price__coin bold">{item.price} $</div>
                         </div>
-                        <button className="btn btn-dart btn-cart-coin ">
+                        <button className="btn btn-dart btn-cart-coin" onClick={() => setModalActive(true)}>
                             <span className="icon__cart"></span>
                         </button>
                     </div>                    
