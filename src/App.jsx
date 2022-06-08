@@ -16,6 +16,7 @@ import WinnersPage from './pages/WinnersPage/WinnersPage';
 
 function App() {
   const [modalActive, setModalActive] = useState(false)
+  
   return (
     <div className="App">
         

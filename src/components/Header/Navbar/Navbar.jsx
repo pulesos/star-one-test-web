@@ -5,7 +5,7 @@ import './Navbar.scss'
 function Navbar() {
     const [menuActive, setMenuActive] = useState(false)
   
-    const items = [
+    const publicItems = [
       {id: 1, value: 'Главная', href: '/'},
       {id: 2, value: 'Пополнение ходов', href: '/products/buy-credit'},
       {id: 3, value: 'Hot Price', href: '/hotprice'},
@@ -15,6 +15,21 @@ function Navbar() {
       {id: 7, value: 'Победители', href: '/events/winners'},
       {id: 8, value: 'О нас', href: '/company'},
     ]
+
+    const privateItems = [
+        {id: 1, value: 'Главная', href: '/'},
+        {id: 2, value: 'Пополнение ходов', href: '/products/buy-credit'},
+        {id: 3, value: 'Hot Price', href: '/hotprice'},
+        {id: 4, value: 'Top Price', href: '/topprice'},
+        {id: 5, value: 'Категории', href: '/products'},
+        {id: 6, value: 'Корзина', href: '/bin'},
+        {id: 7, value: 'Профиль', href: '/profile'},
+        {id: 8, value: 'Мои ходы', href: '/profile'},
+        {id: 9, value: 'Архив событий', href: '/events/archive'},
+        {id: 10, value: 'Победители', href: '/events/winners'},
+        {id: 11, value: 'О нас', href: '/company'},
+        {id: 12, value: 'Выход', href: '/company'}
+      ]
     return (
         <>
         <nav>
@@ -22,7 +37,7 @@ function Navbar() {
                 <span/>
             </div>
         </nav>
-        <Menu items={items} active={menuActive} setActive={setMenuActive}/>
+        <Menu publicItems={publicItems} privateItems={privateItems} active={menuActive} setActive={setMenuActive}/>
         </>
     );
   }
