@@ -1,0 +1,27 @@
+.saldo__wrapper {
+    width: 320px;
+    height: 220px;   
+    margin-top: 20px;
+    border-radius: 10px;
+    background: #fff;
+    padding: 30px;
+    float: right;
+}
+
+.saldo__title {
+    font-weight: 700;
+}
+
+.saldo__cost__wrapper, .saldo__pay__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.saldo__product {
+    font-size: 18px;
+}
+
+.saldo__product__pay {
+    font-size: 18px;
+    font-weight: 700;
+}

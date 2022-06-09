@@ -8,6 +8,7 @@ import Modal from './components/Modal/Modal';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import ArchivePage from './pages/ArchivePage/ArchivePage';
 import BuyCreditsPage from './pages/BuyCreditsPage/BuyCreditsPage';
+import CartPage from './pages/CartPage/CartPage';
 import CategoriesPage from './pages/CategoriesPage/CategoriesPage';
 import HotPricePage from './pages/HotPricePage/HotPricePage';
 import MainPage from './pages/MainPage/MainPage';
@@ -28,6 +29,7 @@ function App() {
             <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive}/>}/>
             <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive}/>}/>
             <Route path='/products' element={<CategoriesPage/>}/>
+            <Route path='/cart' element={<CartPage/>}/>
             <Route path='/events/archive' element={<ArchivePage setModalActive={setModalActive}/>}/>
             <Route path='/events/winners' element={<WinnersPage/>}/>
             <Route path='/company' element={<AboutUsPage/>}/>

@@ -21,7 +21,7 @@ function Navbar() {
         {id: 3, value: 'Hot Price', href: '/hotprice'},
         {id: 4, value: 'Top Price', href: '/topprice'},
         {id: 5, value: 'Категории', href: '/products'},
-        {id: 6, value: 'Корзина', href: '/bin'},
+        {id: 6, value: 'Корзина', href: '/cart'},
         {id: 7, value: 'Профиль', href: '/profile'},
         {id: 8, value: 'Мои ходы', href: '/profile'},
         {id: 9, value: 'Архив событий', href: '/events/archive'},

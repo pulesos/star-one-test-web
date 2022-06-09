@@ -44,3 +44,58 @@
     width: 20px;
     background: transparent;
 }
+
+// .cart__icon {
+//     margin-top: 80px;
+//     margin-right: 170px;
+//     right: 0;
+//     position: absolute;
+// }
+
+.user {
+    width: 38px;
+    margin-top: 78px;
+    margin-left: 100px;
+    // right: 0;
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.user__balance {
+    width: 38px;
+    margin-top: 85px;
+    margin-right: 370px;
+    right: 0;
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.balance, .username {
+    color: #fff;
+    font-weight: 700;
+}
+
+.cart {
+    right: 0;
+    position: absolute;
+    margin-top: 78px;
+    margin-right: 240px;
+}
+
+.cart__quantity {
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    height: 31px;
+    width: 31px;
+    background: #fff;
+    color: #140050;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
