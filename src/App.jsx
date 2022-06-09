@@ -12,6 +12,7 @@ import CartPage from './pages/CartPage/CartPage';
 import CategoriesPage from './pages/CategoriesPage/CategoriesPage';
 import HotPricePage from './pages/HotPricePage/HotPricePage';
 import MainPage from './pages/MainPage/MainPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 import TopPricePage from './pages/TopPricePage/TopPricePage';
 import WinnersPage from './pages/WinnersPage/WinnersPage';
 
@@ -30,6 +31,7 @@ function App() {
             <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive}/>}/>
             <Route path='/products' element={<CategoriesPage/>}/>
             <Route path='/cart' element={<CartPage/>}/>
+            <Route path='/profile' element={<ProfilePage/>}/>
             <Route path='/events/archive' element={<ArchivePage setModalActive={setModalActive}/>}/>
             <Route path='/events/winners' element={<WinnersPage/>}/>
             <Route path='/company' element={<AboutUsPage/>}/>

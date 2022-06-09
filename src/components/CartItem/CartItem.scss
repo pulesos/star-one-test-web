@@ -10,12 +10,16 @@
 .cart__info {
     display: flex;
     margin-top: -15px;
-    gap: 10px;
+    gap: 20px;
+}
+
+.cart__checkbox {
+    margin-top: 50px;
 }
 
 .bin {
     position: absolute;
-    margin-right: 620px;
+    margin-right: 460px;
     right: 0;
 }
 

@@ -6,7 +6,7 @@ const CartItem = () => {
     return (
         <div className="cart__item__wrapper">
             <div className="cart__info">
-            <input type="checkbox"/>
+            <input type="checkbox" className='cart__checkbox'/>
             <img src={camera} alt='product' className='cart__image' width='100' height='100'/>
                 <div className="cart__info-block">
                     <div className="cart__category">Фотоаппараты</div>

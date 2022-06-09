@@ -1,0 +1,37 @@
+.myorders__wrapper {
+    width: 640px;
+    height: 340px;
+    border-radius: 10px;
+    background: #fff;
+    padding: 30px;
+    overflow: hidden scroll;
+}
+
+.myorders__item {
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    
+}
+
+.myorders__arrow {
+    margin-top: -7px;
+}
+
+.myorders__price {
+    font-weight: 700;
+}
+
+.myorders__status {
+    padding-left: 14px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    position: absolute;
+    background-color: #ff3700;
+    width: 110px!important;
+    height: 30px;
+    border-radius: 10px;
+    position: relative;
+    line-height: 30px;
+}
