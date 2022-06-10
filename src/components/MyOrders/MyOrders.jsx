@@ -23,7 +23,9 @@ const MyOrders = () => {
                             <h5><strong>Заказ #{item.order}</strong> от 01/06/2022</h5>
                         </div>
                         <h5 className="myorders__price">{item.price} $</h5>
-                        <div className="myorders__status">{item.status}</div>
+                        <div className="myorders__status orange">{item.status}</div>
+                        <div className="myorders__status grey">{item.status}</div>
+
                     </div>
                 </>
 

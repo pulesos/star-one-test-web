@@ -1,0 +1,28 @@
+.address__wrapper {
+    width: 640px;
+    height: 340px;
+    margin-top: 58px;
+    margin-right: 320px;
+    border-radius: 10px;
+    background: #fff;
+    padding: 30px;
+    overflow: hidden scroll;
+    position: absolute;
+    right: 0;
+}
+
+.address__title {
+    color: #8c8c8c;
+}
+
+.address__title__data {
+    padding-top: 19px;
+}
+
+.form-control {
+    margin-top: 2px;
+    border-radius: 10px;
+    border: 1px solid #140050;
+    height: 50px;
+    color: #140050;
+}

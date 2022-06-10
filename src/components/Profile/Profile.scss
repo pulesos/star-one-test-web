@@ -1,0 +1,42 @@
+.profile__wrapper {
+    width: 640px;
+    height: 340px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    background: #fff;
+    padding: 30px;
+    overflow: hidden scroll;
+}
+
+.profile__avatar {
+    margin-top: -20px;
+}
+
+.profile__item {
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+}
+
+.profile__title {
+    color: #8c8c8c;
+    margin-top: 10px;
+}
+
+.btn-dart.profile {
+    margin-left: 10px;
+    border: 1px solid #140050;
+    border-radius: 10px;
+    font-weight: 700;
+    float: right;
+}
+
+.profile__balance {
+    display: flex;
+    justify-content: end;
+    gap: 8px;
+    margin-top: 4px;
+    font-weight: 700;
+    color: #140050;
+}
