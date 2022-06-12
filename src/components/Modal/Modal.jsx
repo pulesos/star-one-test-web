@@ -15,6 +15,11 @@ const Modal = ({modalActive, setModalActive}) => {
                 <h3 className='section__title'>Вход</h3>
             </div>
                 <form class="form-signin">
+                    <input type="email" placeholder='Email' className='form-control__modal'/>
+                    <input type="password" placeholder='Пароль' className='form-control__modal'/>
+                    <input type="password" placeholder='Введите пароль ещё раз' className='form-control__modal'/>
+                    <button type='submit' className='modal__btns'>Войти</button>
+                    <button className='modal__btns'>Зарегистрироваться</button>
                     <div id="firebaseui-auth-container"></div>
                     <div className="btn__soc">
                         <button className='btn btn-primary' disabled>

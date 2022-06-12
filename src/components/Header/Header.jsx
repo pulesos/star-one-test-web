@@ -9,7 +9,7 @@ import './Header.scss'
 
 
 const Header = ({setModalActive}) => {
-    const user = false
+    const user = true
     return (
         <>
             {user ? 
@@ -18,7 +18,7 @@ const Header = ({setModalActive}) => {
                         <a className="btn btn-white btn-login">
                             <span className="icon__login"></span>
                         </a>
-                        <p>dfsdf</p>
+                        
                     </div>
                     <img src={planet} className='planet__icon' alt="planet"/>
                     <Navbar/>

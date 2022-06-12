@@ -12,6 +12,7 @@ const Profile = () => {
                 <img src={starDark} className='profile__icon' alt="planet"/>
             </div>
             <img src='https://cdn-icons-png.flaticon.com/512/147/147144.png' alt="avatar" className='profile__avatar' width='50' height='50'/>
+            <a className="change__image">+</a>
             <div className="profile__item">
                 <div className="profile__title">
                     <h5>Имя пользователя</h5>

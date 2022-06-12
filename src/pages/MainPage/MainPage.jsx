@@ -6,7 +6,7 @@ import PopularEvents from "../../components/PopularEvents/PopularEvents"
 
 
 const MainPage = ({setModalActive}) => {
-    const user = false
+    const user = true
     return (
         <>
             {user ? 

@@ -40,3 +40,22 @@
     font-weight: 700;
     color: #140050;
 }
+
+.change__image {
+    position: absolute;
+    margin-top: -70px;   
+    margin-left: 30px;
+    border-radius: 20px;
+    background: #140050;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 31px;
+    height: 31px;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+        color: #fff;
+    }
+}

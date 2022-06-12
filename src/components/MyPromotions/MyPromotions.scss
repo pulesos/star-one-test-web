@@ -1,0 +1,19 @@
+.mypromotions__wrapper {
+    width: 640px;
+    height: 340px;
+    border-radius: 10px;
+    background: #fff;
+    padding: 30px;
+    overflow: hidden scroll;
+}
+
+.mypromotions__item {
+    display: flex;
+    margin-top: 10px;
+    gap: 20px;
+    
+}
+
+.mypromotions__title {
+    color: #8c8c8c;
+}
