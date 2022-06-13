@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import data from './data/data'
 import Banner from './components/Banner/Banner';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
@@ -18,19 +19,27 @@ import WinnersPage from './pages/WinnersPage/WinnersPage';
 
 function App() {
   const [modalActive, setModalActive] = useState(false)
-  
+  const [waiting, setWaiting] = useState(false)
+
+  const [list, setList] = useState(data)
+
+  const handleClick = (item) => {
+    if (list.indexOf(item) !== -1) return
+    setList([...list, item])
+  }
+
   return (
     <div className="App">
         
           <Header setModalActive={setModalActive}/>
           <Banner/>
           <Routes>
-            <Route path='/' element={<MainPage setModalActive={setModalActive}/>}/>
+            <Route path='/' element={<MainPage  waiting={waiting} setWaiting={setWaiting} setModalActive={setModalActive} handleClick={handleClick}/>}/>
             <Route path='/products/buy-credit' element={<BuyCreditsPage setModalActive={setModalActive}/>}/>
             <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive}/>}/>
             <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive}/>}/>
             <Route path='/products' element={<CategoriesPage/>}/>
-            <Route path='/cart' element={<CartPage/>}/>
+            <Route path='/cart' element={<CartPage list={list} setList={setList} handleClick={handleClick} />}/>
             <Route path='/profile' element={<ProfilePage/>}/>
             <Route path='/events/archive' element={<ArchivePage setModalActive={setModalActive}/>}/>
             <Route path='/events/winners' element={<WinnersPage/>}/>

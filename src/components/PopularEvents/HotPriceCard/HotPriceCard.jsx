@@ -5,7 +5,7 @@ import quest from '../../../assets/images/quest.svg'
 
 import './HotPriceCard.scss'
 
-const HotPriceCard = ({items, setModalActive}) => {
+const HotPriceCard = ({items, setModalActive, handleClick}) => {
     let settings = {
         dots: true,
         infinite: true,
@@ -57,7 +57,7 @@ const HotPriceCard = ({items, setModalActive}) => {
                                     </a>
                                     <div className="answer">Подсказка</div>
                                 </h5>
-                                <button className="btn btn-green">{item.price} $</button>
+                                <button className="btn btn-green">{item.priceTotal} $</button>
                             </a>
                             <div className="card-body">
                                 <div className="card__label">{item.category}</div>
@@ -68,7 +68,7 @@ const HotPriceCard = ({items, setModalActive}) => {
                                         alt="sony"/>
                                 <div className="card-body__bottom">
                                     <div className="card-body__price">{item.oldPrice} $</div>
-                                    <button className="btn btn-dart btn-cart" onClick={() => setModalActive(true)}>
+                                    <button className="btn btn-dart btn-cart" onClick={() => handleClick(item)}>
                                         <span className="icon__cart"></span>
                                     </button>
                                 </div>

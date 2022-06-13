@@ -6,6 +6,7 @@ import cart from '../../assets/images/cart.svg'
 import money from '../../assets/images/money.svg'
 import userIcon from '../../assets/images/user.svg'
 import './Header.scss'
+import { Link } from "react-router-dom";
 
 
 const Header = ({setModalActive}) => {
@@ -13,18 +14,6 @@ const Header = ({setModalActive}) => {
     return (
         <>
             {user ? 
-                <>
-                    <div className="header__btn" onClick={() => setModalActive(true)}>
-                        <a className="btn btn-white btn-login">
-                            <span className="icon__login"></span>
-                        </a>
-                        
-                    </div>
-                    <img src={planet} className='planet__icon' alt="planet"/>
-                    <Navbar/>
-                    <Logotype/>
-                </>
-                :
                 <>
                     <a className="user" href='#'>
                         <img src={userIcon} className="user__icon" alt='user'/>
@@ -36,10 +25,22 @@ const Header = ({setModalActive}) => {
                         <img src={star} className='cart__icon' alt="planet"/>
                     </a>
 
-                    <a className="cart" href='#'>
+                    <Link to='/cart' className="cart" href='#'>
                         <img src={cart} alt='cart'/>
                         <span className="cart__quantity">0</span>
-                    </a>
+                    </Link>
+                    <Navbar/>
+                    <Logotype/>
+                </>
+                :
+                <>
+                    <div className="header__btn" onClick={() => setModalActive(true)}>
+                        <a className="btn btn-white btn-login">
+                            <span className="icon__login"></span>
+                        </a>
+                        
+                    </div>
+                    <img src={planet} className='planet__icon' alt="planet"/>
                     <Navbar/>
                     <Logotype/>
                 </>

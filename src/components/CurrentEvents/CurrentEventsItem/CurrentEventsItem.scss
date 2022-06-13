@@ -12,6 +12,11 @@
     color: #140050;
 }
 
+.current__events__hot-price.active {
+    border: 4px solid #ffffff40;
+    background: radial-gradient(63.11% 63.11% at 31.97% 19.67%,#ffffffb3 0,#fff0 69.79%,#fff0 100%),radial-gradient(51.85% 189.49% at 50% 50%,#e1ddd0 0,#875f7e 100%);
+}
+
 .current__events__card-title__large {
     width: 8%;
     text-align: center;
@@ -21,6 +26,7 @@
     font-size: 28px;
     font-weight: 700;
 }
+
 
 .current__events__image {
     margin-top: -90px;
@@ -68,4 +74,9 @@
 .current__events__btn-green:hover {
     background: radial-gradient(63.11% 63.11% at 31.97% 19.67%,#fff0 0,#ffffffb3 100%),linear-gradient(180deg,#017e3b,#01ae81);
     color: #fff;
+}
+
+.current__events__btn-green.disabled {
+    background: radial-gradient(63.11% 63.11% at 31.97% 19.67%,#ffffffb3 0,#fff0 69.79%,#fff0 100%),radial-gradient(51.85% 189.49% at 50% 50%,#e1ddd0 0,#875f7e 100%);
+
 }

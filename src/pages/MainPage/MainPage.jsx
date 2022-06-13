@@ -5,14 +5,14 @@ import PopularCategories from "../../components/PopularCategories/PopularCategor
 import PopularEvents from "../../components/PopularEvents/PopularEvents"
 
 
-const MainPage = ({setModalActive}) => {
+const MainPage = ({setModalActive, waiting, setWaiting, handleClick}) => {
     const user = true
     return (
         <>
             {user ? 
                 <>
-                    <CurrentEvents/>
-                    <PopularEvents/>
+                    <CurrentEvents waiting={waiting} setWaiting={setWaiting}/>
+                    <PopularEvents handleClick={handleClick}/>
                     <PopularCategories/>
                     <PopularBrands/>
                     <MenuBottom/>
