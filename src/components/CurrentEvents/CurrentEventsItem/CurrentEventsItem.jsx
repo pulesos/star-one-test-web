@@ -17,29 +17,49 @@ const CurrentEventsItem = ({waiting, setWaiting}) => {
         return () => clearInterval(interval)
     }, [])
 
-    const [items, setItems] = useState([
-        {id: 1, title: 'Apple iPhone 13 Pro Max 256Gb (небесно-голубой)', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: true},
-        {id: 2, title: '500 Stars', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
-        {id: 3, title: 'Sony PlayStation 5 Digital Edition  ', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false}
-    ])
+    const [appState, changeState] = useState({
+        // disabled: false,
+        objects: [
+            {id: 1, title: 'Apple iPhone 13 Pro Max 256Gb (небесно-голубой)', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
+            {id: 2, title: '500 Stars', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
+            {id: 3, title: 'Sony PlayStation 5 Digital Edition  ', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false}
+        ]
+    })
 
 
-    // const items = [
-    //     {id: 1, title: 'Apple iPhone 13 Pro Max 256Gb (небесно-голубой)', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: true},
-    //     {id: 2, title: '500 Stars', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
-    //     {id: 3, title: 'Sony PlayStation 5 Digital Edition  ', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false}
-    // ]
+    const toggleActive = (index) => {
+        let arrayCopy = [...appState.objects]
 
-    const handleClick = (id) => {
-        setItems({activeLink: id})
-        console.log('CLicked', id)
+        arrayCopy[index].statusItem 
+            ? (arrayCopy[index].statusItem = false) 
+            : (arrayCopy[index].statusItem = true)
+
+            changeState({...appState, objects: arrayCopy})
     }
+
+    const toggleActiveStyles = (index) => {
+        if (appState.objects[index].statusItem) {
+            return 'current__events__hot-price disabled'
+        } else {
+            return 'current__events__hot-price'
+        }
+    }
+
+    const toggleActiveStylesBtns = (index) => {
+        if (appState.objects[index].statusItem) {
+            return 'current__events__btn-green disabled'
+        } else {
+            return 'current__events__btn-green'
+        }
+    }
+
+
     return (
         <>
         <div className='current__events__wrapper'>
-            {items.map(item => 
-                <div className="current__events__hot-price__item" key={item.id}>
-                        <div className={waiting ? "current__events__hot-price active" : "current__events__hot-price"}>
+            {appState.objects.map((item, index) => 
+                <div className="current__events__hot-price__item" key={index}>
+                        <div className={toggleActiveStyles(index)}>
                             <h5 className="current__events__card-title__large">Hot Price</h5>
                         </div>
                         <div className="current__events__image">
@@ -55,11 +75,9 @@ const CurrentEventsItem = ({waiting, setWaiting}) => {
                             <span>{seconds}</span>
                         </div>
                         
-                        {waiting ? 
-                            <button className="btn current__events__btn-green disabled">ОЖИДАНИЕ...</button>
-                        :
-                            <button className="btn current__events__btn-green" onClick={() => handleClick(items.id)}>СДЕЛАТЬ ХОД</button>
-                        }
+
+                        <button className={toggleActiveStylesBtns(index)} onClick={() => toggleActive(index)}>СДЕЛАТЬ ХОД</button>
+                        
                 </div>
                 
             )}
