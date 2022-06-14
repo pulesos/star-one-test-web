@@ -17,13 +17,23 @@ const CurrentEventsItem = ({waiting, setWaiting}) => {
         return () => clearInterval(interval)
     }, [])
 
-
-
-    const items = [
+    const [items, setItems] = useState([
         {id: 1, title: 'Apple iPhone 13 Pro Max 256Gb (небесно-голубой)', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: true},
         {id: 2, title: '500 Stars', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
         {id: 3, title: 'Sony PlayStation 5 Digital Edition  ', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false}
-    ]
+    ])
+
+
+    // const items = [
+    //     {id: 1, title: 'Apple iPhone 13 Pro Max 256Gb (небесно-голубой)', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: true},
+    //     {id: 2, title: '500 Stars', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
+    //     {id: 3, title: 'Sony PlayStation 5 Digital Edition  ', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false}
+    // ]
+
+    const handleClick = (id) => {
+        setItems({activeLink: id})
+        console.log('CLicked', id)
+    }
     return (
         <>
         <div className='current__events__wrapper'>
@@ -48,7 +58,7 @@ const CurrentEventsItem = ({waiting, setWaiting}) => {
                         {waiting ? 
                             <button className="btn current__events__btn-green disabled">ОЖИДАНИЕ...</button>
                         :
-                            <button className="btn current__events__btn-green" onClick={() => setWaiting(true)}>СДЕЛАТЬ ХОД</button>
+                            <button className="btn current__events__btn-green" onClick={() => handleClick(items.id)}>СДЕЛАТЬ ХОД</button>
                         }
                 </div>
                 

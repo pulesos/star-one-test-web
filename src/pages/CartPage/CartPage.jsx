@@ -31,10 +31,10 @@ const CartPage = ({list, setList}) => {
 
     return (
         <section className="cart__page">
-            <h3 className="events__title">
+            <h3 className="events__title cart__page">
                 <img className="mr-2" src={cartImage} alt="cart" width="28" height="28" />
                 <span>Корзина</span>
-                <label className="checkbox">
+                {/* <label className="checkbox">
                     <input
                         type="checkbox"
                         name="selectAll"
@@ -42,7 +42,7 @@ const CartPage = ({list, setList}) => {
                         className='cart__input'
                     />
                     <span className='input__text'>Выбрать всё</span>
-                </label>
+                </label> */}
             </h3>
             <Saldo total={total}/>
             {products}

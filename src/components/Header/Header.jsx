@@ -9,7 +9,7 @@ import './Header.scss'
 import { Link } from "react-router-dom";
 
 
-const Header = ({setModalActive}) => {
+const Header = ({setModalActive, size}) => {
     const user = true
     return (
         <>
@@ -27,7 +27,7 @@ const Header = ({setModalActive}) => {
 
                     <Link to='/cart' className="cart" href='#'>
                         <img src={cart} alt='cart'/>
-                        <span className="cart__quantity">0</span>
+                        <span className="cart__quantity">{size}</span>
                     </Link>
                     <Navbar/>
                     <Logotype/>

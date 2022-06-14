@@ -28,10 +28,12 @@ function App() {
     setList([...list, item])
   }
 
+
+
   return (
     <div className="App">
         
-          <Header setModalActive={setModalActive}/>
+          <Header setModalActive={setModalActive} size={list.length}/>
           <Banner/>
           <Routes>
             <Route path='/' element={<MainPage  waiting={waiting} setWaiting={setWaiting} setModalActive={setModalActive} handleClick={handleClick}/>}/>

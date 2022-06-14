@@ -10,7 +10,7 @@ import MyPromotions from '../../components/MyPromotions/MyPromotions'
 
 const ProfilePage = () => {
     return (
-        <section className='popular__events'>
+        <section className='popular__events profile-page'>
             <h3 className="events__title address">
                 <img className="mr-2" src={point} alt="top events" width="28" height="28" />
                 <span>Адрес доставки</span>
