@@ -33,6 +33,7 @@ const CurrentEventsItem = ({waiting, setWaiting}) => {
         arrayCopy[index].statusItem 
             ? (arrayCopy[index].statusItem = false) 
             : (arrayCopy[index].statusItem = true)
+            setDisabled(true)
 
             changeState({...appState, objects: arrayCopy})
     }
@@ -53,31 +54,31 @@ const CurrentEventsItem = ({waiting, setWaiting}) => {
         }
     }
 
+    const [disabled, setDisabled] = useState(false)
 
     return (
         <>
         <div className='current__events__wrapper'>
             {appState.objects.map((item, index) => 
                 <div className="current__events__hot-price__item" key={index}>
-                        <div className={toggleActiveStyles(index)}>
-                            <h5 className="current__events__card-title__large">Hot Price</h5>
-                        </div>
-                        <div className="current__events__image">
-                            <img src={item.avatar} alt='user' className="rounded-circle" width='75' height='75'/>
-                        </div>
-                        <div className="current__events__info">
-                            <h4 className="current__events__title__middle">{item.title}</h4>
-                        </div>
-                        
-                        <div className="current__events__timer">
-                            <span>{minutes}</span>
-                            <span>:</span>
-                            <span>{seconds}</span>
-                        </div>
-                        
-
-                        <button className={toggleActiveStylesBtns(index)} onClick={() => toggleActive(index)}>СДЕЛАТЬ ХОД</button>
-                        
+                    <div className={toggleActiveStyles(index)}>
+                        <h5 className="current__events__card-title__large">Hot Price</h5>
+                    </div>
+                    <div className="current__events__image">
+                        <img src={item.avatar} alt='user' className="rounded-circle" width='75' height='75'/>
+                    </div>
+                    <div className="current__events__info">
+                        <h4 className="current__events__title__middle">{item.title}</h4>
+                    </div>
+                    
+                    <div className="current__events__timer">
+                        <span>{minutes}</span>
+                        <span>:</span>
+                        <span>{seconds}</span>
+                    </div>
+                    
+                    
+                    <button className={toggleActiveStylesBtns(index)} onClick={() => toggleActive(index)}>СДЕЛАТЬ ХОД</button>    
                 </div>
                 
             )}

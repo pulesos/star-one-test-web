@@ -16,6 +16,7 @@ import MainPage from './pages/MainPage/MainPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import TopPricePage from './pages/TopPricePage/TopPricePage';
 import WinnersPage from './pages/WinnersPage/WinnersPage';
+import CategoriesDetailsPage from './pages/CategoriesDetailsPage/CategoriesDetailsPage';
 
 function App() {
   const [modalActive, setModalActive] = useState(false)
@@ -38,9 +39,10 @@ function App() {
           <Routes>
             <Route path='/' element={<MainPage  waiting={waiting} setWaiting={setWaiting} setModalActive={setModalActive} handleClick={handleClick}/>}/>
             <Route path='/products/buy-credit' element={<BuyCreditsPage setModalActive={setModalActive}/>}/>
-            <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive}/>}/>
-            <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive}/>}/>
+            <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive} handleClick={handleClick}/>}/>
+            <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive} handleClick={handleClick}/>}/>
             <Route path='/products' element={<CategoriesPage/>}/>
+            <Route path='/products/:id' element={<CategoriesDetailsPage/>}/>
             <Route path='/cart' element={<CartPage list={list} setList={setList} handleClick={handleClick} />}/>
             <Route path='/profile' element={<ProfilePage/>}/>
             <Route path='/events/archive' element={<ArchivePage setModalActive={setModalActive}/>}/>
