@@ -9,21 +9,21 @@ import './Header.scss'
 import { Link } from "react-router-dom";
 
 
-const Header = ({setModalActive, size}) => {
+const Header = ({setModalActive, size, name}) => {
     const user = true
     return (
         <>
             {user ? 
                 <>
-                    <a className="user" href='#'>
+                    <Link to='/profile' className="user" href='#'>
                         <img src={userIcon} className="user__icon" alt='user'/>
-                        <span className='username'>User</span>
-                    </a>
-                    <a className="user__balance" href='#'>
+                        <span className='username'>{name}</span>
+                    </Link>
+                    <Link to='/products/buy-credit' className="user__balance" href='#'>
                         <img src={money} className="money" alt='money'/>
                         <span className='balance'>500</span>
                         <img src={star} className='cart__icon' alt="planet"/>
-                    </a>
+                    </Link>
 
                     <Link to='/cart' className="cart" href='#'>
                         <img src={cart} alt='cart'/>

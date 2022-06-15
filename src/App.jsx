@@ -17,10 +17,12 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 import TopPricePage from './pages/TopPricePage/TopPricePage';
 import WinnersPage from './pages/WinnersPage/WinnersPage';
 import CategoriesDetailsPage from './pages/CategoriesDetailsPage/CategoriesDetailsPage';
+import DescriptionPage from './pages/DescriptionPage/DescriptionPage';
 
 function App() {
   const [modalActive, setModalActive] = useState(false)
-  const [waiting, setWaiting] = useState(false)
+  const [name, setName] = useState('User')
+
 
   const [list, setList] = useState(data)
 
@@ -34,19 +36,20 @@ function App() {
   return (
     <div className="App">
         
-          <Header setModalActive={setModalActive} size={list.length}/>
+          <Header setModalActive={setModalActive} size={list.length} name={name}/>
           <Banner/>
           <Routes>
-            <Route path='/' element={<MainPage  waiting={waiting} setWaiting={setWaiting} setModalActive={setModalActive} handleClick={handleClick}/>}/>
+            <Route path='/' element={<MainPage setModalActive={setModalActive} handleClick={handleClick}/>}/>
             <Route path='/products/buy-credit' element={<BuyCreditsPage setModalActive={setModalActive}/>}/>
             <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive} handleClick={handleClick}/>}/>
             <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive} handleClick={handleClick}/>}/>
             <Route path='/products' element={<CategoriesPage/>}/>
             <Route path='/products/:id' element={<CategoriesDetailsPage/>}/>
             <Route path='/cart' element={<CartPage list={list} setList={setList} handleClick={handleClick} />}/>
-            <Route path='/profile' element={<ProfilePage/>}/>
+            <Route path='/profile' element={<ProfilePage name={name} setName={setName}/>}/>
             <Route path='/events/archive' element={<ArchivePage setModalActive={setModalActive}/>}/>
             <Route path='/events/winners' element={<WinnersPage/>}/>
+            <Route path='/description' element={<DescriptionPage/>}/>
             <Route path='/company' element={<AboutUsPage/>}/>
           </Routes>
           <Modal modalActive={modalActive} setModalActive={setModalActive}/>

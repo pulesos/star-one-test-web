@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import user from '../../assets/images/user.svg'
 import bag from '../../assets/images/bag.svg'
 import point from '../../assets/images/point.svg'
@@ -8,21 +9,39 @@ import Profile from '../../components/Profile/Profile'
 import DeliveryAddress from '../../components/DeliveryAddress/DeliveryAddress'
 import MyPromotions from '../../components/MyPromotions/MyPromotions'
 
-const ProfilePage = () => {
+const ProfilePage = ({name, setName}) => {
+    const [changeProfile, setChangeProfile] = useState(false)
+    const [changeDelivery, setChangeDeliver] = useState(false)
+
     return (
         <section className='popular__events profile-page'>
             <h3 className="events__title address">
                 <img className="mr-2" src={point} alt="top events" width="28" height="28" />
                 <span>Адрес доставки</span>
-                <button className="btn events1 btn-white">Редактировать</button>
+                {changeDelivery ? 
+                    <>
+                    <button className="btn events1 btn-white" onClick={() => setChangeDeliver(false)}>Сохранить</button>
+                    <button className="btn events1 btn-white" onClick={() => setChangeDeliver(false)}>Отмена</button>
+                    </>
+                    :
+                    <button className="btn events1 btn-white" onClick={() => setChangeDeliver(true)}>Редактировать</button>
+                }
             </h3>
-            <DeliveryAddress/>
+            <DeliveryAddress changeDelivery={changeDelivery}/>
             <h3 className="events__title">
                 <img className="mr-2" src={user} alt="top events" width="28" height="28" />
                 <span>Профиль</span>
-                <button className="btn events1 btn-white">Редактировать</button>
+                {changeProfile ? 
+                    <>
+                    <button className="btn events1 btn-white" onClick={() => setChangeProfile(false)}>Сохранить</button>
+                    <button className="btn events1 btn-white" onClick={() => setChangeProfile(false)}>Отмена</button>
+                    </>
+                    :
+                    <button className="btn events1 btn-white" onClick={() => setChangeProfile(true)}>Редактировать</button>
+                }
+                
             </h3>
-            <Profile/>
+            <Profile changeProfile={changeProfile} name={name} setName={setName}/>
             <h3 className="events__title myorders">
                 <img className="mr-2" src={bag} alt="top events" width="28" height="28" />
                 <span>Мои заказы</span>

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import './CurrentEventsItem.scss'
 
-const CurrentEventsItem = ({waiting, setWaiting}) => {
+const CurrentEventsItem = () => {
 
-   const [timeLeft, setTimeLeft] = useState(5 * 60)
+   const [timeLeft, setTimeLeft] = useState(5*60)
 
    const getPadTime = (time) => time.toString().padStart(2, '0')
 
@@ -12,9 +12,9 @@ const CurrentEventsItem = ({waiting, setWaiting}) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 5 * 60))
+            setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : setDisabled(false) || 5*60))
         }, 1000)
-        return () => clearInterval(interval)
+        return () => clearInterval(interval) 
     }, [])
 
     const [appState, changeState] = useState({
@@ -78,7 +78,8 @@ const CurrentEventsItem = ({waiting, setWaiting}) => {
                     </div>
                     
                     
-                    <button className={toggleActiveStylesBtns(index)} onClick={() => toggleActive(index)}>СДЕЛАТЬ ХОД</button>    
+                    <button className={toggleActiveStylesBtns(index)} onClick={() => toggleActive(index)} disabled={disabled}>СДЕЛАТЬ ХОД</button>
+                        
                 </div>
                 
             )}

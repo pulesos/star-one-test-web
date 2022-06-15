@@ -1,6 +1,19 @@
 
+
+import { useState } from 'react'
 import './DeliveryAddress.scss'
-const DeliveryAddress = () => {
+
+const DeliveryAddress = ({changeDelivery}) => {
+    const [recipient, setRecipient] = useState('recipient')
+    const [country, setCountry] = useState('country')
+    const [postCode, setPostCode] = useState('post code')
+    const [town, setTown] = useState('town')
+    const [street, setStreet] = useState('street')
+    const [house, setHouse] = useState('house')
+    const [apartment, setApartment] = useState('apartment') 
+    const [phone, setPhone] = useState('phone')
+    const [email, setEmail] = useState('email')
+
     return (
         <div className="address__wrapper">
             <div className="profile__item">
@@ -16,15 +29,31 @@ const DeliveryAddress = () => {
                     <h5 className='address__title__data'>Эл. почта</h5>
                 </div>
                 <div className="address__input">
-                    <input type="text" placeholder='recipient' className='form-control'/>
-                    <input type="text" placeholder='country' className='form-control'/>
-                    <input type="text" placeholder='post code' className='form-control'/>
-                    <input type="text" placeholder='town' className='form-control'/>
-                    <input type="text" placeholder='street' className='form-control'/>
-                    <input type="text" placeholder='house' className='form-control'/>
-                    <input type="text" placeholder='apartment' className='form-control'/>
-                    <input type="text" placeholder='phone' className='form-control'/>
-                    <input type="text" placeholder='email' className='form-control'/>
+                {changeDelivery ?
+                        <>
+                        <input type="text" placeholder={recipient} className='form-control' onChange={(e) => setRecipient(e.target.value)}/>
+                        <input type="text" placeholder={country} className='form-control' onChange={(e) => setCountry(e.target.value)}/>
+                        <input type="text" placeholder={postCode} className='form-control' onChange={(e) => setPostCode(e.target.value)}/>
+                        <input type="text" placeholder={town} className='form-control' onChange={(e) => setTown(e.target.value)}/>
+                        <input type="text" placeholder={street} className='form-control' onChange={(e) => setStreet(e.target.value)}/>
+                        <input type="text" placeholder={house} className='form-control' onChange={(e) => setHouse(e.target.value)}/>
+                        <input type="text" placeholder={apartment} className='form-control' onChange={(e) => setApartment(e.target.value)}/>
+                        <input type="text" placeholder={phone} className='form-control' onChange={(e) => setPhone(e.target.value)}/>
+                        <input type="text" placeholder={email} className='form-control' onChange={(e) => setEmail(e.target.value)}/>
+                        </>
+                        :
+                        <>
+                        <h2 className='address__data__text'><strong>{recipient}</strong></h2>
+                        <h5 className='address__data__text'>{country}</h5>
+                        <h5 className='address__data__text'>{postCode}</h5>
+                        <h5 className='address__data__text'>{town}</h5>
+                        <h5 className='address__data__text'>{street}</h5>
+                        <h5 className='address__data__text'>{house}</h5>
+                        <h5 className='address__data__text'>{apartment}</h5>
+                        <h5 className='address__data__text'>{phone}</h5>
+                        <h5 className='address__data__text'>{email}</h5>
+                        </>
+                    }
 
                 </div>
             </div>         

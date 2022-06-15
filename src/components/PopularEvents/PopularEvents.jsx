@@ -1,4 +1,5 @@
 import {v4} from 'uuid'
+import {Link} from 'react-router-dom'
 import HotPriceCard from './HotPriceCard/HotPriceCard'
 import molnia from '../../assets/images/molnia.svg'
 import sony from '../../assets/images/sony.png'
@@ -22,7 +23,7 @@ const PopularEvents = ({setModalActive, handleClick}) => {
             <h3 className="events__title">
                 <img className="mr-2" src={molnia} alt="top events" width="28" height="28" />
                 <span>Популярные события</span>
-                <button className="btn events1 btn-white">События</button>
+                <Link to='/hotprice'><button className="btn events1 btn-white">События</button></Link> 
             </h3>
             <HotPriceCard items={items} setModalActive={setModalActive} handleClick={handleClick}/>
         </section>

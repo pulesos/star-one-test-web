@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import winnersDark from '../../assets/images/winners-dark.svg'
 import archiveDark from '../../assets/images/archive-dark.svg'
 import question from '../../assets/images/question.svg'
@@ -15,18 +16,18 @@ const MenuBottom = () => {
                         <div className="col-lg-6">
                             <a className="btn action-btn mb-3" href="#">
                                 <div className="action-btn__border">
-                                    <div className="action-btn__content d-flex justify-content-center align-items-center h-100 text__middle">
-                                        <img src={winnersDark} className="mr-2" /> Победители
-                                    </div>
+                                    <Link to='/events/winners' className="action-btn__content d-flex justify-content-center align-items-center h-100 text__middle" style={{ textDecoration: 'none', color: '#140050'}}>
+                                       <img src={winnersDark} className="mr-2" /> Победители
+                                    </Link>
                                 </div>
                             </a>
                         </div>
                         <div className="col-lg-6">
                             <a className="btn action-btn mb-3" href="#">
                                 <div className="action-btn__border">
-                                    <div className="action-btn__content d-flex justify-content-center align-items-center h-100 text__middle">
+                                    <Link to='/events/archive' className="action-btn__content d-flex justify-content-center align-items-center h-100 text__middle" style={{ textDecoration: 'none', color: '#140050'}}>
                                         <img src={archiveDark} className="mr-2" /> Архив
-                                    </div>
+                                    </Link>
                                 </div>
                             </a>
                         </div>
@@ -35,18 +36,18 @@ const MenuBottom = () => {
                         <div className="col-lg-6">
                             <a className="btn action-btn mb-3" href="#">
                                 <div className="action-btn__border">
-                                    <div className="action-btn__content d-flex justify-content-center align-items-center h-100 text__middle">
+                                    <Link to='/description' className="action-btn__content d-flex justify-content-center align-items-center h-100 text__middle" style={{ textDecoration: 'none', color: '#140050'}}>
                                         <img src={question} className="mr-2" /> Как это работает
-                                    </div>
+                                    </Link>
                                 </div>
                             </a>
                         </div>
                         <div className="col-lg-6">
                             <a className="btn action-btn mb-3" href="#">
                                 <div className="action-btn__border">
-                                    <div className="action-btn__content d-flex justify-content-center align-items-center h-100 text__middle">
+                                    <Link to='/company' className="action-btn__content d-flex justify-content-center align-items-center h-100 text__middle" style={{ textDecoration: 'none', color: '#140050'}}>
                                         <img src={companyDark} className="mr-2" /> О нас
-                                    </div>
+                                    </Link>
                                 </div>
                             </a>
                         </div>
