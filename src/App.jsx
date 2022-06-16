@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import useLocalStorage from './hooks/useLocalStorage';
 import './App.css';
 import data from './data/data'
 import Banner from './components/Banner/Banner';
@@ -18,19 +19,22 @@ import TopPricePage from './pages/TopPricePage/TopPricePage';
 import WinnersPage from './pages/WinnersPage/WinnersPage';
 import CategoriesDetailsPage from './pages/CategoriesDetailsPage/CategoriesDetailsPage';
 import DescriptionPage from './pages/DescriptionPage/DescriptionPage';
+import { useEffect } from 'react';
 
 function App() {
+
+
+
   const [modalActive, setModalActive] = useState(false)
-  const [name, setName] = useState('User')
+  const [name, setName] = useLocalStorage('name')
 
-
-  const [list, setList] = useState(data)
+  const [list, setList] = useLocalStorage('data', data)
 
   const handleClick = (item) => {
     if (list.indexOf(item) !== -1) return
     setList([...list, item])
-  }
 
+  }
 
 
   return (

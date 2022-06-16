@@ -1,15 +1,16 @@
 import {Link} from 'react-router-dom'
+import useLocalStorage from '../../hooks/useLocalStorage';
 import starDark from '../../assets/images/star-dark.svg'
 import moneyDark from '../../assets/images/money-dark.svg'
 import './Profile.scss'
 import { useState } from 'react'
 
 const Profile = ({changeProfile, name, setName}) => {
-    const [instagram, setInstagram] = useState('12354')
-    const [email, setEmail] = useState('email')
-    const [phone, setPhone] = useState('+32444')
-    const [language, setLanguage] = useState('EN')
-    const [valute, setValute] = useState('RUB')
+    const [instagram, setInstagram] = useLocalStorage('instagram')
+    const [email, setEmail] = useLocalStorage('email')
+    const [phone, setPhone] = useLocalStorage('phone')
+    const [language, setLanguage] = useLocalStorage('language')
+    const [valute, setValute] = useLocalStorage('valute')
 
     return (
         <div className="profile__wrapper">

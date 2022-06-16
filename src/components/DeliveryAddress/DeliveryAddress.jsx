@@ -1,18 +1,19 @@
 
 
 import { useState } from 'react'
+import useLocalStorage from '../../hooks/useLocalStorage';
 import './DeliveryAddress.scss'
 
 const DeliveryAddress = ({changeDelivery}) => {
-    const [recipient, setRecipient] = useState('recipient')
-    const [country, setCountry] = useState('country')
-    const [postCode, setPostCode] = useState('post code')
-    const [town, setTown] = useState('town')
-    const [street, setStreet] = useState('street')
-    const [house, setHouse] = useState('house')
-    const [apartment, setApartment] = useState('apartment') 
-    const [phone, setPhone] = useState('phone')
-    const [email, setEmail] = useState('email')
+    const [recipient, setRecipient] = useLocalStorage('recipient')
+    const [country, setCountry] = useLocalStorage('country')
+    const [postCode, setPostCode] = useLocalStorage('post code')
+    const [town, setTown] = useLocalStorage('town')
+    const [street, setStreet] = useLocalStorage('street')
+    const [house, setHouse] = useLocalStorage('house')
+    const [apartment, setApartment] = useLocalStorage('apartment') 
+    const [phone, setPhone] = useLocalStorage('phone')
+    const [email, setEmail] = useLocalStorage('email')
 
     return (
         <div className="address__wrapper">

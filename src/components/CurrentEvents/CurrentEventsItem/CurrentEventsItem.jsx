@@ -1,24 +1,25 @@
 import { useEffect, useState } from 'react'
+import useLocalStorage from '../../../hooks/useLocalStorage';
+
 import './CurrentEventsItem.scss'
 
 const CurrentEventsItem = () => {
+    
+    const [timeLeft, setTimeLeft] = useLocalStorage('timer',  5 * 60)
 
-   const [timeLeft, setTimeLeft] = useState(5*60)
+    const getPadTime = (time) => time.toString().padStart(2, '0')
 
-   const getPadTime = (time) => time.toString().padStart(2, '0')
-
-   const minutes = getPadTime(Math.floor(timeLeft / 60))
-   const seconds = getPadTime(timeLeft - minutes * 60)
+    const minutes = getPadTime(Math.floor(timeLeft / 60))
+    const seconds = getPadTime(timeLeft - minutes * 60)
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : setDisabled(false) || 5*60))
+            setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : setDisabled() ||  5 * 60))
         }, 1000)
         return () => clearInterval(interval) 
     }, [])
 
-    const [appState, changeState] = useState({
-        // disabled: false,
+    const [appState, changeState] = useLocalStorage('CurrentEventsItem', {
         objects: [
             {id: 1, title: 'Apple iPhone 13 Pro Max 256Gb (небесно-голубой)', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
             {id: 2, title: '500 Stars', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
@@ -28,24 +29,20 @@ const CurrentEventsItem = () => {
 
 
     const toggleActive = (index) => {
-        let arrayCopy = [...appState.objects]
+        let arrayCopy = [...appState.objects];
+        arrayCopy[index].statusItem = !arrayCopy[index].statusItem;
+        changeState({...appState, objects: arrayCopy});
+      }
 
-        arrayCopy[index].statusItem 
-            ? (arrayCopy[index].statusItem = false) 
-            : (arrayCopy[index].statusItem = true)
-            setDisabled(true)
-
-            changeState({...appState, objects: arrayCopy})
-    }
 
     const toggleActiveStyles = (index) => {
         if (appState.objects[index].statusItem) {
-            return 'current__events__hot-price disabled'
+          return 'current__events__hot-price disabled'
         } else {
-            return 'current__events__hot-price'
+          return 'current__events__hot-price'
         }
-    }
-
+      }
+    
     const toggleActiveStylesBtns = (index) => {
         if (appState.objects[index].statusItem) {
             return 'current__events__btn-green disabled'
@@ -54,7 +51,13 @@ const CurrentEventsItem = () => {
         }
     }
 
-    const [disabled, setDisabled] = useState(false)
+    const setDisabled = () => {
+        appState.objects.forEach((item, index) => {
+            if (item.statusItem) {
+                toggleActive(index);
+            }
+        });
+    }
 
     return (
         <>
@@ -76,12 +79,9 @@ const CurrentEventsItem = () => {
                         <span>:</span>
                         <span>{seconds}</span>
                     </div>
-                    
-                    
-                    <button className={toggleActiveStylesBtns(index)} onClick={() => toggleActive(index)} disabled={disabled}>СДЕЛАТЬ ХОД</button>
-                        
-                </div>
-                
+
+                    <button className={toggleActiveStylesBtns(index)} onClick={() => toggleActive(index)} disabled={item.statusItem}>СДЕЛАТЬ ХОД</button> 
+                </div> 
             )}
             </div>
         </>
