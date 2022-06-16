@@ -6,7 +6,7 @@ import smartphones from '../../assets/images/smartphones.svg'
 import coin1 from '../../assets/images/coin1.jpg'
 import './TopPriceCard.scss'
 
-const TopPriceCard = ({setModalActive, handleClick}) => {
+const TopPriceCard = ({setModalActive, handleClick, loggedIn}) => {
     const user = true
     const items = [
         {id: v4(), priceTotal: 252, image: sony, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150},
@@ -40,7 +40,7 @@ const TopPriceCard = ({setModalActive, handleClick}) => {
                             <div className="card-body__bottom">
                                 <div className="card-body__price">{item.oldPrice} $</div>
                                 
-                                {user ? 
+                                {loggedIn ? 
                                     <button className="btn btn-dart btn-cart" onClick={() => handleClick(item)}>
                                         <span className="icon__cart"></span>
                                     </button>

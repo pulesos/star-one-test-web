@@ -9,11 +9,11 @@ import './Header.scss'
 import { Link } from "react-router-dom";
 
 
-const Header = ({setModalActive, size, name}) => {
+const Header = ({setModalActive, size, name, handleLoggedOut, handleLoggedIn, loggedIn}) => {
     const user = true
     return (
         <>
-            {user ? 
+            {loggedIn ? 
                 <>
                     <Link to='/profile' className="user" href='#'>
                         <img src={userIcon} className="user__icon" alt='user'/>
@@ -29,7 +29,7 @@ const Header = ({setModalActive, size, name}) => {
                         <img src={cart} alt='cart'/>
                         <span className="cart__quantity">{size}</span>
                     </Link>
-                    <Navbar/>
+                    <Navbar handleLoggedOut={handleLoggedOut} loggedIn={loggedIn}/>
                     <Logotype/>
                 </>
                 :
@@ -41,7 +41,7 @@ const Header = ({setModalActive, size, name}) => {
                         
                     </div>
                     <img src={planet} className='planet__icon' alt="planet"/>
-                    <Navbar/>
+                    <Navbar loggedIn={loggedIn} handleLoggedIn={handleLoggedIn}/>
                     <Logotype/>
                 </>
             }

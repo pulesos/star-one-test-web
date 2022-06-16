@@ -6,7 +6,7 @@ import headphones from '../../assets/images/headphones.svg'
 import smartphones from '../../assets/images/smartphones.svg'
 import coin1 from '../../assets/images/coin1.jpg'
 
-const HotPricePage = ({setModalActive, handleClick}) => {
+const HotPricePage = ({setModalActive, handleClick, loggedIn}) => {
     const user = true
     const items = [
         {id: v4(), priceTotal: 252, image: sony, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150},
@@ -44,7 +44,7 @@ const HotPricePage = ({setModalActive, handleClick}) => {
                                         alt="sony"/>
                                 <div className="card-body__bottom">
                                     <div className="card-body__price">{item.oldPrice} $</div>
-                                    {user ?
+                                    {loggedIn ?
                                             <button className="btn btn-dart btn-cart" onClick={() => handleClick(item)}>
                                                 <span className="icon__cart"></span>
                                             </button>

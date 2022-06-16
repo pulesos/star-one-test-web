@@ -8,7 +8,7 @@ import smartphones from '../../assets/images/smartphones.svg'
 import coin1 from '../../assets/images/coin1.jpg'
 import './PopularEvents.scss'
 
-const PopularEvents = ({setModalActive, handleClick}) => {
+const PopularEvents = ({setModalActive, handleClick, loggedIn}) => {
     const items = [
         {id: v4(), priceTotal: 252, image: sony, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150},
         {id: v4(), priceTotal: 254, image: headphones, category: 'НАУШНИКИ', name: 'Apple AirPods Pro', oldPrice: 260},
@@ -25,7 +25,7 @@ const PopularEvents = ({setModalActive, handleClick}) => {
                 <span>Популярные события</span>
                 <Link to='/hotprice'><button className="btn events1 btn-white">События</button></Link> 
             </h3>
-            <HotPriceCard items={items} setModalActive={setModalActive} handleClick={handleClick}/>
+            <HotPriceCard items={items} setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>
         </section>
         
     )

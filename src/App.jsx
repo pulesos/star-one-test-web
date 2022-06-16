@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import useLocalStorage from './hooks/useLocalStorage';
-import './App.css';
 import data from './data/data'
 import Banner from './components/Banner/Banner';
 import Footer from './components/Footer/Footer';
@@ -19,39 +18,43 @@ import TopPricePage from './pages/TopPricePage/TopPricePage';
 import WinnersPage from './pages/WinnersPage/WinnersPage';
 import CategoriesDetailsPage from './pages/CategoriesDetailsPage/CategoriesDetailsPage';
 import DescriptionPage from './pages/DescriptionPage/DescriptionPage';
-import { useEffect } from 'react';
+import './App.css';
+
 
 function App() {
-
-
-
   const [modalActive, setModalActive] = useState(false)
   const [name, setName] = useLocalStorage('name')
-
+  const [loggedIn, setLoggedIn] = useState(true)
   const [list, setList] = useLocalStorage('data', data)
 
   const handleClick = (item) => {
     if (list.indexOf(item) !== -1) return
     setList([...list, item])
-
   }
 
+  const handleLoggedOut = () => {
+    setLoggedIn(false)
+  }
+
+  const handleLoggedIn = () => {
+    setLoggedIn(true)
+  }
 
   return (
     <div className="App">
         
-          <Header setModalActive={setModalActive} size={list.length} name={name}/>
+          <Header setModalActive={setModalActive} size={list.length} name={name} loggedIn={loggedIn} handleLoggedOut={handleLoggedOut} handleLoggedIn={handleLoggedIn}/>
           <Banner/>
           <Routes>
-            <Route path='/' element={<MainPage setModalActive={setModalActive} handleClick={handleClick}/>}/>
+            <Route path='/' element={<MainPage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
             <Route path='/products/buy-credit' element={<BuyCreditsPage setModalActive={setModalActive}/>}/>
-            <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive} handleClick={handleClick}/>}/>
-            <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive} handleClick={handleClick}/>}/>
+            <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
+            <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
             <Route path='/products' element={<CategoriesPage/>}/>
             <Route path='/products/:id' element={<CategoriesDetailsPage/>}/>
             <Route path='/cart' element={<CartPage list={list} setList={setList} handleClick={handleClick} />}/>
             <Route path='/profile' element={<ProfilePage name={name} setName={setName}/>}/>
-            <Route path='/events/archive' element={<ArchivePage setModalActive={setModalActive}/>}/>
+            <Route path='/events/archive' element={<ArchivePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
             <Route path='/events/winners' element={<WinnersPage/>}/>
             <Route path='/description' element={<DescriptionPage/>}/>
             <Route path='/company' element={<AboutUsPage/>}/>
