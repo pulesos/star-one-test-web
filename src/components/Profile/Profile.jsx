@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom'
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useLocalStorage from 'use-local-storage';
 import starDark from '../../assets/images/star-dark.svg'
 import moneyDark from '../../assets/images/money-dark.svg'
 import './Profile.scss'

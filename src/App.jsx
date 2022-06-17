@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import useLocalStorage from './hooks/useLocalStorage';
-import data from './data/data'
+import useLocalStorage from 'use-local-storage';
 import Banner from './components/Banner/Banner';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
@@ -19,13 +18,14 @@ import WinnersPage from './pages/WinnersPage/WinnersPage';
 import CategoriesDetailsPage from './pages/CategoriesDetailsPage/CategoriesDetailsPage';
 import DescriptionPage from './pages/DescriptionPage/DescriptionPage';
 import './App.css';
+import CurrentEventPage from './pages/CurrentEventPage/CurrentEventPage';
 
 
 function App() {
   const [modalActive, setModalActive] = useState(false)
   const [name, setName] = useLocalStorage('name')
   const [loggedIn, setLoggedIn] = useState(true)
-  const [list, setList] = useLocalStorage('data', data)
+  const [list, setList] = useLocalStorage('data', [])
 
   const handleClick = (item) => {
     if (list.indexOf(item) !== -1) return
@@ -39,6 +39,7 @@ function App() {
   const handleLoggedIn = () => {
     setLoggedIn(true)
   }
+  
 
   return (
     <div className="App">
@@ -47,6 +48,7 @@ function App() {
           <Banner/>
           <Routes>
             <Route path='/' element={<MainPage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
+            <Route path='/event/:id' element={<CurrentEventPage/>}/>
             <Route path='/products/buy-credit' element={<BuyCreditsPage setModalActive={setModalActive}/>}/>
             <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
             <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>

@@ -1,7 +1,7 @@
 
 
 import { useState } from 'react'
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useLocalStorage from 'use-local-storage';
 import './DeliveryAddress.scss'
 
 const DeliveryAddress = ({changeDelivery}) => {

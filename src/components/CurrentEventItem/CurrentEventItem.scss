@@ -1,0 +1,36 @@
+.current__event__item__wrapper {
+    border-radius: 10px;
+    background: #fff;
+    padding: 30px;
+}
+
+.current__event__item__data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile__balance.event {
+    display: initial;
+    margin-left: 300px;
+    margin-right: 10px;
+}
+
+.hotprice__btn {
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 100%;
+    color: #140050;
+    font-weight: 700;
+    padding-top: 9px;
+    border: 2px solid #140050;
+    background: radial-gradient(63.11% 63.11% at 31.97% 19.67%,#ffffffb3 0,#fff0 69.79%,#fff0 100%),radial-gradient(51.85% 189.49% at 50% 50%,#ffc800 0,red 100%);
+    cursor: pointer;
+    text-align: center;
+}
+
+.current__events__btn-green.big {
+    margin-top: 5px;
+    height: 110px;
+}
