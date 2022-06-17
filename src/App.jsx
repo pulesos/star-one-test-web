@@ -41,6 +41,7 @@ function App() {
   }
   
 
+
   return (
     <div className="App">
         
@@ -48,7 +49,7 @@ function App() {
           <Banner/>
           <Routes>
             <Route path='/' element={<MainPage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
-            <Route path='/event/:id' element={<CurrentEventPage/>}/>
+            <Route path='/event/:id' element={<CurrentEventPage name={name}/>}/>
             <Route path='/products/buy-credit' element={<BuyCreditsPage setModalActive={setModalActive}/>}/>
             <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
             <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>

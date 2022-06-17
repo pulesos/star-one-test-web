@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import useLocalStorage from 'use-local-storage';
-
+import {v4} from 'uuid'
 import './CurrentEventsItem.scss'
 
 const CurrentEventsItem = () => {
@@ -21,9 +21,9 @@ const CurrentEventsItem = () => {
 
     const [appState, changeState] = useLocalStorage('CurrentEventsItem', {
         objects: [
-            {id: 1, title: 'Apple iPhone 13 Pro Max 256Gb (небесно-голубой)', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
-            {id: 2, title: '500 Stars', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
-            {id: 3, title: 'Sony PlayStation 5 Digital Edition  ', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false}
+            {id: v4(), title: 'Apple iPhone 13 Pro Max 256Gb (небесно-голубой)', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
+            {id: v4(), title: '500 Stars', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
+            {id: v4(), title: 'Sony PlayStation 5 Digital Edition  ', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false}
         ]
     })
 
