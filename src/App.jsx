@@ -19,6 +19,7 @@ import CategoriesDetailsPage from './pages/CategoriesDetailsPage/CategoriesDetai
 import DescriptionPage from './pages/DescriptionPage/DescriptionPage';
 import './App.css';
 import CurrentEventPage from './pages/CurrentEventPage/CurrentEventPage';
+import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
             <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
             <Route path='/products' element={<CategoriesPage/>}/>
             <Route path='/products/:id' element={<CategoriesDetailsPage/>}/>
+            <Route path='/product-details' element={<ProductDetailsPage/>}/>
             <Route path='/cart' element={<CartPage list={list} setList={setList} handleClick={handleClick} />}/>
             <Route path='/profile' element={<ProfilePage name={name} setName={setName}/>}/>
             <Route path='/events/archive' element={<ArchivePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
