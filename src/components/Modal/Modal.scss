@@ -110,7 +110,7 @@
     font-weight: 700;
 }
 
-.modal__btns {
+.register, .enter {
     width: 180px;
     height: 50px;
     margin-top: 15px;
@@ -121,6 +121,17 @@
     line-height: 150%;
     border: 1px solid #140050;
     color: #140050;
+    background-color: white;
+}
+
+.register.disabled {
+    color: #8C8C8C;
+    border: 1px solid #8C8C8C;
+}
+
+.enter.disabled {
+    color: #8C8C8C;
+    border: 1px solid #8C8C8C;
 }
 
 .form-control__modal {

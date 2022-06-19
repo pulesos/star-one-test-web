@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import {v4} from 'uuid'
 import sony from '../../assets/images/sony.png'
 import headphones from '../../assets/images/headphones.svg'
@@ -30,7 +31,7 @@ const ArchiveCard = ({setModalActive, handleClick, loggedIn}) => {
                         <div className="card-body">
                             <div className="card__label__archive">{item.category}</div>
                             <div className="card-body__name">
-                                <a href="/card-1.html" className='bold'>{item.name}</a>
+                                <Link to="/product-details" className='bold'>{item.name}</Link>
                             </div>
                             <img className="card__picture" src={item.image}
                                     alt="sony"/>

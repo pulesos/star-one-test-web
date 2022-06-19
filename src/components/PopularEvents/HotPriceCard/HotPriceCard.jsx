@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -62,7 +63,7 @@ const HotPriceCard = ({items, setModalActive, handleClick, loggedIn}) => {
                             <div className="card-body">
                                 <div className="card__label">{item.category}</div>
                                 <div className="card-body__name">
-                                    <a href="/card-1.html" className='bold'>{item.name}</a>
+                                    <Link to="/product-details" className='bold'>{item.name}</Link>
                                 </div>
                                 <img className="card__picture" src={item.image}
                                         alt="sony"/>

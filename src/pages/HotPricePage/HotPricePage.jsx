@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import {v4} from 'uuid'
 import quest from '../../assets/images/quest.svg'
 import molnia from '../../assets/images/molnia.svg'
@@ -38,7 +39,7 @@ const HotPricePage = ({setModalActive, handleClick, loggedIn}) => {
                             <div className="card-body">
                                 <div className="card__label">{item.category}</div>
                                 <div className="card-body__name">
-                                    <a href="/card-1.html" className='bold'>{item.name}</a>
+                                    <Link to="/product-details" className='bold'>{item.name}</Link>
                                 </div>
                                 <img className="card__picture" src={item.image}
                                         alt="sony"/>
