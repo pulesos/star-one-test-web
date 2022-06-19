@@ -30,6 +30,11 @@
     float: left;
 }
 
+.price__details {
+    display: flex;
+    gap: 10px;
+}
+
 .btn__price {
     margin-top: 190px;
     font-weight: 700;
@@ -37,4 +42,20 @@
 
 .card__wrapper__data {
     margin-top: 30px;
+}
+
+.product__details__wrapper__descr {
+    display: none;
+}
+
+.product__details__wrapper__descr.active {
+    display: block;
+    margin-top: 50px;
+    padding: 45px;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
 }

@@ -21,6 +21,7 @@
 
 .myorders__arrow {
     margin-top: -7px;
+    cursor: pointer;
 }
 
 .myorders__price {
@@ -53,5 +54,15 @@
     // border-radius: 10px;
     // position: relative;
     // line-height: 30px;
+}
+
+.myorders__info {
+    display: none;
+}
+
+.myorders__info.active {
+    display: block;
+    margin-left: 30px;
+    color: #8c8c8c;
 }
 

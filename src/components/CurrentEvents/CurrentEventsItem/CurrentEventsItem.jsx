@@ -32,7 +32,7 @@ const CurrentEventsItem = () => {
         let arrayCopy = [...appState.objects];
         arrayCopy[index].statusItem = !arrayCopy[index].statusItem;
         changeState({...appState, objects: arrayCopy});
-      }
+    }
 
 
     const toggleActiveStyles = (index) => {
@@ -41,7 +41,7 @@ const CurrentEventsItem = () => {
         } else {
           return 'current__events__hot-price'
         }
-      }
+    }
     
     const toggleActiveStylesBtns = (index) => {
         if (appState.objects[index].statusItem) {

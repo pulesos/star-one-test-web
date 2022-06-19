@@ -27,6 +27,7 @@ function App() {
   const [name, setName] = useLocalStorage('name')
   const [loggedIn, setLoggedIn] = useState(true)
   const [list, setList] = useLocalStorage('data', [])
+  const [isActive, setActive] = useState(false);
 
   const handleClick = (item) => {
     if (list.indexOf(item) !== -1) return
@@ -40,6 +41,12 @@ function App() {
   const handleLoggedIn = () => {
     setLoggedIn(true)
   }
+
+
+  const toggleClass = () => {
+      setActive(!isActive);
+  };
+
   
 
 
@@ -56,9 +63,9 @@ function App() {
             <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
             <Route path='/products' element={<CategoriesPage/>}/>
             <Route path='/products/:id' element={<CategoriesDetailsPage/>}/>
-            <Route path='/product-details' element={<ProductDetailsPage/>}/>
+            <Route path='/product-details' element={<ProductDetailsPage isActive={isActive} toggleClass={toggleClass}/>}/>
             <Route path='/cart' element={<CartPage list={list} setList={setList} handleClick={handleClick} />}/>
-            <Route path='/profile' element={<ProfilePage name={name} setName={setName}/>}/>
+            <Route path='/profile' element={<ProfilePage name={name} setName={setName} isActive={isActive} toggleClass={toggleClass}/>}/>
             <Route path='/events/archive' element={<ArchivePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
             <Route path='/events/winners' element={<WinnersPage/>}/>
             <Route path='/description' element={<DescriptionPage/>}/>
