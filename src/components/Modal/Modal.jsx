@@ -20,7 +20,6 @@ const Modal = ({modalActive, setModalActive}) => {
                     :
                     <h3 className='section__title'>Зарегистрироваться</h3>
                 }
-                
             </div>
                 <form class="form-signin">
                     {register ?
@@ -41,10 +40,6 @@ const Modal = ({modalActive, setModalActive}) => {
                         </>
                         
                     }
-                    
-                    {/* <input type="password" placeholder='Введите пароль ещё раз' className='form-control__modal'/>
-                    <button type='submit' className='enter disabled' onClick={() => setRegister(true)}>Войти</button>
-                    <button className='register disabled'>Зарегистрироваться</button> */}
                     <div id="firebaseui-auth-container"></div>
                     <div className="btn__soc">
                         <button className='btn btn-primary' disabled>
