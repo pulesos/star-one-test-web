@@ -27,6 +27,7 @@ const Menu = ({publicItems, privateItems, active, setActive, handleLoggedOut, lo
 
                         </ul>
                 }
+                <Link to='/event'>EVENT</Link>
             </div>
         </div>
     )

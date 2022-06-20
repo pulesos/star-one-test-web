@@ -58,7 +58,7 @@ function App() {
           <Banner/>
           <Routes>
             <Route path='/' element={<MainPage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
-            <Route path='/event/:id' element={<CurrentEventPage name={name}/>}/>
+            <Route path='/event' element={<CurrentEventPage name={name}/>}/>
             <Route path='/products/buy-credit' element={<BuyCreditsPage setModalActive={setModalActive} loggedIn={loggedIn} handleClick={handleClick}/>}/>
             <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
             <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>

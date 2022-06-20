@@ -83,6 +83,8 @@ const CurrentEventsItem = () => {
                     <button className={toggleActiveStylesBtns(index)} onClick={() => toggleActive(index)} disabled={item.statusItem}>СДЕЛАТЬ ХОД</button> 
                 </div> 
             )}
+
+            
             </div>
         </>
     )
