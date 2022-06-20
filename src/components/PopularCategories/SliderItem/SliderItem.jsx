@@ -89,15 +89,15 @@ const SliderItem = (props) => {
     {
       imageSrc: steamcards, title: 'Steam'
     },
-    {
-      imageSrc:steamcards, title: 'Стиральные машины'
-    },
-    {
-      imageSrc: coffeemaschine, title: 'Кофемашины'
-    },
-    {
-      imageSrc:headphones, title: 'Холодильники'
-    },
+    // {
+    //   imageSrc:steamcards, title: 'Стиральные машины'
+    // },
+    // {
+    //   imageSrc: coffeemaschine, title: 'Кофемашины'
+    // },
+    // {
+    //   imageSrc:headphones, title: 'Холодильники'
+    // },
   ]
     return (
       <div className='slider'>
