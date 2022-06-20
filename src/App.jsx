@@ -20,6 +20,7 @@ import DescriptionPage from './pages/DescriptionPage/DescriptionPage';
 import './App.css';
 import CurrentEventPage from './pages/CurrentEventPage/CurrentEventPage';
 import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
+import MyTurnsPage from './pages/MyTurnsPage/MyTurnsPage';
 
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
             <Route path='/cart' element={<CartPage list={list} setList={setList} handleClick={handleClick} />}/>
             <Route path='/profile' element={<ProfilePage name={name} setName={setName} isActive={isActive} toggleClass={toggleClass}/>}/>
             <Route path='/events/archive' element={<ArchivePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
+            <Route path='/my-turns' element={<MyTurnsPage/>}/>
             <Route path='/events/winners' element={<WinnersPage/>}/>
             <Route path='/description' element={<DescriptionPage/>}/>
             <Route path='/company' element={<AboutUsPage/>}/>

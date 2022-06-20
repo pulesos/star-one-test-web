@@ -1,6 +1,5 @@
 import {v4} from 'uuid'
 import quest from '../../assets/images/quest.svg'
-import axios from 'axios'
 import sony from '../../assets/images/sony.png'
 import headphones from '../../assets/images/headphones.svg'
 import smartphones from '../../assets/images/smartphones.svg'

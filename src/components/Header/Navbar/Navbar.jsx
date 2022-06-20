@@ -23,7 +23,7 @@ function Navbar({handleLoggedOut, handleLoggedIn, loggedIn}) {
         {id: 5, value: 'Категории', href: '/products'},
         {id: 6, value: 'Корзина', href: '/cart'},
         {id: 7, value: 'Профиль', href: '/profile'},
-        {id: 8, value: 'Мои ходы', href: '/profile'},
+        {id: 8, value: 'Мои ходы', href: '/my-turns'},
         {id: 9, value: 'Архив событий', href: '/events/archive'},
         {id: 10, value: 'Победители', href: '/events/winners'},
         {id: 11, value: 'О нас', href: '/company'},
