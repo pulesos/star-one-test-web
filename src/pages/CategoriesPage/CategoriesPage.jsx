@@ -24,9 +24,9 @@ const CategoriesPage = () => {
         {id: 8,imageSrc: smartphones, title: 'Смартфоны'},
         {id: 9,imageSrc: headphones, title: 'Наушники'},
         {id: 10,imageSrc: steamcards, title: 'Steam'},
-        {id: 11,imageSrc:steamcards, title: 'Стиральные машины'},
-        {id: 12,imageSrc: coffeemaschine, title: 'Кофемашины'},
-        {id: 13,imageSrc:headphones, title: 'Холодильники'},
+        // {id: 11,imageSrc:steamcards, title: 'Стиральные машины'},
+        // {id: 12,imageSrc: coffeemaschine, title: 'One stars'},
+        // {id: 13,imageSrc:headphones, title: 'Холодильники'},
     ]
     return (
         <section className='popular__categories'>
