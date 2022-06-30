@@ -45,12 +45,12 @@ const Profile = ({changeProfile, name, setName}) => {
                         </>
                         :
                         <>
-                        <h2 className='profile__data__text'><strong>{name}</strong></h2>
-                        <h5 className='profile__data__text'>{instagram}</h5>
-                        <h5 className='profile__data__text'>{email}</h5>
-                        <h5 className='profile__data__text'>{phone}</h5>
-                        <h5 className='profile__data__text'>{language}</h5>
-                        <h5 className='profile__data__text'>{valute}</h5>
+                        <h2 className='profile__data__text' id='profile__data__name'><strong>{name}</strong></h2>
+                        <h5 className='profile__data__text' id='profile__data__instagram'>{instagram}</h5>
+                        <h5 className='profile__data__text' id='profile__data__email'>{email}</h5>
+                        <h5 className='profile__data__text' id='profile__data__phone'>{phone}</h5>
+                        <h5 className='profile__data__text' id='profile__data__language'>{language}</h5>
+                        <h5 className='profile__data__text' id='profile__data__valute'>{valute}</h5>
                         </>
                     }
                 </div>

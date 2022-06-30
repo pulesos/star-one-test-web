@@ -44,15 +44,15 @@ const DeliveryAddress = ({changeDelivery}) => {
                         </>
                         :
                         <>
-                        <h2 className='address__data__text'><strong>{recipient}</strong></h2>
-                        <h5 className='address__data__text'>{country}</h5>
-                        <h5 className='address__data__text'>{postCode}</h5>
-                        <h5 className='address__data__text'>{town}</h5>
-                        <h5 className='address__data__text'>{street}</h5>
-                        <h5 className='address__data__text'>{house}</h5>
-                        <h5 className='address__data__text'>{apartment}</h5>
-                        <h5 className='address__data__text'>{phone}</h5>
-                        <h5 className='address__data__text'>{email}</h5>
+                        <h2 className='address__data__text' id='address__data__text__recipient'><strong>{recipient}</strong></h2>
+                        <h5 className='address__data__text' id='address__data__text__country'>{country}</h5>
+                        <h5 className='address__data__text' id='address__data__text__postcode'>{postCode}</h5>
+                        <h5 className='address__data__text' id='address__data__text__town'>{town}</h5>
+                        <h5 className='address__data__text' id='address__data__text__street'>{street}</h5>
+                        <h5 className='address__data__text' id='address__data__text__house'>{house}</h5>
+                        <h5 className='address__data__text' id='address__data__text__apartment'>{apartment}</h5>
+                        <h5 className='address__data__text' id='address__data__text__phone'>{phone}</h5>
+                        <h5 className='address__data__text' id='address__data__text__email'>{email}</h5>
                         </>
                     }
 

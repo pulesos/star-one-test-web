@@ -1,12 +1,12 @@
 .profile__wrapper {
     width: 640px;
-    height: 340px;
+    height: 485px;
     margin-top: 20px;
     margin-bottom: 50px;
     border-radius: 10px;
     background: #fff;
     padding: 30px;
-    overflow: hidden scroll;
+    
 }
 
 .profile__avatar {
@@ -25,12 +25,40 @@
 }
 
 .profile__title__data {
-    padding-top: 17px;
+    padding-top: 18px;
 }
 
-.profile__data__text {
-    padding-top: 14px;
+
+#profile__data__name {
+    margin-top: 10px;
+    position: absolute;
 }
+
+#profile__data__instagram {
+    margin-top: 65px;
+    position: absolute;
+}
+
+#profile__data__email {
+    margin-top: 120px;
+    position: absolute;
+}
+
+#profile__data__phone {
+    margin-top: 165px;
+    position: absolute;
+}
+
+#profile__data__language {
+    margin-top: 220px;
+    position: absolute;
+}
+
+#profile__data__valute {
+    margin-top: 270px;
+    position: absolute;
+}
+
 
 .btn-dart.profile {
     margin-left: 10px;

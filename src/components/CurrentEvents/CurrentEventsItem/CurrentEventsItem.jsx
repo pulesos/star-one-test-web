@@ -23,7 +23,9 @@ const CurrentEventsItem = () => {
         objects: [
             {id: v4(), title: 'Apple iPhone 13 Pro Max 256Gb (небесно-голубой)', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
             {id: v4(), title: '500 Stars', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
-            {id: v4(), title: 'Sony PlayStation 5 Digital Edition  ', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false}
+            {id: v4(), title: 'Sony PlayStation 5 Digital Edition', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
+            {id: v4(), title: 'XBOX 360 Digital Edition', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
+            {id: v4(), title: 'Google Nexus Digital Edition', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false}
         ]
     })
 

@@ -1,17 +1,21 @@
 .address__wrapper {
     width: 640px;
-    height: 340px;
+    height: 490px;
     margin-top: 58px;
     margin-right: 180px;
     border-radius: 10px;
     background: #fff;
     padding: 30px;
-    overflow: hidden scroll;
     position: absolute;
     right: 0;
 }
 
+.address__input {
+    margin-top: -30px;
+}
+
 .address__title {
+    margin-top: -30px;
     color: #8c8c8c;
 }
 
@@ -29,4 +33,48 @@
     border: 1px solid #140050;
     height: 50px;
     color: #140050;
+}
+
+#address__data__text__recipient {
+    position: absolute;
+}
+
+#address__data__text__country {
+    margin-top: 57px;
+    position: absolute;
+}
+
+#address__data__text__postcode {
+    margin-top: 105px;
+    position: absolute;
+}
+
+#address__data__text__town {
+    margin-top: 155px;
+    position: absolute;
+}
+
+#address__data__text__street {
+    margin-top: 207px;
+    position: absolute;
+}
+
+#address__data__text__house {
+    margin-top: 255px;
+    position: absolute;
+}
+
+#address__data__text__apartment {
+    margin-top: 305px;
+    position: absolute;
+}
+
+#address__data__text__phone {
+    margin-top: 360px;
+    position: absolute;
+}
+
+#address__data__text__email {
+    margin-top: 407px;
+    position: absolute;
 }
