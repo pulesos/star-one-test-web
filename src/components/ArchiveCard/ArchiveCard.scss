@@ -43,3 +43,9 @@
 .card__label__archive {
     margin-top: -10px;
 }
+
+@media (max-width: 767px) {
+    .card-wrap__archive {
+        margin-left: 100px;
+    }
+}

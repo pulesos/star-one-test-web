@@ -31,3 +31,22 @@
     display: block;
     object-fit: contain;
 }
+
+@media (max-width: 1359px) {
+    .categories__wrapper {
+        grid-template-columns: repeat(3, 304px);
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1000px) {
+    .categories__wrapper {
+        grid-template-columns: repeat(2, 304px);
+    }
+}
+
+@media (max-width: 767px) {
+    .categories__wrapper {
+        grid-template-columns: repeat(1, 304px);
+    }
+}

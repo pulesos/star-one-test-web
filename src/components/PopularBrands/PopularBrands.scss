@@ -1,3 +1,10 @@
 .popular__brands {
     margin-left: 40px;
 }
+
+@media (max-width: 767px) {
+    .brands__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

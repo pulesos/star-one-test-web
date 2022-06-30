@@ -25,3 +25,9 @@
     font-size: 18px;
     font-weight: 700;
 }
+
+@media (max-height: 1200px) {
+    .saldo__wrapper {
+        margin-right: 21px;
+    }
+}

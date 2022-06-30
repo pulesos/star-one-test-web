@@ -45,15 +45,6 @@
 .myorders__status.grey {
     display: none;
     color: #f0f8ff;
-    // font-size: 14px;
-    // font-weight: 700;
-    // position: absolute;
-    // background-color: #8980a7;
-    // width: 110px !important;
-    // height: 30px;
-    // border-radius: 10px;
-    // position: relative;
-    // line-height: 30px;
 }
 
 .myorders__info {
@@ -66,3 +57,19 @@
     color: #8c8c8c;
 }
 
+@media (max-width: 1359px) {
+    .myorders__wrapper {
+        position: unset;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .myorders__wrapper {
+        width: 520px;
+    }
+    .events__title.myorders {
+        margin-right: 342px;
+    }
+}

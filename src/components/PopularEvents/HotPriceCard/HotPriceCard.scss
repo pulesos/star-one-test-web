@@ -117,3 +117,29 @@
     color: #fff;
 }
 
+@media (max-width: 1359px) {
+    .slick-slide {
+        width: 220px;
+    }
+    .card-wrap {
+        margin-left: 8px;
+    }
+    .card {
+        width: 235px;
+    }
+    .btn-green {
+        width: 190px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .card-wrap {
+        margin-left: -20px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .card-wrap {
+        margin-left: 4px;
+    }
+}

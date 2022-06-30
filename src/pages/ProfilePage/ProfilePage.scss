@@ -8,3 +8,12 @@
     float: right;
 }
 
+@media (max-width: 1359px) {
+    .events__title.address {
+        float: none;
+    }
+    .events__title.myorders {
+        float: left;
+    }
+}
+

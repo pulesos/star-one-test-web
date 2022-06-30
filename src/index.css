@@ -10,12 +10,23 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #140050;
   font-size: 18px;
+  overflow: auto;
+
+}
+
+html{
+
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
 
 @font-face {
   font-family: Roboto;
@@ -30,3 +41,20 @@ code {
   font-style: normal;
   font-weight: 700;
 }
+
+/* @media (max-width: 1359px) {
+  body {
+      width: 1200px;
+  }
+  .App {
+      width: 1030px;
+      box-sizing: border-box;
+      overflow-x: hidden;
+  }
+  .current__events__timer {
+      margin-right: 510px;
+  }
+  .current__events__btn-green {
+      width: 330px;
+  }
+} */

@@ -1,4 +1,9 @@
 .logotype {
     text-align: center;
+}
 
+@media (max-width: 767px) {
+    .logo_svg {
+        width: 37%;
+    }
 }

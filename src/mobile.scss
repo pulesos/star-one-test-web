@@ -1,18 +1,17 @@
-@media(min-width: 1360px) {
-    .current__events__timer {
-        margin-right: 720px;
-    }
-}
+// @media(min-width: 1360px) {
+//     .current__events__timer {
+//         margin-right: 720px;
+//     }
+// }
 
 @media (max-width: 1359px) {
     body {
         width: 1200px;
     }
-    .current__events__timer {
-        margin-right: 510px;
-    }
-    .current__events__btn-green {
-        width: 330px;
+    .App {
+        width: 1030px;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
 }
 
@@ -20,15 +19,16 @@
     body {
         width: 1000px;
     }
-    .current__events__title__middle {
-        width: 15%;
-        font-size: 15px;
+}
+
+@media (max-width: 1000px) {
+    .App {
+        width: 755px;
     }
-    .current__events__btn-green {
-        width: 30%;
-    }
-    .current__events__timer {
-        margin-right: 348px;
-        font-size: 15px;
+}
+
+@media (max-width: 767px) {
+    .App {
+        width: 560px;
     }
 }

@@ -16,3 +16,10 @@
 .mypromotions__title {
     color: #8c8c8c;
 }
+
+@media (max-width: 767px) {
+    .mypromotions__wrapper {
+        width: 520px;
+        height: 540px;
+    }
+}
