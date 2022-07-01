@@ -113,11 +113,17 @@
         width: 320px;
     }
     .btn-dart.profile {
-        margin-top: 7px;
+        margin-top: 40px;
         width: 72px;
         font-size: 10px;
     }
     .profile__title {
         width: 45%;
+    }
+    .profile__icon {
+        margin-right: -94px;
+    }
+    .profile__data {
+        margin-top: 19px;
     }
 }

@@ -54,4 +54,20 @@
         display: block;
         margin-left: 91px;
     }
+
+}
+
+@media (max-width: 576px) {
+    .footer__center svg {
+        width: 50%;
+    }
+    .footer__right {
+        margin-left: 110px;
+    }
+}
+
+@media (max-width: 425px) {
+    .footer__right {
+        margin-left: 86px;
+    }
 }
