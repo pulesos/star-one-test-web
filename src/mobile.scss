@@ -25,24 +25,36 @@
 }
 
 @media (max-width: 1000px) {
+    body {
+        width: 755px;
+    }
     .App {
         width: 755px;
     }
 }
 
 @media (max-width: 767px) {
+    body {
+        width: 560px;
+    }
     .App {
         width: 560px;
     }
 }
 
 @media (max-width: 576px) {
+    body {
+        width: 425px;
+    }
     .App {
         width: 425px;
     }
 }
 
 @media (max-width: 425px) {
+    body {
+        width: 375px;
+    }
     .App {
         width: 375px;
     }

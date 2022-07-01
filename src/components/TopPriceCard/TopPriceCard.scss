@@ -6,3 +6,15 @@
     text-decoration: none;
     color: #140050;
 }
+
+@media (max-width: 576px) {
+    .card.card__top {
+        width: 235px;
+    }
+    .btn.btn-green.top__price__page {
+        width: 190px;
+    }
+    .card-wrap.top__price__page {
+        margin-left: 58px;
+    }
+}

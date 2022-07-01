@@ -76,7 +76,15 @@
 
 @media (max-width: 576px) {
     .myorders__wrapper {
-        width: 390px;
+        width: 385px;
+    }
+    .myorders__status.orange{
+        padding-left: 10px;
+        font-size: 12px;
+    }
+    .myorders__status.grey{
+        padding-left: 10px;
+        font-size: 12px;
     }
 }
 

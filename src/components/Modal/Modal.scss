@@ -144,3 +144,12 @@
     height: 50px;
     color: #140050;
 }
+
+@media (max-width: 425px) {
+    .modal__content {
+        height: 589px;
+    }
+    .register,.enter {
+        margin-left: 95px;
+    }
+}

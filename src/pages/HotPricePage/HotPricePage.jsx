@@ -6,6 +6,7 @@ import sony from '../../assets/images/sony.png'
 import headphones from '../../assets/images/headphones.svg'
 import smartphones from '../../assets/images/smartphones.svg'
 import coin1 from '../../assets/images/coin1.jpg'
+import './HotPricePage.scss'
 
 const HotPricePage = ({setModalActive, handleClick, loggedIn}) => {
     const user = true
@@ -24,8 +25,8 @@ const HotPricePage = ({setModalActive, handleClick, loggedIn}) => {
                     <span>Популярные события</span>
                 </h3>
                 {items.map(item => 
-                    <div className="card-wrap" key={item.id}>
-                        <div className="card">
+                    <div className="card-wrap hot__price__page" key={item.id}>
+                        <div className="card card__hot">
                             <a className="card-title card-title__hot">
                                 <h5 className="card-title__large">
                                     Hot Price
@@ -34,7 +35,7 @@ const HotPricePage = ({setModalActive, handleClick, loggedIn}) => {
                                     </a>
                                     <div className="answer">Подсказка</div>
                                 </h5>
-                                <button className="btn btn-green">{item.priceTotal} $</button>
+                                <button className="btn btn-green hot__price__page">{item.priceTotal} $</button>
                             </a>
                             <div className="card-body">
                                 <div className="card__label">{item.category}</div>

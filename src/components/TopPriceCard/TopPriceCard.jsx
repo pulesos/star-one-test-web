@@ -20,8 +20,8 @@ const TopPriceCard = ({setModalActive, handleClick, loggedIn}) => {
     return (
         <>
             {items.map(item => 
-                <div className="card-wrap" key={item.id}>
-                    <div className="card">
+                <div className="card-wrap top__price__page" key={item.id}>
+                    <div className="card card__top">
                         <a className="card-title card-title__top">
                             <h5 className="card-title__large">
                                 Top Price
@@ -30,7 +30,7 @@ const TopPriceCard = ({setModalActive, handleClick, loggedIn}) => {
                                 </a>
                                 <div className="answer">Подсказка</div>
                             </h5>
-                            <button className="btn btn-green">{item.priceTotal} $</button>
+                            <button className="btn btn-green top__price__page">{item.priceTotal} $</button>
                         </a>
                         <div className="card-body">
                             <div className="card__label">{item.category}</div>
