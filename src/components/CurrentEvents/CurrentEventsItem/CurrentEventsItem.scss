@@ -85,7 +85,8 @@
     //     width: 1200px;
     // }
     .current__events__timer {
-        margin-right: 547px;
+        margin-left: 547px;
+        left: 0;
     }
     .current__events__btn-green {
         width: 330px;
@@ -97,7 +98,7 @@
 
 @media (max-width: 1200px) {
     .current__events__timer {
-        margin-right: 395px;
+        margin-left: 410px;
         font-size: 25px;
     }
     .current__events__wrapper {
@@ -115,7 +116,11 @@
         font-size: 18px;
     }
     .current__events__title__middle {
+        margin-left: 200px;
         font-size: 15px;
+    }
+    .current__events__image {
+        margin-left: 91px;
     }
 }
 
@@ -125,13 +130,53 @@
     }
     .current__events__btn-green {
         width: 140px;
+        margin-top: -72px;
         font-size: 16px;
     }
     .current__events__title__middle {
         margin-left: 160px;;
     }
     .current__events__timer {
-        margin-right: 210px;
+        margin-left: 320px;
         font-size: 18px;
+    }
+    .current__events__card-title__large {
+        width: 14%;
+        margin-top: 16px;
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 576px) {
+    .current__events__hot-price {
+        height: 150px;
+    }
+    .current__events__image {
+        display: none;
+    }
+    .current__events__card-title__large {
+        width: 27%;
+        margin-top: 0;
+        margin-left: 24px;
+    }
+    .current__events__timer {
+        margin-top: -119px;
+        margin-left: 80px;
+    }
+    .current__events__title__middle {
+        margin-top: -139px;
+        margin-left: 136px;
+        width: 47%;
+    }
+    .current__events__btn-green {
+        width: 95%;
+        margin-right: 10px;
+        height: 35%;
+    }
+}
+
+@media (max-width: 425px) {
+    .current__events__card-title__large {
+        width: 30%;
     }
 }

@@ -4,6 +4,7 @@
     border-radius: 10px;
     background: #fff;
     padding: 30px;
+    overflow: hidden scroll;
 }
 
 .mypromotions__item {
@@ -21,5 +22,20 @@
     .mypromotions__wrapper {
         width: 520px;
         height: 540px;
+    }
+}
+
+@media (max-width: 576px) {
+    .mypromotions__wrapper {
+        width: 390px;
+    }
+}
+
+@media (max-width: 425px) {
+    .mypromotions__wrapper {
+        width: 320px;
+    }
+    .mypromotions__item {
+        font-size: 10px;
     }
 }

@@ -115,6 +115,11 @@
 @media (max-width: 767px) {
     .user {
         margin-top: 125px;
+        margin-left: 77px;
+    }
+    .username {
+        font-size: 14px;
+        margin-top: 5px;
     }
     .cart {
         margin-top: 122px;
@@ -123,5 +128,11 @@
     .user__balance {
         margin-top: 130px;
         margin-right: 160px;
+    }
+}
+
+@media (max-width: 576px) {
+    .user {
+        margin-left: 38px;;
     }
 }

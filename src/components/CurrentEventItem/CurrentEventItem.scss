@@ -117,6 +117,40 @@
     margin-left: 80px;
 }
 
+@media (max-width: 1000px) {
+    .profile__balance.event {
+        margin-left: -280px;
+    }
+    .auction__items {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 425px) {
+    .cart__product {
+        font-size: 15px;
+    }
+    .current__event__item__data {
+        display: block; 
+    }
+    .current__event__item__image {
+        text-align: center;
+    }
+    .current__event__item__title {
+        text-align: center;
+    }
+    .auction__username {
+        margin-top: -60px;
+        font-size: 15px;
+    }
+    .auction__item__image {
+        font-size: 15px;
+    }
+    .auction__item__time {
+        font-size: 15px;
+    }
+}
 
 // .auction__item__active {
 //     height: 100px;

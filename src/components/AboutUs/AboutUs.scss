@@ -22,3 +22,12 @@
         width: 97%;
     }
 }
+
+@media (max-width: 576px) {
+    .aboutus {
+        display: block;
+    }
+    .aboutus__text__block {
+        margin-bottom: 10px;
+    }
+}

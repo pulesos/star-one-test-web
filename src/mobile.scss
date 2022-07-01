@@ -11,12 +11,15 @@
     .App {
         width: 1030px;
         box-sizing: border-box;
-        overflow-x: hidden;
+        // overflow-x: hidden;
     }
 }
 
 @media (max-width: 1200px) {
     body {
+        width: 1000px;
+    }
+    .App {
         width: 1000px;
     }
 }
@@ -30,5 +33,17 @@
 @media (max-width: 767px) {
     .App {
         width: 560px;
+    }
+}
+
+@media (max-width: 576px) {
+    .App {
+        width: 425px;
+    }
+}
+
+@media (max-width: 425px) {
+    .App {
+        width: 375px;
     }
 }

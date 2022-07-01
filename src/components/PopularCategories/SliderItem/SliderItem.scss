@@ -73,3 +73,12 @@
         margin-right: 17px;
     }
 }
+
+@media (max-width: 767px) {
+    .nextArrow {
+        margin-right: 0;
+    }
+    .prevArrow {
+        margin-left: -21px;
+    }
+}

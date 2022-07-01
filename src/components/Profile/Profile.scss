@@ -101,3 +101,23 @@
         width: 520px;
     }
 }
+
+@media (max-width: 576px) {
+    .profile__wrapper {
+        width: 390px;
+    }
+}
+
+@media (max-width: 425px) {
+    .profile__wrapper {
+        width: 320px;
+    }
+    .btn-dart.profile {
+        margin-top: 7px;
+        width: 72px;
+        font-size: 10px;
+    }
+    .profile__title {
+        width: 45%;
+    }
+}

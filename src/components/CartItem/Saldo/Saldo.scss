@@ -26,8 +26,14 @@
     font-weight: 700;
 }
 
-@media (max-height: 1200px) {
+
+@media (max-width: 1000px) {
     .saldo__wrapper {
-        margin-right: 21px;
+        width: 100%;
+        margin-bottom: 20px;
     }
+    .btn.btn-green.saldo {
+        width: 94%;
+    }
+    
 }

@@ -95,3 +95,15 @@
         margin-right: 133px;
     }
 }
+
+@media (max-width: 576px) {
+    .address__wrapper {
+        width: 390px;
+    }
+}
+
+@media (max-width: 425px) {
+    .address__wrapper {
+        width: 320px;
+    }
+}

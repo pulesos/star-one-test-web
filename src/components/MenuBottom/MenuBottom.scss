@@ -81,3 +81,9 @@ a.card__question {
     position: absolute;
     color: #140050;
 }
+
+@media (max-width: 425px) {
+    .menu-bottom {
+        margin-right: 46px;
+    }
+}

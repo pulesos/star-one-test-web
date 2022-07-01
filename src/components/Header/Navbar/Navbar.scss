@@ -44,3 +44,24 @@ nav {
   background-color: white;
   height: 1px;
 }
+
+
+@media (max-width: 576px) {
+  .burger__btn {
+    margin-top: -50px;
+    margin-left: 15px;
+  }
+  .menu.active {
+    width: 100%;
+  }
+  .menu__content {
+    margin-left: 0;
+  }
+  ul li {
+    display: block;
+  }
+  .exit {
+    float: none;
+    margin-left: 0;
+  }
+}

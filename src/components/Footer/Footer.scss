@@ -33,5 +33,25 @@
 
 .footer__icons img {
     margin-left: 10px;
-    
+}
+
+@media(max-width: 1200px) {
+    .footer__text.year {
+        margin-left: -114px;
+    }
+}
+
+@media(max-width: 767px) {
+    .row {
+        display: block;
+        margin-left: 10px;
+    }
+    .footer__text.year {
+        margin-left: 0;
+        top: 104px;
+    }
+    .footer__right {
+        display: block;
+        margin-left: 91px;
+    }
 }

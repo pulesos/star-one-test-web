@@ -39,3 +39,33 @@
     font-size: 16px;
 }
 
+@media (max-width: 1359px) {
+    .cart__item__wrapper {
+        width: 65%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .cart__item__wrapper {
+        display: flex;
+        width: 100%;
+    }
+    .btn.bin {
+        position: unset;
+        margin-right: 0;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 767px) {
+    .cart__product {
+        font-size: 20px;
+        width: 85%;
+    }
+}
+
+@media (max-width: 425px) {
+    .cart__product {
+        font-size: 15px;
+    }
+}

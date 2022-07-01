@@ -70,6 +70,18 @@
         width: 520px;
     }
     .events__title.myorders {
-        margin-right: 342px;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .myorders__wrapper {
+        width: 390px;
+    }
+}
+
+@media (max-width: 425px) {
+    .myorders__wrapper {
+        width: 320px;
     }
 }

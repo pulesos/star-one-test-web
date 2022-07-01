@@ -143,3 +143,15 @@
         margin-left: 4px;
     }
 }
+
+@media (max-width: 576px) {
+    .slick-slide {
+        width: 169px;
+    }
+    .card {
+        width: 180px;
+    }
+    .btn-green {
+        width: 133px;
+    }
+}

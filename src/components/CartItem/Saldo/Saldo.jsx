@@ -20,7 +20,7 @@ const Saldo = ({total}) => {
                     </div>
 
                 </div>
-                <button className="btn btn-green">Купить</button>
+                <button className="btn btn-green saldo">Купить</button>
             </div>
         </div>
     )
