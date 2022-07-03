@@ -59,15 +59,20 @@
 
 @media (max-width: 576px) {
     .footer__center svg {
-        width: 50%;
+        width: 60%;
+        margin-left: -40px;
     }
     .footer__right {
-        margin-left: 110px;
+        margin-left: 94px;
+    }
+    .footer__text.year {
+        margin-left: -25px;
     }
 }
 
 @media (max-width: 425px) {
     .footer__right {
-        margin-left: 86px;
+        margin-left: 70px;
     }
+    
 }

@@ -82,8 +82,18 @@ a.card__question {
     color: #140050;
 }
 
+@media (max-width: 576px) {
+    .box-card {
+        width: 109%;
+        margin-left: -23px;
+    }
+}
+
 @media (max-width: 425px) {
     .menu-bottom {
         margin-right: 46px;
+    }
+    .box-card {
+        width: 123%;
     }
 }
