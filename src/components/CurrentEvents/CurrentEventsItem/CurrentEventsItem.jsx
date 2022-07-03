@@ -4,7 +4,6 @@ import {v4} from 'uuid'
 import './CurrentEventsItem.scss'
 
 const CurrentEventsItem = () => {
-    
     const [timeLeft, setTimeLeft] = useLocalStorage('timer',  5 * 60)
 
     const getPadTime = (time) => time.toString().padStart(2, '0')
@@ -18,23 +17,42 @@ const CurrentEventsItem = () => {
         }, 1000)
         return () => clearInterval(interval) 
     }, [])
+    
+    const getRandomElements = (array, count) => {
+        const shuffled = array.sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, count);
+    };
 
     const [appState, changeState] = useLocalStorage('CurrentEventsItem', {
         objects: [
             {id: v4(), title: 'Apple iPhone 13 Pro Max 256Gb (небесно-голубой)', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
             {id: v4(), title: '500 Stars', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
             {id: v4(), title: 'Sony PlayStation 5 Digital Edition', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
-            // {id: v4(), title: 'XBOX 360 Digital Edition', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
-            // {id: v4(), title: 'Google Nexus Digital Edition', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false}
+            {id: v4(), title: 'XBOX 360 Digital Edition', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
+            {id: v4(), title: 'Google Nexus Digital Edition', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false}
         ]
     })
 
+    const [selectedItems, setSelectedItems] = useState(() =>
+        getRandomElements(appState.objects, 3)
+    );
 
-    const toggleActive = (index) => {
+    useEffect(() => {
+        if (timeLeft === 0) {
+            const elements = getRandomElements(appState.objects, 3);
+            setSelectedItems(elements);
+        }
+    }, [timeLeft, appState.objects]);
+
+
+    const toggleActive = (item) => {
         let arrayCopy = [...appState.objects];
-        arrayCopy[index].statusItem = !arrayCopy[index].statusItem;
-        changeState({...appState, objects: arrayCopy});
-    }
+        const toggledElement = arrayCopy.find((o) => o.id === item.id);
+        if (toggledElement) {
+          toggledElement.statusItem = !toggledElement.statusItem;
+          changeState({ ...appState, objects: arrayCopy });
+        }
+    };
 
 
     const toggleActiveStyles = (index) => {
@@ -64,7 +82,7 @@ const CurrentEventsItem = () => {
     return (
         <>
         <div className='current__events__wrapper'>
-            {appState.objects.map((item, index) => 
+            {selectedItems.map((item, index) => 
                 <div className="current__events__hot-price__item" key={index}>
                     <div className={toggleActiveStyles(index)}>
                         <h5 className="current__events__card-title__large">Hot Price</h5>
