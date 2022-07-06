@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import user from '../../assets/images/user.svg'
+import userPic from '../../assets/images/user.svg'
 import bag from '../../assets/images/bag.svg'
 import point from '../../assets/images/point.svg'
 import smile from '../../assets/images/smile.svg'
@@ -29,7 +29,7 @@ const ProfilePage = ({name, setName, isActive, toggleClass, user}) => {
             </h3>
             <DeliveryAddress changeDelivery={changeDelivery}/>
             <h3 className="events__title">
-                <img className="mr-2" src={user} alt="top events" width="28" height="28" />
+                <img className="mr-2" src={userPic} alt="top events" width="28" height="28" />
                 <span>Профиль</span>
                 {changeProfile ? 
                     <>
