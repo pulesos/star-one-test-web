@@ -30,6 +30,11 @@ const Category = sequelize.define('category', {
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
 })
 
+const Brand = sequelize.define('brand', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING, unique: true, allowNull: false},
+})
+
 const ProductInfo = sequelize.define('product_info', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     title: {type: DataTypes.STRING, allowNull: false},
@@ -58,5 +63,6 @@ module.exports = {
     CartProduct,
     Product,
     ProductInfo,
-    Category
+    Category,
+    Brand
 }

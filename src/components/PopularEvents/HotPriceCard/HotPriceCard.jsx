@@ -6,7 +6,7 @@ import quest from '../../../assets/images/quest.svg'
 
 import './HotPriceCard.scss'
 
-const HotPriceCard = ({items, setModalActive, handleClick, loggedIn}) => {
+const HotPriceCard = ({product, setModalActive, handleClick, loggedIn}) => {
     let settings = {
         dots: true,
         infinite: true,
@@ -47,7 +47,7 @@ const HotPriceCard = ({items, setModalActive, handleClick, loggedIn}) => {
     return (
         <>  
             <Slider {...settings}>
-                {items.map(item => 
+                {product.products.map(item => 
                     <div className="card-wrap" key={item.id}>
                         <div className="card">
                             <a className="card-title card-title__hot">

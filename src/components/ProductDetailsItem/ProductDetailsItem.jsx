@@ -2,8 +2,17 @@ import { useState } from 'react'
 import sony from '../../assets/images/sony.png'
 import quest from '../../assets/images/quest.svg'
 import './ProductDetailsItem.scss'
+import { v4 } from 'uuid'
 
 const ProductDetailsItem = ({isActive, toggleClass}) => {
+    const product = {id: v4(), priceTotal: 252, image: sony, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150}
+    const description = [
+        {id: 1, title: 'Оперативная память', description: '5 гб'},
+        {id: 2, title: 'Камера', description: '12 мп'},
+        {id: 3, title: 'Процессор', description: 'Пентиум 3'},
+        {id: 4, title: 'Кол-во ядер', description: '2'},
+        {id: 5, title: 'Аккумулятор', description: '4000'},
+    ]
 
     return (
         <>
@@ -13,13 +22,13 @@ const ProductDetailsItem = ({isActive, toggleClass}) => {
                     <img src={sony} alt='sony' width='300' height='300'/>
                 </div>
                 <div className="product__details__item__title">
-                    <h5>CONSOLES</h5>
-                    <h2>Sony PlayStation 5 Digital Edition</h2>
-                    <h5>Sony PlayStation 5 Digital Edition</h5>
+                    <h5>{product.category}</h5>
+                    <h2>{product.name}</h2>
+                    <h5>{product.name}</h5>
                     <button className='btn btn-dart btn-cart details_large' onClick={toggleClass}>details</button>
                 </div>
                 <div className="price__details">
-                    <div className="btn__price">1234 $</div>
+                    <div className="btn__price">{product.oldPrice} $</div>
                     <button className="btn btn-dart btn-cart details">
                         <span className="icon__cart"></span>
                     </button>
@@ -35,7 +44,7 @@ const ProductDetailsItem = ({isActive, toggleClass}) => {
                                 </a>
                                 <div className="answer">Подсказка</div>
                             </h5>
-                            <button className="btn btn-green">120 $</button>
+                            <button className="btn btn-green">{product.priceTotal} $</button>
                         </a>
                     </div>
                     <div className="card" style={{height: '150px'}}>
@@ -47,7 +56,7 @@ const ProductDetailsItem = ({isActive, toggleClass}) => {
                                 </a>
                                 <div className="answer">Подсказка</div>
                             </h5>
-                            <button className="btn btn-green">120 $</button>
+                            <button className="btn btn-green">{product.priceTotal} $</button>
                         </a>
                     </div>
                 </div>
@@ -55,7 +64,10 @@ const ProductDetailsItem = ({isActive, toggleClass}) => {
         </div>
         <div className={`product__details__wrapper__descr ${isActive ? 'active' : null}`}>
             <h2>ALL DESCRIPTIONS</h2>
-            <h5>Sony PlayStation 5 Digital Edition</h5>
+            {description.map(info =>
+                <h5 key={info.id}>{info.title}: {info.description}</h5>
+            )}
+            
         </div>
         </>
     )

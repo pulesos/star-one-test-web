@@ -6,12 +6,32 @@ import close from '../../assets/images/close.svg'
 import './Modal.scss'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { useContext } from 'react'
+import { useLocation } from 'react-router-dom'
+import { LOGIN_ROUTE, SHOP_ROUTE } from '../../utils/consts'
+import { registration } from '../../http/userAPI'
+import { Context } from '../../index'
 
 const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleSignOut, handleCallbackResponse}) => {
     // const [user, setUser] = useState({})
     const [register, setRegister] = useState(false)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const {login} = useContext(Context)
+    const location = useLocation()
+    const isLogin = location.pathname === LOGIN_ROUTE
 
 
+    const click = async () => {
+        if (isLogin) {
+            const response = await login()
+        } else {
+            const response = await registration(email, password)
+            console.log(response)
+        }
+
+    }
 
     useEffect(() => {
         /* global google*/
@@ -52,11 +72,11 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
 
                         :
                         <>
-                            <input type="email" placeholder='Email' className='form-control__modal'/>
-                            <input type="password" placeholder='Пароль' className='form-control__modal'/>
-                            <input type="password" placeholder='Введите пароль ещё раз' className='form-control__modal'/>
+                            <input type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} className='form-control__modal'/>
+                            <input type="password" placeholder='Пароль' value={password} onChange={e => setPassword(e.target.value)} className='form-control__modal'/>
+                            <input type="password" placeholder='Введите пароль ещё раз' value={password} onChange={e => setPassword(e.target.value)} className='form-control__modal'/>
                             <button className='enter disabled' disabled>Войти</button>
-                            <button type='submit' className='register' onClick={() => setRegister(true)}>Зарегистрироваться</button>
+                            <button type='submit' className='register' onClick={click}>Зарегистрироваться</button>
                         </>
                         
                     }
