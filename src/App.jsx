@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import jwt_decode from 'jwt-decode'
 import useLocalStorage from 'use-local-storage';
 import Banner from './components/Banner/Banner';
 import Footer from './components/Footer/Footer';
@@ -26,18 +27,20 @@ import MyTurnsPage from './pages/MyTurnsPage/MyTurnsPage';
 function App() {
   const [modalActive, setModalActive] = useState(false)
   const [name, setName] = useLocalStorage('name')
-  const [loggedIn, setLoggedIn] = useState(true)
+  const [loggedIn, setLoggedIn] = useState(false)
   const [list, setList] = useLocalStorage('data', [])
   const [isActive, setActive] = useState(false);
+  const [user, setUser] = useState({})
+
 
   const handleClick = (item) => {
     if (list.indexOf(item) !== -1) return
     setList([...list, item])
   }
 
-  const handleLoggedOut = () => {
-    setLoggedIn(false)
-  }
+  // const handleLoggedOut = () => {
+  //   setLoggedIn(false)
+  // }
 
   const handleLoggedIn = () => {
     setLoggedIn(true)
@@ -49,12 +52,28 @@ function App() {
   };
 
   
+  function handleCallbackResponse(response) {
+    console.log("Encoded JWT ID token: " + response.credential)
+    var userObject = jwt_decode(response.credential)
+    console.log(userObject)
+    setUser(userObject)
+    setLoggedIn(true)
+    if (user) {
+      setModalActive(false)
+    }
+    document.getElementById("signInDiv").hidden = true
+}
 
+  function handleSignOut(e) {
+      setUser({})
+      setLoggedIn(false)
+      document.getElementById("signInDiv").hidden = false
+  }
 
   return (
     <div className="App">
         
-          <Header setModalActive={setModalActive} size={list.length} name={name} loggedIn={loggedIn} handleLoggedOut={handleLoggedOut} handleLoggedIn={handleLoggedIn}/>
+          <Header setModalActive={setModalActive} size={list.length} name={name} loggedIn={loggedIn} user={user} handleSignOut={handleSignOut} handleLoggedIn={handleLoggedIn}/>
           <Banner/>
           <Routes>
             <Route path='/' element={<MainPage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
@@ -66,14 +85,14 @@ function App() {
             <Route path='/products/:id' element={<CategoriesDetailsPage/>}/>
             <Route path='/product-details' element={<ProductDetailsPage isActive={isActive} toggleClass={toggleClass}/>}/>
             <Route path='/cart' element={<CartPage list={list} setList={setList} handleClick={handleClick} />}/>
-            <Route path='/profile' element={<ProfilePage name={name} setName={setName} isActive={isActive} toggleClass={toggleClass}/>}/>
+            <Route path='/profile' element={<ProfilePage name={name} user={user} setName={setName} isActive={isActive} toggleClass={toggleClass}/>}/>
             <Route path='/events/archive' element={<ArchivePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
             <Route path='/my-turns' element={<MyTurnsPage/>}/>
             <Route path='/events/winners' element={<WinnersPage/>}/>
             <Route path='/description' element={<DescriptionPage/>}/>
             <Route path='/company' element={<AboutUsPage/>}/>
           </Routes>
-          <Modal modalActive={modalActive} setModalActive={setModalActive}/>
+          <Modal modalActive={modalActive} setModalActive={setModalActive} user={user} setUser={setUser} handleCallbackResponse={handleCallbackResponse} handleSignOut={handleSignOut}/>
           <Banner/>
           <Footer/>
         

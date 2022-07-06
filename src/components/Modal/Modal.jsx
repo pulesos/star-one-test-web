@@ -1,13 +1,33 @@
 import userDark from '../../assets/images/user-dark.svg'
 import facebook from '../../assets/images/facebook.svg'
-import google from '../../assets/images/google.svg'
+import googlePic from '../../assets/images/google.svg'
 import apple from '../../assets/images/apple.svg'
 import close from '../../assets/images/close.svg'
 import './Modal.scss'
 import { useState } from 'react'
+import { useEffect } from 'react'
 
-const Modal = ({modalActive, setModalActive}) => {
+const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleSignOut, handleCallbackResponse}) => {
+    // const [user, setUser] = useState({})
     const [register, setRegister] = useState(false)
+
+
+
+    useEffect(() => {
+        /* global google*/
+
+        google.accounts.id.initialize({
+            client_id: "567316206910-0fa69ilssoldc88j634bq53v5eo4tsk0.apps.googleusercontent.com",
+            callback: handleCallbackResponse
+        })
+
+        google.accounts.id.renderButton(
+            document.getElementById("signInDiv"),
+            {theme: "outline", size: "large"}
+        )
+
+        google.accounts.id.prompt()
+    }, [])
 
     return (
         <div className={modalActive ? 'modal active' : 'modal'} onClick={() => setModalActive(false)}>
@@ -44,15 +64,24 @@ const Modal = ({modalActive, setModalActive}) => {
                     <div className="btn__soc">
                         <button className='btn btn-primary' disabled>
                             <img src={facebook} height='25' alt='facebook' className='btn__img'/>
-                            Войти с помощью Facebook
+                            Войти по номеру телефона
                         </button>
-                        <a className='btn btn-light'>
+                        {/* <a className='btn btn-light'>
                             <img src={google} height="25" alt="google" className='btn__img'/> 
                             <span className="googl2">Войти с помощью Google</span>
-                        </a>
+                        </a> */}
+                        <div id="signInDiv"></div>
+                        {/* { Object.keys(user).length != 0 &&
+                            <button onClick={(e) => handleSignOut(e)}>Выйти</button>
+                        }
+                        { user &&
+                            <div>
+                                <h3>{user.name}</h3>
+                            </div>
+                        } */}
                         <button className='btn btn-dark' disabled>
                             <img src={apple} height="25" alt="apple" className='btn__img'/>
-                            Войти с помощью Apple
+                            Войти с помощью email
                         </button>
                     </div>
                     <br/>

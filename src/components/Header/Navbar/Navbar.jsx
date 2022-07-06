@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Menu from './Menu/Menu';
 import './Navbar.scss'
 
-function Navbar({handleLoggedOut, handleLoggedIn, loggedIn}) {
+function Navbar({handleSignOut, handleLoggedIn, loggedIn, user}) {
     const [menuActive, setMenuActive] = useState(false)
   
     const publicItems = [
@@ -35,7 +35,7 @@ function Navbar({handleLoggedOut, handleLoggedIn, loggedIn}) {
                 <span/>
             </div>
         </nav>
-        <Menu publicItems={publicItems} privateItems={privateItems} active={menuActive} setActive={setMenuActive} handleLoggedOut={handleLoggedOut} loggedIn={loggedIn} handleLoggedIn={handleLoggedIn}/>
+        <Menu publicItems={publicItems} privateItems={privateItems} active={menuActive} setActive={setMenuActive} handleSignOut={handleSignOut} loggedIn={loggedIn} handleLoggedIn={handleLoggedIn} user={user}/>
         </>
     );
   }

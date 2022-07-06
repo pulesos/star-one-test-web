@@ -5,7 +5,7 @@ import moneyDark from '../../assets/images/money-dark.svg'
 import './Profile.scss'
 import { useState } from 'react'
 
-const Profile = ({changeProfile, name, setName}) => {
+const Profile = ({changeProfile, name, setName, user}) => {
     const [instagram, setInstagram] = useLocalStorage('instagram')
     const [email, setEmail] = useLocalStorage('email')
     const [phone, setPhone] = useLocalStorage('phone')
@@ -36,7 +36,7 @@ const Profile = ({changeProfile, name, setName}) => {
                 <div className="profile__data">
                     {changeProfile ?
                         <>
-                        <input type="text" placeholder={name} className='form-control' onChange={(e) => setName(e.target.value)}/>
+                        <input type="text" placeholder={user.name} className='form-control' onChange={(e) => setName(e.target.value)}/>
                         <input type="text" placeholder={instagram} className='form-control' onChange={(e) => setInstagram(e.target.value)}/>
                         <input type="text" placeholder={email} className='form-control' onChange={(e) => setEmail(e.target.value)}/>
                         <input type="text" placeholder={phone} className='form-control' onChange={(e) => setPhone(e.target.value)}/>
@@ -45,7 +45,7 @@ const Profile = ({changeProfile, name, setName}) => {
                         </>
                         :
                         <>
-                        <h2 className='profile__data__text' id='profile__data__name'><strong>{name}</strong></h2>
+                        <h2 className='profile__data__text' id='profile__data__name'><strong>{user.name}</strong></h2>
                         <h5 className='profile__data__text' id='profile__data__instagram'>{instagram}</h5>
                         <h5 className='profile__data__text' id='profile__data__email'>{email}</h5>
                         <h5 className='profile__data__text' id='profile__data__phone'>{phone}</h5>

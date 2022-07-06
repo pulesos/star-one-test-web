@@ -9,7 +9,7 @@ import Profile from '../../components/Profile/Profile'
 import DeliveryAddress from '../../components/DeliveryAddress/DeliveryAddress'
 import MyPromotions from '../../components/MyPromotions/MyPromotions'
 
-const ProfilePage = ({name, setName, isActive, toggleClass}) => {
+const ProfilePage = ({name, setName, isActive, toggleClass, user}) => {
     const [changeProfile, setChangeProfile] = useState(false)
     const [changeDelivery, setChangeDeliver] = useState(false)
 
@@ -41,7 +41,7 @@ const ProfilePage = ({name, setName, isActive, toggleClass}) => {
                 }
                 
             </h3>
-            <Profile changeProfile={changeProfile} name={name} setName={setName}/>
+            <Profile changeProfile={changeProfile} name={name} user={user} setName={setName}/>
             <h3 className="events__title myorders">
                 <img className="mr-2" src={bag} alt="top events" width="28" height="28" />
                 <span>Мои заказы</span>

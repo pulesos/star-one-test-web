@@ -2,7 +2,7 @@ import './Menu.scss'
 import close from '../../../../assets/images/close-white.svg'
 import { Link } from 'react-router-dom'
 
-const Menu = ({publicItems, privateItems, active, setActive, handleLoggedOut, loggedIn, handleLoggedIn}) => {
+const Menu = ({publicItems, privateItems, active, setActive, handleSignOut, loggedIn, handleLoggedIn, user}) => {
     return (  
         <div className={active ? 'menu active' : 'menu'} onClick={() => setActive(false)}>
             <img src={close} className={active ? 'btn__close active' : 'btn__close'} alt="close" onClick={() => setActive(false)}/>
@@ -14,7 +14,11 @@ const Menu = ({publicItems, privateItems, active, setActive, handleLoggedOut, lo
                                     <Link to={privateItem.href}>{privateItem.value}</Link>
                                 </li>
                             )}
-                                <div className='exit' onClick={handleLoggedOut}>Выход</div>
+                            {Object.keys(user).length != 0 && 
+                                <div className='exit' onClick={handleSignOut}>Выход</div>
+                            }
+                            <div className='exit' onClick={handleSignOut}>Выход</div>
+
                         </ul>
                     :
                         <ul>
@@ -23,8 +27,7 @@ const Menu = ({publicItems, privateItems, active, setActive, handleLoggedOut, lo
                                     <Link to={publicItem.href}>{publicItem.value}</Link>
                                 </li>
                             )}
-                                <div className='exit' onClick={handleLoggedIn}>Войти</div>
-
+                            <div className='signIn' onClick={handleLoggedIn}>Войти</div>
                         </ul>
                 }
                 <Link to='/event'>EVENT</Link>

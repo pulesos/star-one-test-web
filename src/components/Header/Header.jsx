@@ -9,15 +9,14 @@ import './Header.scss'
 import { Link } from "react-router-dom";
 
 
-const Header = ({setModalActive, size, name, handleLoggedOut, handleLoggedIn, loggedIn}) => {
-    const user = true
+const Header = ({setModalActive, size, name, loggedIn, user, handleSignOut, handleLoggedIn}) => {
     return (
         <>
             {loggedIn ? 
                 <>
                     <Link to='/profile' className="user" href='#'>
                         <img src={userIcon} className="user__icon" alt='user'/>
-                        <span className='username'>{name}</span>
+                        <span className='username'>{user.name}</span>
                     </Link>
                     <Link to='/products/buy-credit' className="user__balance" href='#'>
                         <img src={money} className="money" alt='money'/>
@@ -29,7 +28,7 @@ const Header = ({setModalActive, size, name, handleLoggedOut, handleLoggedIn, lo
                         <img src={cart} alt='cart'/>
                         <span className="cart__quantity">{size}</span>
                     </Link>
-                    <Navbar handleLoggedOut={handleLoggedOut} loggedIn={loggedIn}/>
+                    <Navbar handleSignOut={handleSignOut} handleLoggedIn={handleLoggedIn} loggedIn={loggedIn} user={user}/>
                     <Logotype/>
                 </>
                 :
@@ -41,7 +40,7 @@ const Header = ({setModalActive, size, name, handleLoggedOut, handleLoggedIn, lo
                         
                     </div>
                     <img src={planet} className='planet__icon' alt="planet"/>
-                    <Navbar loggedIn={loggedIn} handleLoggedIn={handleLoggedIn}/>
+                    <Navbar loggedIn={loggedIn} handleSignOut={handleSignOut} handleLoggedIn={handleLoggedIn} user={user}/>
                     <Logotype/>
                 </>
             }
