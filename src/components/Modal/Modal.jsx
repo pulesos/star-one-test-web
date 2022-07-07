@@ -7,9 +7,9 @@ import './Modal.scss'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useContext } from 'react'
-import { useLocation } from 'react-router-dom'
-import { LOGIN_ROUTE, SHOP_ROUTE } from '../../utils/consts'
-import { registration } from '../../http/userAPI'
+// import { useLocation } from 'react-router-dom'
+// import { LOGIN_ROUTE, SHOP_ROUTE } from '../../utils/consts'
+import { registration, login } from '../../http/userAPI'
 import { Context } from '../../index'
 
 const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleSignOut, handleCallbackResponse}) => {
@@ -18,19 +18,37 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const {login} = useContext(Context)
-    const location = useLocation()
-    const isLogin = location.pathname === LOGIN_ROUTE
+    const {loginUsers} = useContext(Context)
+    // const location = useLocation()
+    // const isLogin = location.pathname === LOGIN_ROUTE
 
 
-    const click = async () => {
-        if (isLogin) {
-            const response = await login()
-        } else {
-            const response = await registration(email, password)
-            console.log(response)
-        }
+    // const click = async () => {
+    //     let data
+    //     if (isLogin) {
+    //         data = await login(email, password)
+    //     } else {
+    //         data = await registration(email, password)
+    //         // console.log(data)
+    //     }
+    //     login.setLogin(login)
+    //     login.setIsAuth(true)
+    // }
 
+    const signIn = async() => {
+        const response = await registration(email, password)
+        loginUsers.setLogin(loginUsers)
+        loginUsers.setIsAuth(true)
+        console.log(response)
+
+    }
+
+    const logIn = async() => {
+        const response = await login(email, password)
+        loginUsers.setLogin(loginUsers)
+        loginUsers.setIsAuth(true)
+        setLoggedIn(true)
+        console.log(response)
     }
 
     useEffect(() => {
@@ -66,8 +84,8 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
                         <>
                             <input type="email" placeholder='Email' className='form-control__modal'/>
                             <input type="password" placeholder='Пароль' className='form-control__modal'/>
-                            <button type='submit' className='enter' onClick={() => setRegister(false)}>Войти</button>
-                            <button className='register disabled' disabled>Зарегистрироваться</button>
+                            <button type='button' className='enter' onClick={logIn}>Войти</button>
+                            <button type='button' className='register' onClick={() => setRegister(false)}>Зарегистрироваться</button>
                         </>
 
                         :
@@ -75,8 +93,8 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
                             <input type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} className='form-control__modal'/>
                             <input type="password" placeholder='Пароль' value={password} onChange={e => setPassword(e.target.value)} className='form-control__modal'/>
                             <input type="password" placeholder='Введите пароль ещё раз' value={password} onChange={e => setPassword(e.target.value)} className='form-control__modal'/>
-                            <button className='enter disabled' disabled>Войти</button>
-                            <button type='submit' className='register' onClick={click}>Зарегистрироваться</button>
+                            <button type='button' className='enter' onClick={() => setRegister(true)}>Войти</button>
+                            <button type='button' className='register' onClick={signIn}>Зарегистрироваться</button>
                         </>
                         
                     }
@@ -99,7 +117,7 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
                                 <h3>{user.name}</h3>
                             </div>
                         } */}
-                        <button className='btn btn-dark' disabled>
+                        <button className='btn btn-dark'>
                             <img src={apple} height="25" alt="apple" className='btn__img'/>
                             Войти с помощью email
                         </button>

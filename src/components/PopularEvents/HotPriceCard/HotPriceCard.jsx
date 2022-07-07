@@ -63,7 +63,7 @@ const HotPriceCard = ({product, setModalActive, handleClick, loggedIn}) => {
                             <div className="card-body">
                                 <div className="card__label">{item.category}</div>
                                 <div className="card-body__name">
-                                    <Link to="/product-details" className='bold'>{item.name}</Link>
+                                    <Link to={`/product-details/${item.id}`} className='bold'>{item.name}</Link>
                                 </div>
                                 <img className="card__picture" src={item.image}
                                         alt="sony"/>

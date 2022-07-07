@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Context.Provider value={{
-        login: new LoginStore(),
+        loginUsers: new LoginStore(),
         product: new ProductStore(),
     }}>
     <BrowserRouter>

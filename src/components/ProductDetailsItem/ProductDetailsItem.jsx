@@ -3,6 +3,11 @@ import sony from '../../assets/images/sony.png'
 import quest from '../../assets/images/quest.svg'
 import './ProductDetailsItem.scss'
 import { v4 } from 'uuid'
+import { useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+import { fetchOneProduct } from '../../http/productAPI'
+import { useContext } from 'react'
+import {Context} from '../../index'
 
 const ProductDetailsItem = ({isActive, toggleClass}) => {
     const product = {id: v4(), priceTotal: 252, image: sony, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150}
@@ -13,6 +18,19 @@ const ProductDetailsItem = ({isActive, toggleClass}) => {
         {id: 4, title: 'Кол-во ядер', description: '2'},
         {id: 5, title: 'Аккумулятор', description: '4000'},
     ]
+
+    // const [product, setProduct] = useState({info: []})
+    // // const {product} = useContext(Context)
+    // const {id} = useParams()
+
+    // useEffect(() => {
+    //     fetchOneProduct(id).then(data => setProduct(data))
+    // })
+    // // console.log(params)
+
+    // // useEffect(() => {
+    // //     fetchOneProduct(id).then(data => setProduct(data))
+    // // })
 
     return (
         <>

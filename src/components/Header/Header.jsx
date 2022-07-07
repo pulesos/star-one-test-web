@@ -7,9 +7,12 @@ import money from '../../assets/images/money.svg'
 import userIcon from '../../assets/images/user.svg'
 import './Header.scss'
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../../index";
 
 
 const Header = ({setModalActive, size, name, loggedIn, user, handleSignOut, handleLoggedIn}) => {
+    const {loginUsers} = useContext(Context)
     return (
         <>
             {loggedIn ? 

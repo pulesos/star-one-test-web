@@ -22,6 +22,10 @@ import './App.css';
 import CurrentEventPage from './pages/CurrentEventPage/CurrentEventPage';
 import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
 import MyTurnsPage from './pages/MyTurnsPage/MyTurnsPage';
+import { useContext } from 'react';
+import { Context } from './index';
+import { useEffect } from 'react';
+import { check } from './http/userAPI';
 
 
 function App() {
@@ -31,6 +35,15 @@ function App() {
   const [list, setList] = useLocalStorage('data', [])
   const [isActive, setActive] = useState(false);
   const [user, setUser] = useState({})
+
+  const {loginUsers} = useContext(Context)
+
+  useEffect(() => {
+    check().then(data => {
+      loginUsers.setLogin(true)
+      loginUsers.setIsAuth(true)
+    })
+  }, [])
 
 
   const handleClick = (item) => {
@@ -92,7 +105,7 @@ function App() {
             <Route path='/description' element={<DescriptionPage/>}/>
             <Route path='/company' element={<AboutUsPage/>}/>
           </Routes>
-          <Modal modalActive={modalActive} setModalActive={setModalActive} user={user} setUser={setUser} handleCallbackResponse={handleCallbackResponse} handleSignOut={handleSignOut}/>
+          <Modal modalActive={modalActive} setModalActive={setModalActive} user={user} setUser={setUser} handleCallbackResponse={handleCallbackResponse} handleSignOut={handleSignOut} setLoggedIn={setLoggedIn}/>
           <Banner/>
           <Footer/>
         
