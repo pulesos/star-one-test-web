@@ -41,21 +41,31 @@ const ProductInfo = sequelize.define('product_info', {
     description: {type: DataTypes.STRING, allowNull: false},
 })
 
+const CategoryBrand = sequelize.define('type_brand', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+})
 
-// User.hasOne(Cart)
-// Cart.belongsTo(User)
 
-// Cart.hasMany(CartProduct)
-// CartProduct.belongsTo(Cart)
+User.hasOne(Cart)
+Cart.belongsTo(User)
 
-// Category.hasMany(Product)
-// Product.belongsTo(Category)
+Cart.hasMany(CartProduct)
+CartProduct.belongsTo(Cart)
 
-// Product.hasMany(CartProduct)
-// CartProduct.belongsTo(Prouct)
+Category.hasMany(Product)
+Product.belongsTo(Category)
 
-Product.hasMany(ProductInfo, {as: 'info'})
+Brand.hasMany(Product)
+Product.belongsTo(Brand)
+
+Product.hasMany(CartProduct)
+CartProduct.belongsTo(Product)
+
+Product.hasMany(ProductInfo, {as: 'info'});
 ProductInfo.belongsTo(Product)
+
+Category.belongsToMany(Brand, {through: CategoryBrand })
+Brand.belongsToMany(Category, {through: CategoryBrand })
 
 module.exports = {
     User,
@@ -64,5 +74,6 @@ module.exports = {
     Product,
     ProductInfo,
     Category,
-    Brand
+    Brand,
+    CategoryBrand
 }

@@ -40,6 +40,7 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
         loginUsers.setLogin(loginUsers)
         loginUsers.setIsAuth(true)
         console.log(response)
+        
 
     }
 
@@ -92,7 +93,7 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
                         <>
                             <input type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} className='form-control__modal'/>
                             <input type="password" placeholder='Пароль' value={password} onChange={e => setPassword(e.target.value)} className='form-control__modal'/>
-                            <input type="password" placeholder='Введите пароль ещё раз' value={password} onChange={e => setPassword(e.target.value)} className='form-control__modal'/>
+                            <input type="password" placeholder='Введите пароль ещё раз' className='form-control__modal'/>
                             <button type='button' className='enter' onClick={() => setRegister(true)}>Войти</button>
                             <button type='button' className='register' onClick={signIn}>Зарегистрироваться</button>
                         </>

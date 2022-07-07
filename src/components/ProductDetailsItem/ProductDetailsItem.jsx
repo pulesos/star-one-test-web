@@ -20,7 +20,7 @@ const ProductDetailsItem = ({isActive, toggleClass}) => {
     ]
 
     // const [product, setProduct] = useState({info: []})
-    // // const {product} = useContext(Context)
+    // const {product} = useContext(Context)
     // const {id} = useParams()
 
     // useEffect(() => {
