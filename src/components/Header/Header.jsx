@@ -20,10 +20,12 @@ const Header = ({setModalActive, size, name, loggedIn,  handleSignOut, handleLog
     const handleGoogleSignOut = async() => {
         try {
             await logOut()
+            console.log('You are logged out')
         } catch (error) {
             console.log(error)
         }
     }
+
 
     return (
         <>
@@ -31,7 +33,7 @@ const Header = ({setModalActive, size, name, loggedIn,  handleSignOut, handleLog
                 <>
                     <Link to='/profile' className="user" href='#'>
                         <img src={userIcon} className="user__icon" alt='user'/>
-                        <span className='username'>{user.displayName}</span>
+                        <span className='username'>{user.displayName || user.email}</span>
                     </Link>
                     <Link to='/products/buy-credit' className="user__balance" href='#'>
                         <img src={money} className="money" alt='money'/>

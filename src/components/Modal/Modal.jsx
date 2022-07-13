@@ -19,6 +19,7 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
     const [register, setRegister] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
 
     const {loginUsers} = useContext(Context)
     // const location = useLocation()
@@ -37,20 +38,20 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
     //     login.setIsAuth(true)
     // }
 
-    const signIn = async() => {
-        const response = await registration(email, password)
-        loginUsers.setLogin(loginUsers)
-        loginUsers.setIsAuth(true)
-        console.log(response)
-    }
+    // const signIn = async() => {
+    //     const response = await registration(email, password)
+    //     loginUsers.setLogin(loginUsers)
+    //     loginUsers.setIsAuth(true)
+    //     console.log(response)
+    // }
 
-    const logIn = async() => {
-        const response = await login(email, password)
-        loginUsers.setLogin(loginUsers)
-        loginUsers.setIsAuth(true)
-        setLoggedIn(true)
-        console.log(response)
-    }
+    // const logIn = async() => {
+    //     const response = await login(email, password)
+    //     loginUsers.setLogin(loginUsers)
+    //     loginUsers.setIsAuth(true)
+    //     setLoggedIn(true)
+    //     console.log(response)
+    // }
 
     // useEffect(() => {
     //     /* global google*/
@@ -68,13 +69,37 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
     //     google.accounts.id.prompt()
     // }, [])
 
-    const {googleSignIn} = UserAuth()
+    const {googleSignIn, createUser, signInEmail} = UserAuth()
 
     const handleGoogleSignIn = async() => {
         try {
             await googleSignIn()
         } catch (error) {
             console.log(error)
+        }
+    }
+
+    const handleSignInEmail = async(e) => {
+        e.preventDefault()
+        setError('')
+        setModalActive(false)
+        try {
+            await createUser(email, password)
+        } catch(e) {
+            setError(e.message)
+            console.log(e.message)
+        }
+    }
+
+    const handleLogInEmail = async(e) => {
+        e.preventDefault()
+        setError('')
+        setModalActive(false)
+        try {
+            await signInEmail(email, password)
+        } catch (e) {
+            setError(e.message)
+            console.log(e.message)
         }
     }
 
@@ -90,22 +115,29 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
                     <h3 className='section__title'>Зарегистрироваться</h3>
                 }
             </div>
-                <form class="form-signin">
                     {register ?
                         <>
-                            <input type="email" placeholder='Email' className='form-control__modal'/>
-                            <input type="password" placeholder='Пароль' className='form-control__modal'/>
-                            <button type='button' className='enter' onClick={logIn}>Войти</button>
+                            <form class="form-signin" onSubmit={handleLogInEmail}>
+
+                            <input type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)} className='form-control__modal'/>
+                            <input type="password" placeholder='Пароль' onChange={(e) => setPassword(e.target.value)} className='form-control__modal'/>
+                            <button type='submit' className='enter'>Войти</button>
                             <button type='button' className='register' onClick={() => setRegister(false)}>Зарегистрироваться</button>
+                            </form>
+
                         </>
 
                         :
                         <>
-                            <input type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} className='form-control__modal'/>
-                            <input type="password" placeholder='Пароль' value={password} onChange={e => setPassword(e.target.value)} className='form-control__modal'/>
+                            <form class="form-signin" onSubmit={handleSignInEmail}>
+
+                            <input type="email" placeholder='Email' onChange={e => setEmail(e.target.value)} className='form-control__modal'/>
+                            <input type="password" placeholder='Пароль'  onChange={e => setPassword(e.target.value)} className='form-control__modal'/>
                             <input type="password" placeholder='Введите пароль ещё раз' className='form-control__modal'/>
                             <button type='button' className='enter' onClick={() => setRegister(true)}>Войти</button>
-                            <button type='button' className='register' onClick={signIn}>Зарегистрироваться</button>
+                            <button type='submit' className='register'>Зарегистрироваться</button>
+                            </form>
+
                         </>
                         
                     }
@@ -135,7 +167,6 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
                         </button>
                     </div>
                     <br/>
-                </form>
             </div>
         </div>
     )
