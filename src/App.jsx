@@ -26,6 +26,7 @@ import { useContext } from 'react';
 import { Context } from './index';
 import { useEffect } from 'react';
 import { check } from './http/userAPI';
+import { AuthContextProvider } from './context/AuthContext';
 
 
 function App() {
@@ -85,8 +86,8 @@ function App() {
 
   return (
     <div className="App">
-        
-          <Header setModalActive={setModalActive} size={list.length} name={name} loggedIn={loggedIn} user={user} handleSignOut={handleSignOut} handleLoggedIn={handleLoggedIn}/>
+        <AuthContextProvider>
+        <Header setModalActive={setModalActive} size={list.length} name={name} loggedIn={loggedIn} user={user} handleSignOut={handleSignOut} handleLoggedIn={handleLoggedIn}/>
           <Banner/>
           <Routes>
             <Route path='/' element={<MainPage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
@@ -108,6 +109,8 @@ function App() {
           <Modal modalActive={modalActive} setModalActive={setModalActive} user={user} setUser={setUser} handleCallbackResponse={handleCallbackResponse} handleSignOut={handleSignOut} setLoggedIn={setLoggedIn}/>
           <Banner/>
           <Footer/>
+        </AuthContextProvider>
+
         
     </div>
   );

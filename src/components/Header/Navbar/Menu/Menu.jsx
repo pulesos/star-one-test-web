@@ -2,12 +2,12 @@ import './Menu.scss'
 import close from '../../../../assets/images/close-white.svg'
 import { Link } from 'react-router-dom'
 
-const Menu = ({publicItems, privateItems, active, setActive, handleSignOut, loggedIn, handleLoggedIn, user}) => {
+const Menu = ({publicItems, privateItems, active, setActive, handleGoogleSignOut, loggedIn, handleLoggedIn, user}) => {
     return (  
         <div className={active ? 'menu active' : 'menu'} onClick={() => setActive(false)}>
             <img src={close} className={active ? 'btn__close active' : 'btn__close'} alt="close" onClick={() => setActive(false)}/>
             <div className="menu__content">
-                {loggedIn ?
+                {user ?
                         <ul>
                             {privateItems.map(privateItem =>
                                 <li key={privateItem.id}>
@@ -15,9 +15,9 @@ const Menu = ({publicItems, privateItems, active, setActive, handleSignOut, logg
                                 </li>
                             )}
                             {Object.keys(user).length != 0 && 
-                                <div className='exit' onClick={handleSignOut}>Выход</div>
+                                <div className='exit' onClick={handleGoogleSignOut}>Выход</div>
                             }
-                            <div className='exit' onClick={handleSignOut}>Выход</div>
+                            {/* <div className='exit' onClick={handleGoogleSignOut}>Выход</div> */}
 
                         </ul>
                     :

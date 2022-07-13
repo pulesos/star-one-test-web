@@ -9,17 +9,29 @@ import './Header.scss'
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../index";
+import { UserAuth } from "../../context/AuthContext";
 
 
-const Header = ({setModalActive, size, name, loggedIn, user, handleSignOut, handleLoggedIn}) => {
+const Header = ({setModalActive, size, name, loggedIn,  handleSignOut, handleLoggedIn}) => {
     const {loginUsers} = useContext(Context)
+
+    const {user, logOut} = UserAuth()
+
+    const handleGoogleSignOut = async() => {
+        try {
+            await logOut()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <>
-            {loggedIn ? 
+            {user ? 
                 <>
                     <Link to='/profile' className="user" href='#'>
                         <img src={userIcon} className="user__icon" alt='user'/>
-                        <span className='username'>{user.name}</span>
+                        <span className='username'>{user.displayName}</span>
                     </Link>
                     <Link to='/products/buy-credit' className="user__balance" href='#'>
                         <img src={money} className="money" alt='money'/>
@@ -31,7 +43,7 @@ const Header = ({setModalActive, size, name, loggedIn, user, handleSignOut, hand
                         <img src={cart} alt='cart'/>
                         <span className="cart__quantity">{size}</span>
                     </Link>
-                    <Navbar handleSignOut={handleSignOut} handleLoggedIn={handleLoggedIn} loggedIn={loggedIn} user={user}/>
+                    <Navbar handleGoogleSignOut={handleGoogleSignOut} handleLoggedIn={handleLoggedIn} loggedIn={loggedIn} user={user}/>
                     <Logotype/>
                 </>
                 :
@@ -43,7 +55,7 @@ const Header = ({setModalActive, size, name, loggedIn, user, handleSignOut, hand
                         
                     </div>
                     <img src={planet} className='planet__icon' alt="planet"/>
-                    <Navbar loggedIn={loggedIn} handleSignOut={handleSignOut} handleLoggedIn={handleLoggedIn} user={user}/>
+                    <Navbar loggedIn={loggedIn} handleGoogleSignOut={handleGoogleSignOut} handleLoggedIn={handleLoggedIn} user={user}/>
                     <Logotype/>
                 </>
             }

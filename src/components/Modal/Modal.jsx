@@ -11,6 +11,8 @@ import { useContext } from 'react'
 // import { LOGIN_ROUTE, SHOP_ROUTE } from '../../utils/consts'
 import { registration, login } from '../../http/userAPI'
 import { Context } from '../../index'
+import { UserAuth } from '../../context/AuthContext'
+import GoogleButton from 'react-google-button'
 
 const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleSignOut, handleCallbackResponse}) => {
     // const [user, setUser] = useState({})
@@ -66,6 +68,16 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
     //     google.accounts.id.prompt()
     // }, [])
 
+    const {googleSignIn} = UserAuth()
+
+    const handleGoogleSignIn = async() => {
+        try {
+            await googleSignIn()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <div className={modalActive ? 'modal active' : 'modal'} onClick={() => setModalActive(false)}>
             <div className={modalActive ? 'modal__content active' : 'modal__content'} onClick={e => e.stopPropagation()}>
@@ -103,11 +115,12 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
                             <img src={facebook} height='25' alt='facebook' className='btn__img'/>
                             Войти по номеру телефона
                         </button>
-                        <a className='btn btn-light'>
+                        {/* <a className='btn btn-light'>
                             <img src={googlePic} height="25" alt="google" className='btn__img'/> 
                             <span className="googl2">Войти с помощью Google</span>
-                        </a>
+                        </a> */}
                         {/* <div id="signInDiv"></div> */}
+                        <GoogleButton onClick={handleGoogleSignIn}/>
                         {/* { Object.keys(user).length != 0 &&
                             <button onClick={(e) => handleSignOut(e)}>Выйти</button>
                         }
