@@ -72,6 +72,7 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
     const {googleSignIn, createUser, signInEmail} = UserAuth()
 
     const handleGoogleSignIn = async() => {
+        setModalActive(false)
         try {
             await googleSignIn()
         } catch (error) {
