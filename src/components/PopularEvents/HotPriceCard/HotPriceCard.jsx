@@ -6,8 +6,11 @@ import quest from '../../../assets/images/quest.svg'
 
 import './HotPriceCard.scss'
 import { UserAuth } from '../../../context/AuthContext';
+import { useEffect, useState } from 'react';
+import ProductDataService from '../../../services/productServices'
 
-const HotPriceCard = ({product, setModalActive, handleClick, loggedIn}) => {
+
+const HotPriceCard = ({setModalActive, handleClick, loggedIn}) => {
     let settings = {
         dots: true,
         infinite: true,
@@ -48,10 +51,24 @@ const HotPriceCard = ({product, setModalActive, handleClick, loggedIn}) => {
       const {user} = UserAuth()
 
 
+
+      const [products, setProducts] = useState([])
+
+      useEffect(() => {
+        getProducts()
+      }, [])
+    
+      const getProducts = async() => {
+        const data = await ProductDataService.getAllProducts()
+        setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    }
+    
+
+
     return (
         <>  
             <Slider {...settings}>
-                {product.products.map(item => 
+                {products.map(item => 
                     <div className="card-wrap" key={item.id}>
                         <div className="card">
                             <a className="card-title card-title__hot">

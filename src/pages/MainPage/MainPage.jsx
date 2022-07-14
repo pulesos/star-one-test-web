@@ -6,21 +6,21 @@ import PopularEvents from "../../components/PopularEvents/PopularEvents"
 import { UserAuth } from "../../context/AuthContext" 
 
 
-const MainPage = ({setModalActive, handleClick, loggedIn}) => {
+const MainPage = ({setModalActive, handleClick, loggedIn, products}) => {
     const {user, logOut} = UserAuth()
     return (
         <>
             {user ? 
                 <>
                     <CurrentEvents/>
-                    <PopularEvents handleClick={handleClick} loggedIn={loggedIn}/>
+                    <PopularEvents handleClick={handleClick} loggedIn={loggedIn} products={products}/>
                     <PopularCategories/>
                     <PopularBrands/>
                     <MenuBottom/>
                 </>
                 :
                 <>
-                    <PopularEvents setModalActive={setModalActive} loggedIn={loggedIn}/>
+                    <PopularEvents setModalActive={setModalActive} loggedIn={loggedIn} products={products}/>
                     <PopularCategories/>
                     <PopularBrands/>
                     <MenuBottom/>

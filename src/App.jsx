@@ -27,6 +27,8 @@ import { Context } from './index';
 import { useEffect } from 'react';
 import { check } from './http/userAPI';
 import { AuthContextProvider } from './context/AuthContext';
+import {db} from './firebase'
+import {collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc} from 'firebase/firestore'
 
 
 function App() {
@@ -36,6 +38,25 @@ function App() {
   const [list, setList] = useLocalStorage('data', [])
   const [isActive, setActive] = useState(false);
   const [user, setUser] = useState({})
+  
+  // const [products, setProducts] = useState([])
+
+  // useEffect(() => {
+  //   getProducts()
+  // }, [])
+
+  // const getProducts = () => {
+  //   const productCollectionRef = collection(db, 'products')
+  //   getDocs(productCollectionRef)
+  //   .then(response => {
+  //       const prdcts = response.docs.map(doc =>({
+  //           data: doc.data(), 
+  //           id: doc.id
+  //       }))
+  //       setProducts(prdcts)
+  //     })
+  //   .catch(error => console.log(error.message))
+  // }
 
   // const {loginUsers} = useContext(Context)
 

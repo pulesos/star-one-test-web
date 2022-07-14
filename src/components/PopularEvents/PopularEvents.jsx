@@ -10,7 +10,7 @@ import './PopularEvents.scss'
 import { useContext } from 'react'
 import { Context } from '../../index'
 
-const PopularEvents = ({setModalActive, handleClick, loggedIn}) => {
+const PopularEvents = ({setModalActive, handleClick, loggedIn, products}) => {
     const {product} = useContext(Context)
     
     // const items = [
@@ -29,7 +29,7 @@ const PopularEvents = ({setModalActive, handleClick, loggedIn}) => {
                 <span>Популярные события</span>
                 <Link to='/hotprice'><button className="btn events1 btn-white">События</button></Link> 
             </h3>
-            <HotPriceCard setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn} product={product}/>
+            <HotPriceCard setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn} product={product} products={products}/>
         </section>
         
     )
