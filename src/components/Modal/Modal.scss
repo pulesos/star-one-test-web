@@ -1,5 +1,5 @@
 .modal {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.4);
     position: fixed;
@@ -33,7 +33,7 @@
     background: linear-gradient(180deg, #fff9ee 0%, #d8c1d3 100%) !important;
     box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.75) !important;
     border-radius: 10px !important;
-    height: 530px;
+    min-height: 530px;
     width: 450px;
     transform: scale(0.5);
     transition: 0.4s all;
@@ -88,7 +88,7 @@
     border-radius: 10px;
     width: 100%;
     font-weight: bold;
-    text-align: left;
+    text-align: center;
 }
 
 .btn-dark {
@@ -145,15 +145,57 @@
     color: #140050;
 }
 
-#signInDiv {
-    margin-left: 35px;
+.button-right {
+    margin-left: 50px;
+}
+
+.PhoneInputInput {
+    margin-top: 2px;
+    padding-left: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #140050;
+    height: 50px;
+    color: #140050;
+}
+
+.PhoneInputCountrySelect {
+    display: none;
+}
+
+.PhoneInputCountryIcon {
+    display: none;
+}
+
+.register__phone__input {
+    margin-top: 2px;
+    padding-left: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #140050;
+    height: 50px;
+    color: #140050;
+}
+
+.register__phone__btn {
+    width: 180px;
+    height: 50px;
+    margin-top: 15px;
+    margin-left: 13px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 150%;
+    border: 1px solid #140050;
+    color: #140050;
+    background-color: white;
 }
 
 @media (max-width: 425px) {
-    .modal__content {
-        height: 589px;
-    }
+    // .modal__content {
+    //     height: 589px;
+    // }
     .register,.enter {
-        margin-left: 95px;
+        margin-left: 115px;
     }
 }

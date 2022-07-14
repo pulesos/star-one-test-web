@@ -1,11 +1,12 @@
 import {useContext, createContext, useEffect, useState} from 'react'
-import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
+import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, RecaptchaVerifier, signInWithPhoneNumber} from 'firebase/auth'
 import { auth } from '../firebase'
+import useLocalStorage from 'use-local-storage'
 
 const AuthContext = createContext()
 
 export const AuthContextProvider = ({children}) => {
-    const [user, setUser] = useState({})
+    const [user, setUser] = useLocalStorage('userLogin', {})
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -34,8 +35,18 @@ export const AuthContextProvider = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
+    const setUpRecaptcha = (number) => {
+        const recaptchaVerifier = new RecaptchaVerifier(
+            'recaptcha-container', 
+            {}, 
+            auth
+        )
+        recaptchaVerifier.render()
+        return signInWithPhoneNumber(auth, number, recaptchaVerifier)
+    }
+
     return (
-        <AuthContext.Provider value={{googleSignIn, logOut, createUser, signInEmail, user}}>
+        <AuthContext.Provider value={{googleSignIn, logOut, createUser, signInEmail, setUpRecaptcha, user}}>
             {children}
         </AuthContext.Provider>
     )

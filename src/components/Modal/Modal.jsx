@@ -13,13 +13,20 @@ import { registration, login } from '../../http/userAPI'
 import { Context } from '../../index'
 import { UserAuth } from '../../context/AuthContext'
 import GoogleButton from 'react-google-button'
+import PhoneInput from 'react-phone-number-input'
 
 const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleSignOut, handleCallbackResponse}) => {
     // const [user, setUser] = useState({})
+    let countryCode = '+7'
     const [register, setRegister] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
+    const [number, setNumber] = useState(countryCode)
+    const [otp, setOtp] = useState('') 
+    const [flag, setFlag] = useState(false) 
+    const [confirmObj, setConfirmObj] = useState('')
+    const [registerByPhone, setRegisterByPhone] = useState(false)
 
     const {loginUsers} = useContext(Context)
     // const location = useLocation()
@@ -69,7 +76,7 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
     //     google.accounts.id.prompt()
     // }, [])
 
-    const {googleSignIn, createUser, signInEmail} = UserAuth()
+    const {googleSignIn, createUser, signInEmail, setUpRecaptcha} = UserAuth()
 
     const handleGoogleSignIn = async() => {
         setModalActive(false)
@@ -104,6 +111,34 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
         }
     }
 
+    const getOtp = async(e) => {
+        e.preventDefault()
+        try {
+            const response = await setUpRecaptcha(number)
+            console.log(response)
+            setConfirmObj(response)
+            setFlag(true)
+        } catch(err) {
+            setError(err.message)
+        }
+        console.log(number)
+    }
+
+    const verifyOtp = async(e) => {
+        e.preventDefault()
+        console.log(otp)
+        try {
+            await confirmObj.confirm(otp)
+            setModalActive(false)
+        } catch(err) {
+            setError(err.message)
+        }
+    }
+
+    const toggleRegisterByPhone = () => {
+        setRegisterByPhone(!registerByPhone)
+    }
+
     return (
         <div className={modalActive ? 'modal active' : 'modal'} onClick={() => setModalActive(false)}>
             <div className={modalActive ? 'modal__content active' : 'modal__content'} onClick={e => e.stopPropagation()}>
@@ -118,7 +153,7 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
             </div>
                     {register ?
                         <>
-                            <form class="form-signin" onSubmit={handleLogInEmail}>
+                            <form className="form-signin" onSubmit={handleLogInEmail}>
 
                             <input type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)} className='form-control__modal'/>
                             <input type="password" placeholder='Пароль' onChange={(e) => setPassword(e.target.value)} className='form-control__modal'/>
@@ -130,7 +165,7 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
 
                         :
                         <>
-                            <form class="form-signin" onSubmit={handleSignInEmail}>
+                            <form className="form-signin" onSubmit={handleSignInEmail}>
 
                             <input type="email" placeholder='Email' onChange={e => setEmail(e.target.value)} className='form-control__modal'/>
                             <input type="password" placeholder='Пароль'  onChange={e => setPassword(e.target.value)} className='form-control__modal'/>
@@ -144,16 +179,33 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
                     }
                     <div id="firebaseui-auth-container"></div>
                     <div className="btn__soc">
-                        <button className='btn btn-primary' disabled>
-                            <img src={facebook} height='25' alt='facebook' className='btn__img'/>
+                        <button className='btn btn-primary' onClick={toggleRegisterByPhone}>
+                            {/* <img src={facebook} height='25' alt='facebook' className='btn__img'/> */}
                             Войти по номеру телефона
                         </button>
+                        <div className="signin-phone" style={{display: registerByPhone ? 'block' : 'none'}}>
+                            <form className='form-signin' onSubmit={getOtp} style={{display: !flag ? 'block' : 'none'}}>
+                                {/* <input type="tel" onChange={(e) => setNumber(e.target.value)}/> */}
+                                <PhoneInput value={number} onChange={setNumber}/>
+                                <div className="button-right">
+                                    <button className='register__phone__btn'>Отправить код</button>
+                                </div>
+                                <div id="recaptcha-container"></div>
+                            </form>
+                            <form className='form-signin' onSubmit={verifyOtp} style={{display: flag ? 'block' : 'none'}}>
+                                <input type="text" placeholder='Введите код' onChange={(e) => setOtp(e.target.value)} className='register__phone__input'/>
+                                <div className="button-right">
+                                    <button className='register__phone__btn' onClick={() => setFlag(false)}>Отправить</button>
+                                </div>
+                            </form>
+                        </div>
+ 
                         {/* <a className='btn btn-light'>
                             <img src={googlePic} height="25" alt="google" className='btn__img'/> 
                             <span className="googl2">Войти с помощью Google</span>
                         </a> */}
                         {/* <div id="signInDiv"></div> */}
-                        <GoogleButton onClick={handleGoogleSignIn}/>
+                        <GoogleButton onClick={handleGoogleSignIn} label='Войти с помощью GMail' style={{width: '296px'}}/>
                         {/* { Object.keys(user).length != 0 &&
                             <button onClick={(e) => handleSignOut(e)}>Выйти</button>
                         }
@@ -162,10 +214,10 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
                                 <h3>{user.name}</h3>
                             </div>
                         } */}
-                        <button className='btn btn-dark' disabled>
+                        {/* <button className='btn btn-dark' disabled>
                             <img src={apple} height="25" alt="apple" className='btn__img'/>
                             Войти с помощью email
-                        </button>
+                        </button> */}
                     </div>
                     <br/>
             </div>

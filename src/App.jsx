@@ -37,14 +37,14 @@ function App() {
   const [isActive, setActive] = useState(false);
   const [user, setUser] = useState({})
 
-  const {loginUsers} = useContext(Context)
+  // const {loginUsers} = useContext(Context)
 
-  useEffect(() => {
-    check().then(data => {
-      loginUsers.setLogin(true)
-      loginUsers.setIsAuth(true)
-    })
-  }, [])
+  // useEffect(() => {
+  //   check().then(data => {
+  //     loginUsers.setLogin(true)
+  //     loginUsers.setIsAuth(true)
+  //   })
+  // }, [])
 
 
   const handleClick = (item) => {
@@ -66,28 +66,28 @@ function App() {
   };
 
   
-  function handleCallbackResponse(response) {
-    console.log("Encoded JWT ID token: " + response.credential)
-    var userObject = jwt_decode(response.credential)
-    console.log(userObject)
-    setUser(userObject)
-    setLoggedIn(true)
-    if (user) {
-      setModalActive(false)
-    }
-    document.getElementById("signInDiv").hidden = true
-}
+//   function handleCallbackResponse(response) {
+//     console.log("Encoded JWT ID token: " + response.credential)
+//     var userObject = jwt_decode(response.credential)
+//     console.log(userObject)
+//     setUser(userObject)
+//     setLoggedIn(true)
+//     if (user) {
+//       setModalActive(false)
+//     }
+//     document.getElementById("signInDiv").hidden = true
+// }
 
-  function handleSignOut(e) {
-      setUser({})
-      setLoggedIn(false)
-      document.getElementById("signInDiv").hidden = false
-  }
+  // function handleSignOut(e) {
+  //     setUser({})
+  //     setLoggedIn(false)
+  //     document.getElementById("signInDiv").hidden = false
+  // }
 
   return (
     <div className="App">
         <AuthContextProvider>
-        <Header setModalActive={setModalActive} size={list.length} name={name} loggedIn={loggedIn} user={user} handleSignOut={handleSignOut} handleLoggedIn={handleLoggedIn}/>
+        <Header setModalActive={setModalActive} size={list.length} name={name} loggedIn={loggedIn} user={user} handleLoggedIn={handleLoggedIn}/>
           <Banner/>
           <Routes>
             <Route path='/' element={<MainPage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
@@ -106,7 +106,7 @@ function App() {
             <Route path='/description' element={<DescriptionPage/>}/>
             <Route path='/company' element={<AboutUsPage/>}/>
           </Routes>
-          <Modal modalActive={modalActive} setModalActive={setModalActive} user={user} setUser={setUser} handleCallbackResponse={handleCallbackResponse} handleSignOut={handleSignOut} setLoggedIn={setLoggedIn}/>
+          <Modal modalActive={modalActive} setModalActive={setModalActive} user={user} setUser={setUser}  setLoggedIn={setLoggedIn}/>
           <Banner/>
           <Footer/>
         </AuthContextProvider>

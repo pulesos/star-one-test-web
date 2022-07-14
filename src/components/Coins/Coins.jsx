@@ -9,6 +9,7 @@ import coin10 from '../../assets/images/coin10.jpg'
 import coin100 from '../../assets/images/coin100.jpg'
 
 import './Coins.scss'
+import { UserAuth } from '../../context/AuthContext'
 
 const Coins = ({setModalActive, loggedIn, handleClick}) => {
     const items = [
@@ -21,6 +22,8 @@ const Coins = ({setModalActive, loggedIn, handleClick}) => {
         {id: v4(), name: '10 stars', image: coin10, priceTotal: 10},
         {id: v4(), name: '100 stars', image: coin100, priceTotal: 95},
     ]
+
+    const {user} = UserAuth()
     return (
         <>
             <div className="coin__wrapper">
@@ -33,7 +36,7 @@ const Coins = ({setModalActive, loggedIn, handleClick}) => {
                         <div className="mt-md-4 mt-0 d-flex justify-content-between align-items-center">
                             <div className="card-body__price__coin bold">{item.priceTotal} $</div>
                         </div>
-                        {loggedIn ?
+                        {user ?
                             <button className="btn btn-dart btn-cart-coin" onClick={() => handleClick(item)}>
                                 <span className="icon__cart"></span>
                             </button>

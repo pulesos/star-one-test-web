@@ -27,7 +27,7 @@ const Menu = ({publicItems, privateItems, active, setActive, handleGoogleSignOut
                                     <Link to={publicItem.href}>{publicItem.value}</Link>
                                 </li>
                             )}
-                            <div className='signIn' onClick={handleLoggedIn}>Войти</div>
+                            {/* <div className='signIn' onClick={handleLoggedIn}>Войти</div> */}
                         </ul>
                 }
                 <Link to='/event'>EVENT</Link>

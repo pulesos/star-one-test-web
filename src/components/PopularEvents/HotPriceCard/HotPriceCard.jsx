@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import quest from '../../../assets/images/quest.svg'
 
 import './HotPriceCard.scss'
+import { UserAuth } from '../../../context/AuthContext';
 
 const HotPriceCard = ({product, setModalActive, handleClick, loggedIn}) => {
     let settings = {
@@ -44,6 +45,9 @@ const HotPriceCard = ({product, setModalActive, handleClick, loggedIn}) => {
         ]
       };
 
+      const {user} = UserAuth()
+
+
     return (
         <>  
             <Slider {...settings}>
@@ -70,7 +74,7 @@ const HotPriceCard = ({product, setModalActive, handleClick, loggedIn}) => {
                                 <div className="card-body__bottom">
                                     <div className="card-body__price">{item.oldPrice} $</div>
 
-                                    {loggedIn ?
+                                    {user ?
                                         <button className="btn btn-dart btn-cart" onClick={() => handleClick(item)}>
                                             <span className="icon__cart"></span>
                                         </button>

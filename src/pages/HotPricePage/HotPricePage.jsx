@@ -9,6 +9,7 @@ import coin1 from '../../assets/images/coin1.jpg'
 import './HotPricePage.scss'
 import { useContext } from 'react'
 import { Context } from '../../index'
+import { UserAuth } from '../../context/AuthContext'
 
 const HotPricePage = ({setModalActive, handleClick, loggedIn}) => {
     const {product} = useContext(Context)
@@ -19,6 +20,7 @@ const HotPricePage = ({setModalActive, handleClick, loggedIn}) => {
     //     {id: v4(), priceTotal: 496, image: coin1, category: 'ONE STAR', name: '500 Stars', oldPrice: 450},
         
     // ]
+    const {user} = UserAuth()
     return (
         <>
             <section className='popular__events'>
@@ -48,7 +50,7 @@ const HotPricePage = ({setModalActive, handleClick, loggedIn}) => {
                                         alt="sony"/>
                                 <div className="card-body__bottom">
                                     <div className="card-body__price">{item.oldPrice} $</div>
-                                    {loggedIn ?
+                                    {user ?
                                             <button className="btn btn-dart btn-cart" onClick={() => handleClick(item)}>
                                                 <span className="icon__cart"></span>
                                             </button>

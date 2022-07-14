@@ -5,6 +5,7 @@ import headphones from '../../assets/images/headphones.svg'
 import smartphones from '../../assets/images/smartphones.svg'
 import coin1 from '../../assets/images/coin1.jpg'
 import './ArchiveCard.scss'
+import { UserAuth } from '../../context/AuthContext'
 
 const ArchiveCard = ({setModalActive, handleClick, loggedIn}) => {
 
@@ -17,6 +18,8 @@ const ArchiveCard = ({setModalActive, handleClick, loggedIn}) => {
         {id: v4(), priceTotal: 258, image: smartphones, category: 'СМАРТФОНЫ', name: 'Apple iPhone 13 Pro Max 256 Gb', oldPrice: 1200},
 
     ]
+
+    const {user} = UserAuth()
     return (
         <>  
             {items.map(item => 
@@ -38,7 +41,7 @@ const ArchiveCard = ({setModalActive, handleClick, loggedIn}) => {
                             <div className="card-body__archive__bottom">
                                 <div className="card-body__price">{item.oldPrice} $</div>
                                 
-                                {loggedIn ?
+                                {user ?
                                     <button className="btn btn-dart btn-cart" onClick={() => handleClick(item)}>
                                         <span className="icon__cart"></span>
                                     </button>
