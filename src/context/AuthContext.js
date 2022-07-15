@@ -30,9 +30,6 @@ export const AuthContextProvider = ({children}) => {
 
     const createUser = (email, password) => {
         createUserWithEmailAndPassword(auth, email, password)
-        setDoc(doc(db, 'users', email), {
-            savedProducts: []
-        })
     }
 
     const signInEmail = (email, password) => {
