@@ -11,8 +11,8 @@ import { useContext } from 'react'
 import { Context } from '../../index'
 import { UserAuth } from '../../context/AuthContext'
 
-const HotPricePage = ({setModalActive, handleClick, loggedIn}) => {
-    const {product} = useContext(Context)
+const HotPricePage = ({setModalActive, handleClick, loggedIn, products}) => {
+    // const {product} = useContext(Context)
     // const items = [
     //     {id: v4(), priceTotal: 252, image: sony, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150},
     //     {id: v4(), priceTotal: 254, image: headphones, category: 'НАУШНИКИ', name: 'Apple AirPods Pro', oldPrice: 260},
@@ -28,7 +28,7 @@ const HotPricePage = ({setModalActive, handleClick, loggedIn}) => {
                     <img className="mr-2" src={molnia} alt="top events" width="28" height="28" />
                     <span>Популярные события</span>
                 </h3>
-                {product.products.map(item => 
+                {products.map(item => 
                     <div className="card-wrap hot__price__page" key={item.id}>
                         <div className="card card__hot">
                             <a className="card-title card-title__hot">
@@ -44,7 +44,7 @@ const HotPricePage = ({setModalActive, handleClick, loggedIn}) => {
                             <div className="card-body">
                                 <div className="card__label">{item.category}</div>
                                 <div className="card-body__name">
-                                    <Link to="/product-details" className='bold'>{item.name}</Link>
+                                    <Link to={`/product-details/${item.id}`} className='bold'>{item.name}</Link>
                                 </div>
                                 <img className="card__picture" src={item.image}
                                         alt="sony"/>

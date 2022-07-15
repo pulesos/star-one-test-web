@@ -9,19 +9,19 @@ import './TopPriceCard.scss'
 import { Link } from 'react-router-dom'
 import { UserAuth } from '../../context/AuthContext'
 
-const TopPriceCard = ({setModalActive, handleClick, loggedIn}) => {
-    const items = [
-        {id: v4(), priceTotal: 252, image: sony, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150},
-        {id: v4(), priceTotal: 254, image: headphones, category: 'НАУШНИКИ', name: 'Apple AirPods Pro', oldPrice: 260},
-        {id: v4(), priceTotal: 258, image: smartphones, category: 'СМАРТФОНЫ', name: 'Apple iPhone 13 Pro Max 256 Gb', oldPrice: 1200},
-        {id: v4(), priceTotal: 496, image: coin1, category: 'ONE STAR', name: '500 Stars', oldPrice: 450},
-    ]
+const TopPriceCard = ({setModalActive, handleClick, loggedIn, products}) => {
+    // const items = [
+    //     {id: v4(), priceTotal: 252, image: sony, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150},
+    //     {id: v4(), priceTotal: 254, image: headphones, category: 'НАУШНИКИ', name: 'Apple AirPods Pro', oldPrice: 260},
+    //     {id: v4(), priceTotal: 258, image: smartphones, category: 'СМАРТФОНЫ', name: 'Apple iPhone 13 Pro Max 256 Gb', oldPrice: 1200},
+    //     {id: v4(), priceTotal: 496, image: coin1, category: 'ONE STAR', name: '500 Stars', oldPrice: 450},
+    // ]
 
     const {user} = UserAuth()
 
     return (
         <>
-            {items.map(item => 
+            {products.map(item => 
                 <div className="card-wrap top__price__page" key={item.id}>
                     <div className="card card__top">
                         <a className="card-title card-title__top">
@@ -37,7 +37,7 @@ const TopPriceCard = ({setModalActive, handleClick, loggedIn}) => {
                         <div className="card-body">
                             <div className="card__label">{item.category}</div>
                             <div className="card-body__name">
-                                <Link to="/product-details" className='bold'>{item.name}</Link>
+                                <Link to={`/product-details/${item.id}`} className='bold'>{item.name}</Link>
                             </div>
                             <img className="card__picture" src={item.image}
                                     alt="sony"/>

@@ -8,9 +8,12 @@ import { useEffect } from 'react'
 import { fetchOneProduct } from '../../http/productAPI'
 import { useContext } from 'react'
 import {Context} from '../../index'
+import ProductDataService from '../../services/productServices' 
+import { doc, onSnapshot } from 'firebase/firestore'
+import {db} from '../../firebase'
 
 const ProductDetailsItem = ({isActive, toggleClass}) => {
-    const product = {id: v4(), priceTotal: 252, image: sony, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150}
+    // const product = {id: v4(), priceTotal: 252, image: sony, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150}
     const description = [
         {id: 1, title: 'Оперативная память', description: '5 гб'},
         {id: 2, title: 'Камера', description: '12 мп'},
@@ -19,25 +22,24 @@ const ProductDetailsItem = ({isActive, toggleClass}) => {
         {id: 5, title: 'Аккумулятор', description: '4000'},
     ]
 
-    // const [product, setProduct] = useState({info: []})
-    // const {product} = useContext(Context)
-    // const {id} = useParams()
+    const [product, setProduct] = useState([])
+    const {id} = useParams()
 
-    // useEffect(() => {
-    //     fetchOneProduct(id).then(data => setProduct(data))
-    // })
-    // // console.log(params)
+    useEffect(() => {
+        const docRef = doc(db, 'products', id)
+        onSnapshot(docRef, (snapshot) => {
+            setProduct({...snapshot.data(), id: snapshot.id})
+        })
+      }, [])
+    
 
-    // // useEffect(() => {
-    // //     fetchOneProduct(id).then(data => setProduct(data))
-    // // })
 
     return (
         <>
         <div className="product__details__wrapper">
             <div className="product__details__data">
                 <div className="product__details__image">
-                    <img src={sony} alt='sony' width='300' height='300'/>
+                    <img src={product.image} alt='sony' width='300' height='300'/>
                 </div>
                 <div className="product__details__item__title">
                     <h5>{product.category}</h5>

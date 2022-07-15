@@ -11,7 +11,7 @@ import { useContext } from 'react'
 import { Context } from '../../index'
 
 const PopularEvents = ({setModalActive, handleClick, loggedIn, products}) => {
-    const {product} = useContext(Context)
+    // const {product} = useContext(Context)
     
     // const items = [
     //     {id: v4(), priceTotal: 252, image: sony, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150},
@@ -29,7 +29,7 @@ const PopularEvents = ({setModalActive, handleClick, loggedIn, products}) => {
                 <span>Популярные события</span>
                 <Link to='/hotprice'><button className="btn events1 btn-white">События</button></Link> 
             </h3>
-            <HotPriceCard setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn} product={product} products={products}/>
+            <HotPriceCard setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn} products={products}/>
         </section>
         
     )

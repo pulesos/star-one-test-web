@@ -29,6 +29,7 @@ import { check } from './http/userAPI';
 import { AuthContextProvider } from './context/AuthContext';
 import {db} from './firebase'
 import {collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc} from 'firebase/firestore'
+import ProductDataService from './services/productServices'
 
 
 function App() {
@@ -39,24 +40,16 @@ function App() {
   const [isActive, setActive] = useState(false);
   const [user, setUser] = useState({})
   
-  // const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([])
 
-  // useEffect(() => {
-  //   getProducts()
-  // }, [])
-
-  // const getProducts = () => {
-  //   const productCollectionRef = collection(db, 'products')
-  //   getDocs(productCollectionRef)
-  //   .then(response => {
-  //       const prdcts = response.docs.map(doc =>({
-  //           data: doc.data(), 
-  //           id: doc.id
-  //       }))
-  //       setProducts(prdcts)
-  //     })
-  //   .catch(error => console.log(error.message))
-  // }
+    useEffect(() => {
+      getProducts()
+    }, [])
+  
+    const getProducts = async() => {
+      const data = await ProductDataService.getAllProducts()
+      setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    }
 
   // const {loginUsers} = useContext(Context)
 
@@ -111,17 +104,17 @@ function App() {
         <Header setModalActive={setModalActive} size={list.length} name={name} loggedIn={loggedIn} user={user} handleLoggedIn={handleLoggedIn}/>
           <Banner/>
           <Routes>
-            <Route path='/' element={<MainPage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
+            <Route path='/' element={<MainPage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn} products={products}/>}/>
             <Route path='/event' element={<CurrentEventPage name={name}/>}/>
             <Route path='/products/buy-credit' element={<BuyCreditsPage setModalActive={setModalActive} loggedIn={loggedIn} handleClick={handleClick}/>}/>
-            <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
-            <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
+            <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn} products={products}/>}/>
+            <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn} products={products}/>}/>
             <Route path='/products' element={<CategoriesPage/>}/>
             <Route path='/products/:id' element={<CategoriesDetailsPage/>}/>
             <Route path='/product-details/:id' element={<ProductDetailsPage isActive={isActive} toggleClass={toggleClass}/>}/>
             <Route path='/cart' element={<CartPage list={list} setList={setList} handleClick={handleClick} />}/>
             <Route path='/profile' element={<ProfilePage name={name} user={user} setName={setName} isActive={isActive} toggleClass={toggleClass}/>}/>
-            <Route path='/events/archive' element={<ArchivePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn}/>}/>
+            <Route path='/events/archive' element={<ArchivePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn} products={products}/>}/>
             <Route path='/my-turns' element={<MyTurnsPage/>}/>
             <Route path='/events/winners' element={<WinnersPage/>}/>
             <Route path='/description' element={<DescriptionPage/>}/>

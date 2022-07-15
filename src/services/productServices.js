@@ -8,10 +8,10 @@ class ProductDataService {
         return getDocs(productCollectionRef)
     }
 
-    getProduct = (id) => {
-        const productDoc = doc(db, 'products', id)
-        return getDocs(productDoc)
-    }
+    // getProduct = (id) => {
+    //     const productDoc = doc(db, 'products', id)
+    //     return getDocs(productDoc)
+    // }
 }
 
 export default new ProductDataService()

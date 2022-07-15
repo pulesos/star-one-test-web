@@ -1,6 +1,7 @@
 import {useContext, createContext, useEffect, useState} from 'react'
 import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, RecaptchaVerifier, signInWithPhoneNumber} from 'firebase/auth'
-import { auth } from '../firebase'
+import { setDoc, doc } from 'firebase/firestore'
+import { auth, db } from '../firebase'
 import useLocalStorage from 'use-local-storage'
 
 const AuthContext = createContext()
@@ -28,7 +29,10 @@ export const AuthContextProvider = ({children}) => {
     }
 
     const createUser = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password)
+        setDoc(doc(db, 'users', email), {
+            savedProducts: []
+        })
     }
 
     const signInEmail = (email, password) => {

@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import ProductDataService from '../../../services/productServices'
 
 
-const HotPriceCard = ({setModalActive, handleClick, loggedIn}) => {
+const HotPriceCard = ({setModalActive, handleClick, loggedIn, products}) => {
     let settings = {
         dots: true,
         infinite: true,
@@ -52,16 +52,16 @@ const HotPriceCard = ({setModalActive, handleClick, loggedIn}) => {
 
 
 
-      const [products, setProducts] = useState([])
+    //   const [products, setProducts] = useState([])
 
-      useEffect(() => {
-        getProducts()
-      }, [])
+    //   useEffect(() => {
+    //     getProducts()
+    //   }, [])
     
-      const getProducts = async() => {
-        const data = await ProductDataService.getAllProducts()
-        setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    }
+    //   const getProducts = async() => {
+    //     const data = await ProductDataService.getAllProducts()
+    //     setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    // }
     
 
 
