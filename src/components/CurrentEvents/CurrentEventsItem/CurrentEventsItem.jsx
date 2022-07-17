@@ -4,24 +4,27 @@ import {v4} from 'uuid'
 import './CurrentEventsItem.scss'
 
 const CurrentEventsItem = () => {
-    const [timeLeft, setTimeLeft] = useLocalStorage('timer',  5 * 60)
-
-    const getPadTime = (time) => time.toString().padStart(2, '0')
-
-    const minutes = getPadTime(Math.floor(timeLeft / 60))
-    const seconds = getPadTime(timeLeft - minutes * 60)
+    const initalValueForTime = 5;
+    const [timeLeft, setTimeLeft] = useLocalStorage("timer", initalValueForTime);
+  
+    const getPadTime = (time) => time.toString().padStart(2, "0");
+  
+    const minutes = getPadTime(Math.floor(timeLeft / 60));
+    const seconds = getPadTime(timeLeft - minutes * 60);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : setDisabled() ||  5 * 60))
-        }, 1000)
-        return () => clearInterval(interval) 
-    }, [])
+          setTimeLeft((timeLeft) =>
+            timeLeft >= 1 ? timeLeft - 1 : setDisabled() || initalValueForTime
+          );
+        }, 1000);
+        return () => clearInterval(interval);
+      }, []);
     
-    const getRandomElements = (array, count) => {
+      const getRandomElements = (array, count) => {
         const shuffled = array.sort(() => 0.5 - Math.random());
         return shuffled.slice(0, count);
-    };
+      };
 
     const [appState, changeState] = useLocalStorage('CurrentEventsItem', {
         objects: [
@@ -39,12 +42,27 @@ const CurrentEventsItem = () => {
 
     useEffect(() => {
         if (timeLeft === 0) {
-            const elements = getRandomElements(appState.objects, 3);
-            setSelectedItems(elements);
+          const elements = getRandomElements(appState.objects, 3);
+          setSelectedItems(elements);
         }
-    }, [timeLeft, appState.objects]);
+      }, [timeLeft, appState.objects]);
 
-
+    const toggleActiveStyles = (index) => {
+        if (appState.objects[index].statusItem) {
+          return "current__events__hot-price disabled";
+        } else {
+          return "current__events__hot-price";
+        }
+      };
+    
+      const toggleActiveStylesBtns = (index) => {
+        if (appState.objects[index].statusItem) {
+          return "current__events__btn-green disabled";
+        } else {
+          return "current__events__btn-green";
+        }
+      };
+    
     const toggleActive = (item) => {
         let arrayCopy = [...appState.objects];
         const toggledElement = arrayCopy.find((o) => o.id === item.id);
@@ -54,30 +72,13 @@ const CurrentEventsItem = () => {
         }
     };
 
-
-    const toggleActiveStyles = (index) => {
-        if (appState.objects[index].statusItem) {
-          return 'current__events__hot-price disabled'
-        } else {
-          return 'current__events__hot-price'
-        }
-    }
-    
-    const toggleActiveStylesBtns = (index) => {
-        if (appState.objects[index].statusItem) {
-            return 'current__events__btn-green disabled'
-        } else {
-            return 'current__events__btn-green'
-        }
-    }
-
     const setDisabled = () => {
-        appState.objects.forEach((item, index) => {
-            if (item.statusItem) {
-                toggleActive(index);
-            }
+        appState.objects.forEach((item) => {
+          if (item.statusItem) {
+            toggleActive(item);
+          }
         });
-    }
+    };
 
     return (
         <>
@@ -100,7 +101,7 @@ const CurrentEventsItem = () => {
                         <span>{seconds}</span>
                     </div>
 
-                    <button className={toggleActiveStylesBtns(index)} onClick={() => toggleActive(index)} disabled={item.statusItem}>СДЕЛАТЬ ХОД</button> 
+                    <button className={toggleActiveStylesBtns(index)} onClick={() => toggleActive(item)} disabled={item.statusItem}>СДЕЛАТЬ ХОД</button> 
                 </div> 
             )}
 
