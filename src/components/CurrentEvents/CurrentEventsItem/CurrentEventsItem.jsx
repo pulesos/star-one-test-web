@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import useLocalStorage from 'use-local-storage';
 import {v4} from 'uuid'
 import './CurrentEventsItem.scss'
+import ProductDataService from '../../../services/productServices'
 
 const CurrentEventsItem = () => {
-    const initalValueForTime = 5;
-    const [timeLeft, setTimeLeft] = useLocalStorage("timer", initalValueForTime);
+    const [timeLeft, setTimeLeft] = useLocalStorage("timer", 5 * 60);
   
     const getPadTime = (time) => time.toString().padStart(2, "0");
   
@@ -15,7 +15,7 @@ const CurrentEventsItem = () => {
     useEffect(() => {
         const interval = setInterval(() => {
           setTimeLeft((timeLeft) =>
-            timeLeft >= 1 ? timeLeft - 1 : setDisabled() || initalValueForTime
+            timeLeft >= 1 ? timeLeft - 1 : setDisabled() || 5 * 60
           );
         }, 1000);
         return () => clearInterval(interval);
@@ -35,6 +35,15 @@ const CurrentEventsItem = () => {
             {id: v4(), title: 'Google Nexus Digital Edition', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false}
         ]
     })
+
+    // useEffect(() => {
+    //     getCurrentEvents()
+    //   }, [])
+    
+    //   const getCurrentEvents = async() => {
+    //     const data = await ProductDataService.getAllCurrentEvents()
+    //     changeState.objects(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    //   }
 
     const [selectedItems, setSelectedItems] = useState(() =>
         getRandomElements(appState.objects, 3)
