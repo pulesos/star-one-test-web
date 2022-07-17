@@ -30,6 +30,8 @@ import { AuthContextProvider } from './context/AuthContext';
 import {db} from './firebase'
 import {collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc} from 'firebase/firestore'
 import ProductDataService from './services/productServices'
+import { AppContextProvider } from './context/AppContext';
+import {uid} from 'uid'
 
 
 function App() {
@@ -40,16 +42,16 @@ function App() {
   const [isActive, setActive] = useState(false);
   const [user, setUser] = useState({})
   
-    const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([])
 
-    useEffect(() => {
-      getProducts()
-    }, [])
-  
-    const getProducts = async() => {
-      const data = await ProductDataService.getAllProducts()
-      setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    }
+  useEffect(() => {
+    getProducts()
+  }, [])
+
+  const getProducts = async() => {
+    const data = await ProductDataService.getAllProducts()
+    setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+  }
 
   // const {loginUsers} = useContext(Context)
 
@@ -64,6 +66,7 @@ function App() {
   const handleClick = (item) => {
     if (list.indexOf(item) !== -1) return
     setList([...list, item])
+    console.log(item)
   }
 
   // const handleLoggedOut = () => {
@@ -101,6 +104,7 @@ function App() {
   return (
     <div className="App">
         <AuthContextProvider>
+        <AppContextProvider>
         <Header setModalActive={setModalActive} size={list.length} name={name} loggedIn={loggedIn} user={user} handleLoggedIn={handleLoggedIn}/>
           <Banner/>
           <Routes>
@@ -109,8 +113,8 @@ function App() {
             <Route path='/products/buy-credit' element={<BuyCreditsPage setModalActive={setModalActive} loggedIn={loggedIn} handleClick={handleClick}/>}/>
             <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn} products={products}/>}/>
             <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn} products={products}/>}/>
-            <Route path='/products' element={<CategoriesPage/>}/>
-            <Route path='/products/:id' element={<CategoriesDetailsPage/>}/>
+            <Route path='/products' element={<CategoriesPage products={products} setProducts={setProducts}/>}/>
+            <Route path='/products/:id' element={<CategoriesDetailsPage products={products} setProducts={setProducts} user={user} handleClick={handleClick} setModalActive={setModalActive}/>}/>
             <Route path='/product-details/:id' element={<ProductDetailsPage isActive={isActive} toggleClass={toggleClass}/>}/>
             <Route path='/cart' element={<CartPage list={list} setList={setList} handleClick={handleClick} />}/>
             <Route path='/profile' element={<ProfilePage name={name} user={user} setName={setName} isActive={isActive} toggleClass={toggleClass}/>}/>
@@ -123,6 +127,7 @@ function App() {
           <Modal modalActive={modalActive} setModalActive={setModalActive} user={user} setUser={setUser}  setLoggedIn={setLoggedIn}/>
           <Banner/>
           <Footer/>
+        </AppContextProvider>
         </AuthContextProvider>
 
         

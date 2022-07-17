@@ -6,7 +6,7 @@ const CartItem = ({product, deleteProduct}) => {
 
     return (
         <div className="cart__item__wrapper">
-            <div className="cart__info">
+            <div className="cart__info" key={product.id}>
             {/* <input type="checkbox" className='cart__checkbox'/> */}
             <img src={product.image} alt='product' className='cart__image' width='100' height='100'/>
                 <div className="cart__info-block">

@@ -27,6 +27,7 @@
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "sms_ru": "0.0.1",
+    "uid": "^2.0.0",
     "use-local-storage": "^2.3.6",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"

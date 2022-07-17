@@ -10,26 +10,28 @@ import notebook from '../../assets/images/notebook.svg'
 import computer from '../../assets/images/computer.svg'
 import headphones from '../../assets/images/headphones.svg'
 import './CategoriesPage.scss'
-import { useContext } from 'react'
+import { useContext, useEffect, useMemo } from 'react'
 import { Context } from '../../index'
+import ProductDataService from '../../services/productServices'
+import useAppContext from '../../context/AppContext'
 
-const CategoriesPage = () => {
+
+const CategoriesPage = ({setProducts}) => {
     // const {product} = useContext(Context)
-    const categories = [
-        {id: 1,imageSrc: tablets, title: 'Планшеты'},
-        {id: 2,imageSrc: computer, title: 'Компьютеры'},
-        {id: 3,imageSrc: playstation5, title: 'Консоли'},
-        {id: 4,imageSrc: camera, title: 'Фото и видео'},
-        {id: 5,imageSrc: coffeemaschine, title: 'Техника'},
-        {id: 6,imageSrc: steamcards, title: 'Игровой контент'},
-        {id: 7,imageSrc: notebook, title: 'Ноутбуки'},
-        {id: 8,imageSrc: smartphones, title: 'Смартфоны'},
-        {id: 9,imageSrc: headphones, title: 'Наушники'},
-        {id: 10,imageSrc: steamcards, title: 'Steam'},
-        // {id: 11,imageSrc:steamcards, title: 'Стиральные машины'},
-        // {id: 12,imageSrc: coffeemaschine, title: 'One stars'},
-        // {id: 13,imageSrc:headphones, title: 'Холодильники'},
-    ]
+    const { categories, products } = useAppContext();
+
+
+
+
+    //   useEffect(() => {
+    //     flatMapped()
+    //   }, [])
+    
+    //   const flatMapped = async() => {
+    //     const data = await ProductDataService.getAllProducts((x) => x.products)
+    //     setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    //   }
+
     return (
         <section className='popular__categories'>
             <h3 className="events__title">
@@ -41,6 +43,13 @@ const CategoriesPage = () => {
                     <Link to={`${category.id}`} className="categories__content" key={category.id}>
                         <h2 className="categories__title">{category.title}</h2>
                         <img className="categories__img" alt={category.title} src={category.imageSrc} />
+                        {/* <ul>
+                            {products
+                                .filter((p) => p.category === category.title)
+                                .map((p) => (
+                                <li key={p.id}>{p.name}</li>
+                            ))}
+                        </ul> */}
                     </Link>
                 ))}
             </div>
