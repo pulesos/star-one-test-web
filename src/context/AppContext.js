@@ -9,7 +9,6 @@ import notebook from '../assets/images/notebook.svg'
 import computer from '../assets/images/computer.svg'
 import headphones from '../assets/images/headphones.svg'
 import ProductDataService from '../services/productServices'
-import { uid } from "uid";
 
 
 const StateContext = createContext(null);

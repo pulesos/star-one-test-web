@@ -31,18 +31,20 @@ import {db} from './firebase'
 import {collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc} from 'firebase/firestore'
 import ProductDataService from './services/productServices'
 import { AppContextProvider } from './context/AppContext';
-import {uid} from 'uid'
+import { v4 } from 'uuid';
 
 
 function App() {
   const [modalActive, setModalActive] = useState(false)
   const [name, setName] = useLocalStorage('name')
   const [loggedIn, setLoggedIn] = useState(false)
-  const [list, setList] = useLocalStorage('data', [])
+  const [list, setList] = useLocalStorage('data', {id: v4(), name: '', image: '', priceTotal: '', category: ''})
   const [isActive, setActive] = useState(false);
   const [user, setUser] = useState({})
   
   const [products, setProducts] = useState([])
+
+  // const {user} = UserAuth()
 
   useEffect(() => {
     getProducts()
@@ -50,7 +52,7 @@ function App() {
 
   const getProducts = async() => {
     const data = await ProductDataService.getAllProducts()
-    setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    setProducts(data.docs.map((doc) => ({...doc.data(), id: v4()})))
   }
 
   // const {loginUsers} = useContext(Context)
@@ -63,11 +65,21 @@ function App() {
   // }, [])
 
 
-  const handleClick = (item) => {
+  const handleClick = async(item) => {
     if (list.indexOf(item) !== -1) return
+    item.id = v4() // generate new ID here
+    await addDoc(collection(db, 'list'), {
+      id: item.id,
+      image: item.image,
+      name: item.name,
+      priceTotal: item.priceTotal,
+      category: item.category
+    })
     setList([...list, item])
     console.log(item)
   }
+
+
 
   // const handleLoggedOut = () => {
   //   setLoggedIn(false)

@@ -25,8 +25,8 @@ const CartPage = ({list, setList}) => {
         setList((list) => list.filter((product) => id !== product.id))
     }
 
-    const products = list.map((product, idx) => {
-        return <CartItem product={product} key={idx} deleteProduct={deleteProduct}/>
+    const products = list.map((product) => {
+        return <CartItem product={product} key={product.id} deleteProduct={deleteProduct}/>
     })
 
     return (
