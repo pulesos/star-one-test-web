@@ -38,7 +38,7 @@ function App() {
   const [modalActive, setModalActive] = useState(false)
   const [name, setName] = useLocalStorage('name')
   const [loggedIn, setLoggedIn] = useState(false)
-  const [list, setList] = useLocalStorage('data', {id: v4(), name: '', image: '', priceTotal: '', category: ''})
+  const [list, setList] = useLocalStorage('data', [])
   const [isActive, setActive] = useState(false);
   const [user, setUser] = useState({})
   
@@ -66,17 +66,16 @@ function App() {
 
 
   const handleClick = async(item) => {
-    if (list.indexOf(item) !== -1) return
-    item.id = v4() // generate new ID here
-    await addDoc(collection(db, 'list'), {
-      id: item.id,
-      image: item.image,
-      name: item.name,
-      priceTotal: item.priceTotal,
-      category: item.category
+    const newItem = { ...item, id: v4() }
+    await addDoc(collection(db, 'cart_products'), {
+      id: newItem.id,
+      image: newItem.image,
+      name: newItem.name,
+      priceTotal: newItem.priceTotal,
+      category: newItem.category
     })
-    setList([...list, item])
-    console.log(item)
+    setList([...list, newItem])
+    console.log(newItem)
   }
 
 

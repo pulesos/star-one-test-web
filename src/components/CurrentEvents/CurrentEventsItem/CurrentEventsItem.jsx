@@ -26,38 +26,30 @@ const CurrentEventsItem = () => {
         return shuffled.slice(0, count);
       };
 
-    const [appState, changeState] = useLocalStorage('CurrentEventsItem', {
-        objects: [
-            {id: v4(), title: 'Apple iPhone 13 Pro Max 256Gb (небесно-голубой)', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
-            {id: v4(), title: '500 Stars', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
-            {id: v4(), title: 'Sony PlayStation 5 Digital Edition', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
-            {id: v4(), title: 'XBOX 360 Digital Edition', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
-            {id: v4(), title: 'Google Nexus Digital Edition', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false}
-        ]
-    })
+    const [appState, changeState] = useLocalStorage('CurrentEventsItem', [])
 
-    // useEffect(() => {
-    //     getCurrentEvents()
-    //   }, [])
+    useEffect(() => {
+        getCurrentEvents()
+      }, [])
     
-    //   const getCurrentEvents = async() => {
-    //     const data = await ProductDataService.getAllCurrentEvents()
-    //     changeState.objects(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    //   }
+      const getCurrentEvents = async() => {
+        const data = await ProductDataService.getAllCurrentEvents()
+        changeState(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+      }
 
     const [selectedItems, setSelectedItems] = useState(() =>
-        getRandomElements(appState.objects, 3)
+        getRandomElements(appState, 3)
     );
 
     useEffect(() => {
         if (timeLeft === 0) {
-          const elements = getRandomElements(appState.objects, 3);
+          const elements = getRandomElements(appState, 3);
           setSelectedItems(elements);
         }
       }, [timeLeft, appState.objects]);
 
     const toggleActiveStyles = (index) => {
-        if (appState.objects[index].statusItem) {
+        if (appState[index].statusItem) {
           return "current__events__hot-price disabled";
         } else {
           return "current__events__hot-price";
@@ -65,7 +57,7 @@ const CurrentEventsItem = () => {
       };
     
       const toggleActiveStylesBtns = (index) => {
-        if (appState.objects[index].statusItem) {
+        if (appState[index].statusItem) {
           return "current__events__btn-green disabled";
         } else {
           return "current__events__btn-green";
@@ -73,16 +65,16 @@ const CurrentEventsItem = () => {
       };
     
     const toggleActive = (item) => {
-        let arrayCopy = [...appState.objects];
+        let arrayCopy = [...appState];
         const toggledElement = arrayCopy.find((o) => o.id === item.id);
         if (toggledElement) {
           toggledElement.statusItem = !toggledElement.statusItem;
-          changeState({ ...appState, objects: arrayCopy });
+          changeState( [...appState, ...arrayCopy ]);
         }
     };
 
     const setDisabled = () => {
-        appState.objects.forEach((item) => {
+        appState.forEach((item) => {
           if (item.statusItem) {
             toggleActive(item);
           }
