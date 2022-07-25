@@ -12,7 +12,7 @@ import ProductDataService from '../../services/productServices'
 import { doc, onSnapshot } from 'firebase/firestore'
 import {db} from '../../firebase'
 
-const ProductDetailsItem = ({isActive, toggleClass}) => {
+const ProductDetailsItem = ({isActive, toggleClass, product}) => {
     // const product = {id: v4(), priceTotal: 252, image: sony, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150}
     const description = [
         {id: 1, title: 'Оперативная память', description: '5 гб'},
@@ -22,15 +22,7 @@ const ProductDetailsItem = ({isActive, toggleClass}) => {
         {id: 5, title: 'Аккумулятор', description: '4000'},
     ]
 
-    const [product, setProduct] = useState([])
-    const {id} = useParams()
 
-    useEffect(() => {
-        const docRef = doc(db, 'products', id)
-        onSnapshot(docRef, (snapshot) => {
-            setProduct({...snapshot.data(), id: snapshot.id})
-        })
-      }, [])
     
 
 

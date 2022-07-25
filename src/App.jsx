@@ -53,7 +53,7 @@ function App() {
 
   const getProducts = async() => {
     const data = await ProductDataService.getAllProducts()
-    setProducts(data.docs.map((doc) => ({...doc.data(), id: v4()})))
+    setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
   }
 
   // const {loginUsers} = useContext(Context)
