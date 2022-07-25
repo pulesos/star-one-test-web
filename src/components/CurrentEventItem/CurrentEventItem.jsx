@@ -1,9 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {v4} from 'uuid'
 import sony from '../../assets/images/sony.png'
 import starDark from '../../assets/images/star-dark.svg'
 import moneyDark from '../../assets/images/money-dark.svg'
 import './CurrentEventItem.scss'
+import { db } from '../../firebase'
+import { doc, onSnapshot } from 'firebase/firestore'
+import {useParams} from 'react-router-dom'
 
 const CurrentEventItem = ({name, disabled, setDisabled, timeLeft}) => {
     const currentTime = null;
@@ -25,16 +28,27 @@ const CurrentEventItem = ({name, disabled, setDisabled, timeLeft}) => {
         setDate(time);
     };
 
+    const [currentEvent, setCurrentEvent] = useState([])
+    const {id} = useParams()
+
+    useEffect(() => {
+        const docRef = doc(db, 'current_events', id)
+        onSnapshot(docRef, (snapshot) => {
+            setCurrentEvent({...snapshot.data(), id: snapshot.id})
+        })
+      }, [])
+    
+
     return (
         <div className="current__event__item__wrapper">
                 <div className="current__event__item__data">
                     <div className="current__event__item__image">
-                        <img src={sony} alt='phone' width='150' height='150'/>
+                        <img src={currentEvent.image} alt='phone' width='150' height='150'/>
                     </div>
                     <div className="current__event__item__title">
-                        <h5>CATEGORY (MOBILE)</h5>
-                        <h2>NAME</h2>
-                        <h5>PRICE</h5>
+                        <h5>{currentEvent.category}</h5>
+                        <h2>{currentEvent.title}</h2>
+                        <h5>{currentEvent.oldPrice} $</h5>
                     </div>
                     <div className="profile__balance event" href='#'>
                         <div className="profile__balance event__item">
@@ -43,7 +57,7 @@ const CurrentEventItem = ({name, disabled, setDisabled, timeLeft}) => {
                             <img src={starDark} className='profile__icon' alt="planet"/>
                         </div>
                         
-                    <div className="hotprice__btn"><span>291 $</span></div>
+                    <div className="hotprice__btn"><span>{currentEvent.priceTotal} $</span></div>
                 </div>
                 <button className='current__events__btn-green big' onClick={viewDiv}>СДЕЛАТЬ ХОД</button>
 

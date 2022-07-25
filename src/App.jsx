@@ -32,6 +32,7 @@ import {collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc} from 'fi
 import ProductDataService from './services/productServices'
 import { AppContextProvider } from './context/AppContext';
 import { v4 } from 'uuid';
+import CurrentEventItem from './components/CurrentEventItem/CurrentEventItem';
 
 
 function App() {
@@ -121,6 +122,7 @@ function App() {
           <Routes>
             <Route path='/' element={<MainPage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn} products={products}/>}/>
             <Route path='/event' element={<CurrentEventPage name={name}/>}/>
+            <Route path='/event/:id' element={<CurrentEventItem name={name}/>}/>
             <Route path='/products/buy-credit' element={<BuyCreditsPage setModalActive={setModalActive} loggedIn={loggedIn} handleClick={handleClick}/>}/>
             <Route path='/hotprice' element={<HotPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn} products={products}/>}/>
             <Route path='/topprice' element={<TopPricePage setModalActive={setModalActive} handleClick={handleClick} loggedIn={loggedIn} products={products}/>}/>

@@ -3,113 +3,102 @@ import useLocalStorage from 'use-local-storage';
 import {v4} from 'uuid'
 import './CurrentEventsItem.scss'
 import ProductDataService from '../../../services/productServices'
+import {Link} from 'react-router-dom'
 
-const CurrentEventsItem = () => {
-    const [timeLeft, setTimeLeft] = useLocalStorage("timer", 5 * 60);
-  
-    const getPadTime = (time) => time.toString().padStart(2, "0");
-  
-    const minutes = getPadTime(Math.floor(timeLeft / 60));
-    const seconds = getPadTime(timeLeft - minutes * 60);
+const getRandomElements = (array, count) => {
+  const shuffled = array.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+};
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-          setTimeLeft((timeLeft) =>
-            timeLeft >= 1 ? timeLeft - 1 : setDisabled() || 5 * 60
-          );
-        }, 1000);
-        return () => clearInterval(interval);
-      }, []);
-    
-      const getRandomElements = (array, count) => {
-        const shuffled = array.sort(() => 0.5 - Math.random());
-        return shuffled.slice(0, count);
-      };
+const getPadTime = (time) => time.toString().padStart(2, "0");
 
-    const [appState, changeState] = useLocalStorage('CurrentEventsItem', [])
+const CurrentEventsItem = ({items}) => {
+  const [timeLeft, setTimeLeft] = useState( 5 * 60 );
+  const [appState, changeState] = useState( items);
+  const [selectedItems, setSelectedItems] = useState(() => getRandomElements(appState, 4));
 
-    useEffect(() => {
-        getCurrentEvents()
-      }, [])
-    
-      const getCurrentEvents = async() => {
-        const data = await ProductDataService.getAllCurrentEvents()
-        changeState(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-      }
+  const minutes = getPadTime(Math.floor(timeLeft / 60));
+  const seconds = getPadTime(timeLeft - minutes * 60);
 
-    const [selectedItems, setSelectedItems] = useState(() =>
-        getRandomElements(appState, 3)
-    );
+  useEffect(() => {
+    changeState(items);
+    setSelectedItems(getRandomElements(items, 3));
+  }, [items])
 
-    useEffect(() => {
-        if (timeLeft === 0) {
-          const elements = getRandomElements(appState, 3);
-          setSelectedItems(elements);
-        }
-      }, [timeLeft, appState.objects]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft((timeLeft) => {
+        if (timeLeft > 0) return timeLeft - 1;
 
-    const toggleActiveStyles = (index) => {
-        if (appState[index].statusItem) {
-          return "current__events__hot-price disabled";
-        } else {
-          return "current__events__hot-price";
-        }
-      };
-    
-      const toggleActiveStylesBtns = (index) => {
-        if (appState[index].statusItem) {
-          return "current__events__btn-green disabled";
-        } else {
-          return "current__events__btn-green";
-        }
-      };
-    
-    const toggleActive = (item) => {
-        let arrayCopy = [...appState];
-        const toggledElement = arrayCopy.find((o) => o.id === item.id);
-        if (toggledElement) {
-          toggledElement.statusItem = !toggledElement.statusItem;
-          changeState( [...appState, ...arrayCopy ]);
-        }
-    };
+        enableAll();
+        setSelectedItems(getRandomElements(appState, 3));
 
-    const setDisabled = () => {
-        appState.forEach((item) => {
-          if (item.statusItem) {
-            toggleActive(item);
-          }
-        });
-    };
+        return 5 * 60;
+      });
+    }, 1000);
 
-    return (
-        <>
-        <div className='current__events__wrapper'>
-            {selectedItems.map((item, index) => 
-                <div className="current__events__hot-price__item" key={index}>
-                    <div className={toggleActiveStyles(index)}>
-                        <h5 className="current__events__card-title__large">Hot Price</h5>
-                    </div>
-                    <div className="current__events__image">
-                        <img src={item.avatar} alt='user' className="rounded-circle" width='75' height='75'/>
-                    </div>
-                    <div className="current__events__info">
-                        <h4 className="current__events__title__middle">{item.title}</h4>
-                    </div>
-                    
-                    <div className="current__events__timer">
-                        <span>{minutes}</span>
-                        <span>:</span>
-                        <span>{seconds}</span>
-                    </div>
+    return () => clearInterval(interval);
+  }, [appState]);
 
-                    <button className={toggleActiveStylesBtns(index)} onClick={() => toggleActive(item)} disabled={item.statusItem}>СДЕЛАТЬ ХОД</button> 
-                </div> 
-            )}
+  const toggleActiveStyles = (index) => `current__events__hot-price${
+    appState[index].statusItem ? ' disabled' : ''
+  }`;
 
-            
+  const toggleActiveStylesBtns = (index) => `current__events__btn-green${
+    appState[index].statusItem ? ' disabled' : ''
+  }`;
+
+  const toggleActive = (item, activate = true) => {
+    item.statusItem = activate;
+  };
+
+  const handleClick = (item) => {
+    toggleActive(item);
+    setSelectedItems([...selectedItems]);
+  }
+
+  const enableAll = () => {
+    selectedItems.forEach(item => toggleActive(item, false));
+    setSelectedItems([...selectedItems]);
+  }
+
+  return (
+    <div className="current__events__wrapper">
+        {selectedItems.map((item, index) => (
+          <div className="current__events__hot-price__item" key={index}>
+            <div className={toggleActiveStyles(index)}>
+              <h5 className="current__events__card-title__large">Hot Price</h5>
             </div>
-        </>
-    )
-}
+            <div className="current__events__image">
+              <img
+                src={item.avatar}
+                alt="user"
+                className="rounded-circle"
+                width="75"
+                height="75"
+              />
+            </div>
+            <div className="current__events__info">
+              <Link to={`/event/${item.id}`} className="current__events__title__middle">{item.title}</Link>
+            </div>
 
-export default CurrentEventsItem
+            <div className="current__events__timer">
+              <span>{minutes}</span>
+              <span>:</span>
+              <span>{seconds}</span>
+            </div>
+
+            <button
+              className={toggleActiveStylesBtns(index)}
+              onClick={() => handleClick(item)}
+              disabled={item.statusItem}
+            >
+              СДЕЛАТЬ ХОД
+            </button>
+          </div>
+        ))}
+      </div>
+  );
+};
+
+export default CurrentEventsItem;
