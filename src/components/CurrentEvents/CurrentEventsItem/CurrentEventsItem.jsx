@@ -13,7 +13,7 @@ const getRandomElements = (array, count) => {
 const getPadTime = (time) => time.toString().padStart(2, "0");
 
 const CurrentEventsItem = ({items}) => {
-  const [timeLeft, setTimeLeft] = useState( 5 * 60 );
+  const [timeLeft, setTimeLeft] = useState( 5  );
   const [appState, changeState] = useState( items);
   const [selectedItems, setSelectedItems] = useState(() => getRandomElements(appState, 4));
 
@@ -33,7 +33,7 @@ const CurrentEventsItem = ({items}) => {
         enableAll();
         setSelectedItems(getRandomElements(appState, 3));
 
-        return 5 * 60;
+        return 5 ;
       });
     }, 1000);
 
