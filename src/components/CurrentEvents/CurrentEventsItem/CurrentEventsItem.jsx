@@ -5,21 +5,28 @@ import './CurrentEventsItem.scss'
 import ProductDataService from '../../../services/productServices'
 import {Link} from 'react-router-dom'
 
-const getRandomElements = (array, count) => {
-  const shuffled = array.sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, count);
-};
 
-const getPadTime = (time) => time.toString().padStart(2, "0");
 
 const CurrentEventsItem = ({items}) => {
+  const getPadTime = (time) => time.toString().padStart(2, "0");
+
+  const getRandomElements = (array, count) => {
+    const shuffled = array.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  };
+  
   const [timeLeft, setTimeLeft] = useState( 5  );
   const [appState, changeState] = useState( items);
   const [selectedItems, setSelectedItems] = useState(() => getRandomElements(appState, 4));
 
+
+
   const minutes = getPadTime(Math.floor(timeLeft / 60));
   const seconds = getPadTime(timeLeft - minutes * 60);
 
+
+
+  
   useEffect(() => {
     changeState(items);
     setSelectedItems(getRandomElements(items, 3));

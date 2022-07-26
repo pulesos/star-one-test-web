@@ -7,9 +7,10 @@ import ProductDataService from '../../services/productServices'
 const CurrentEvents = () => {
     const [items, setItems] = useState([]);
 
-    useEffect(() => async () => 
-        await getCurrentEvents(), 
-    []);
+    useEffect(() => {
+        getCurrentEvents()
+    }, [])
+
   
   const getCurrentEvents = async () => {
     const data = await ProductDataService.getAllCurrentEvents();
