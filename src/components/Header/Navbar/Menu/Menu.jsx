@@ -30,7 +30,6 @@ const Menu = ({publicItems, privateItems, active, setActive, handleGoogleSignOut
                             {/* <div className='signIn' onClick={handleLoggedIn}>Войти</div> */}
                         </ul>
                 }
-                <Link to='/event'>EVENT</Link>
             </div>
         </div>
     )

@@ -15,6 +15,8 @@ import computer from '../../../assets/images/computer.svg'
 import headphones from '../../../assets/images/headphones.svg'
 
 import { useRef } from "react";
+import useAppContext from "../../../context/AppContext";
+import { Link } from "react-router-dom";
 
 
 const SliderItem = (props) => {
@@ -58,47 +60,8 @@ const SliderItem = (props) => {
     ]
   };
 
-  const items = [
-    {
-      imageSrc:tablets, title: 'Планшеты'
-    },
-    {
-      imageSrc: computer, title: 'Компьютеры'
-    },
-    {
-      imageSrc: playstation5, title: 'Консоли'
-    },
-    {
-      imageSrc: camera, title: 'Фото и видео'
-    },
-    {
-      imageSrc: coffeemaschine, title: 'Техника'
-    },
-    {
-      imageSrc: steamcards, title: 'Игровой контент'
-    },
-    {
-      imageSrc: notebook, title: 'Ноутбуки'
-    },
-    {
-      imageSrc: smartphones, title: 'Смартфоны'
-    },
-    {
-      imageSrc: headphones, title: 'Наушники'
-    },
-    {
-      imageSrc: steamcards, title: 'Steam'
-    },
-    // {
-    //   imageSrc:steamcards, title: 'Стиральные машины'
-    // },
-    // {
-    //   imageSrc: coffeemaschine, title: 'Кофемашины'
-    // },
-    // {
-    //   imageSrc:headphones, title: 'Холодильники'
-    // },
-  ]
+  const { categories, products } = useAppContext();
+
     return (
       <div className='slider'>
         <div className="arrows">
@@ -106,11 +69,11 @@ const SliderItem = (props) => {
         <button className="nextArrow" onClick={() => slider?.current?.slickNext()}><img src={next} alt='next'/></button>
         </div>
         <Slider ref={slider} {...settings}>
-          {items.map((item, index) => (
-            <a className="slider__content" href='#' key={index}>
-              <h2 className="slider__title">{item.title}</h2>
-              <img className="slider__img" alt={item.title} src={item.imageSrc} />
-            </a>
+          {categories.map((category, index) => (
+            <Link to={`products/${category.id}`} className="slider__content" key={index}>
+              <h2 className="slider__title">{category.title}</h2>
+              <img className="slider__img" alt={category.title} src={category.imageSrc} />
+            </Link>
           ))}
         </Slider>
       </div>

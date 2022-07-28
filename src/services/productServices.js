@@ -3,6 +3,8 @@ import {collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc} from 'fi
 
 const productCollectionRef = collection(db, 'products')
 const currentEventsRef = collection(db, 'current_events')
+const coinsRef = collection(db, 'coins')
+
 class ProductDataService {
     getAllProducts = () => {
         return getDocs(productCollectionRef)
@@ -10,6 +12,10 @@ class ProductDataService {
     getAllCurrentEvents = () => {
         return getDocs(currentEventsRef)
     }
+    getCoins = () => {
+        return getDocs(coinsRef)
+    }
+
 
     // getProduct = (id) => {
     //     const productDoc = doc(db, 'products', id)

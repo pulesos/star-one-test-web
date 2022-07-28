@@ -21,13 +21,10 @@ export function AppContextProvider(props) {
         {id: 1,imageSrc: playstation5, title: 'Консоли'},
         {id: 2,imageSrc: headphones, title: 'Наушники'},
         {id: 3,imageSrc: smartphones, title: 'Смартфоны'},
-        {id: 4,imageSrc: steamcards, title: 'Steam'},
+        {id: 4,imageSrc: steamcards, title: 'Игровой контент'},
         {id: 5,imageSrc: coffeemaschine, title: 'Техника'},
-        {id: 6,imageSrc: steamcards, title: 'Игровой контент'},
-        {id: 7,imageSrc: notebook, title: 'Ноутбуки'},
-        {id: 8,imageSrc: smartphones, title: 'Смартфоны'},
-        {id: 9,imageSrc: headphones, title: 'Наушники'},
-        {id: 10,imageSrc: camera, title: 'Фото и видео'},
+        {id: 6,imageSrc: notebook, title: 'Ноутбуки'},
+        {id: 7,imageSrc: camera, title: 'Фото и видео'},
         // {id: 11,imageSrc:steamcards, title: 'Стиральные машины'},
         // {id: 12,imageSrc: coffeemaschine, title: 'One stars'},
         // {id: 13,imageSrc:headphones, title: 'Холодильники'},
@@ -42,7 +39,7 @@ export function AppContextProvider(props) {
       const data = await ProductDataService.getAllProducts((x) => x.products)
       setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     }
-
+ 
   const contextValue = useMemo(() => {
     return {
       products: products,

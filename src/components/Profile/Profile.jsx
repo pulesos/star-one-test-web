@@ -4,13 +4,16 @@ import starDark from '../../assets/images/star-dark.svg'
 import moneyDark from '../../assets/images/money-dark.svg'
 import './Profile.scss'
 import { useState } from 'react'
+import { UserAuth } from '../../context/AuthContext';
 
-const Profile = ({changeProfile, name, setName, user}) => {
+const Profile = ({changeProfile, name, setName}) => {
     const [instagram, setInstagram] = useLocalStorage('instagram')
     const [email, setEmail] = useLocalStorage('email')
     const [phone, setPhone] = useLocalStorage('phone')
     const [language, setLanguage] = useLocalStorage('language')
     const [valute, setValute] = useLocalStorage('valute')
+
+    const {user} = UserAuth()
 
     return (
         <div className="profile__wrapper">
@@ -36,7 +39,7 @@ const Profile = ({changeProfile, name, setName, user}) => {
                 <div className="profile__data">
                     {changeProfile ?
                         <>
-                        <input type="text" placeholder={user.name} className='form-control' onChange={(e) => setName(e.target.value)}/>
+                        <input type="text" placeholder={user.displayName || user.email || user.phoneNumber} className='form-control' onChange={(e) => setName(e.target.value)}/>
                         <input type="text" placeholder={instagram} className='form-control' onChange={(e) => setInstagram(e.target.value)}/>
                         <input type="text" placeholder={email} className='form-control' onChange={(e) => setEmail(e.target.value)}/>
                         <input type="text" placeholder={phone} className='form-control' onChange={(e) => setPhone(e.target.value)}/>

@@ -21,17 +21,6 @@ const CategoriesPage = ({setProducts}) => {
     const { categories, products } = useAppContext();
 
 
-
-
-    //   useEffect(() => {
-    //     flatMapped()
-    //   }, [])
-    
-    //   const flatMapped = async() => {
-    //     const data = await ProductDataService.getAllProducts((x) => x.products)
-    //     setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    //   }
-
     return (
         <section className='popular__categories'>
             <h3 className="events__title">

@@ -7,11 +7,13 @@ import './CurrentEventItem.scss'
 import { db } from '../../firebase'
 import { doc, onSnapshot } from 'firebase/firestore'
 import {useParams} from 'react-router-dom'
+import { UserAuth } from '../../context/AuthContext'
 
 const CurrentEventItem = ({name, disabled, setDisabled, timeLeft}) => {
     const currentTime = null;
     const [ctime, setDate] = useState(currentTime);
     
+    const {user} = UserAuth()
 
     const objects = [
         {id: v4(), title: 'Apple iPhone 13 Pro Max 256Gb (небесно-голубой)', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', statusItem: false},
@@ -69,7 +71,7 @@ const CurrentEventItem = ({name, disabled, setDisabled, timeLeft}) => {
                             <div className="auction__item__full__content">
                                 <div className="auction__item__image">
                                     <div className="rounded-circle" style={{width: '75px', height: '75px', padding: '21px'}}>ВЫ</div>
-                                    <p className='auction__username'>{name}</p>
+                                    <p className='auction__username'>{user.displayName || user.email || user.phoneNumber}</p>
                                 </div>
                                 
                                 <div className="auction__item__content">
