@@ -28,7 +28,7 @@ import { useEffect } from 'react';
 import { check } from './http/userAPI';
 import { AuthContextProvider } from './context/AuthContext';
 import {db} from './firebase'
-import {collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc} from 'firebase/firestore'
+import {collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc, setDoc} from 'firebase/firestore'
 import ProductDataService from './services/productServices'
 import { AppContextProvider } from './context/AppContext';
 import { v4 } from 'uuid';
@@ -68,7 +68,7 @@ function App() {
 
   const handleClick = async(item) => {
     const newItem = { ...item, id: v4() }
-    await addDoc(collection(db, 'cart_products'), {
+    await setDoc(doc(db, 'cart_products', newItem.id), {
       id: newItem.id,
       image: newItem.image,
       name: newItem.name,

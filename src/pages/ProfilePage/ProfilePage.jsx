@@ -12,6 +12,7 @@ import MyPromotions from '../../components/MyPromotions/MyPromotions'
 const ProfilePage = ({name, setName, isActive, toggleClass, user}) => {
     const [changeProfile, setChangeProfile] = useState(false)
     const [changeDelivery, setChangeDeliver] = useState(false)
+    
 
     return (
         <section className='popular__events profile-page'>

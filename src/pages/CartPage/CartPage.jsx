@@ -7,9 +7,10 @@ import './CartPage.scss'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { v4 } from 'uuid' 
+import { deleteDoc, doc } from 'firebase/firestore'
+import { db } from '../../firebase'
 
 const CartPage = ({list, setList}) => {
-    // const [cart, setCart] = useState(data)
 
     const [total, setTotal] = useState({
         price: list.reduce((prev, curr) => { return prev + curr.priceTotal}, 0)
@@ -21,9 +22,11 @@ const CartPage = ({list, setList}) => {
         })
     }, [list])
 
-    const deleteProduct = (id) => {
+    const deleteProduct = async(id) => {
+        await deleteDoc(doc(db, 'cart_products', id))
         setList((list) => list.filter((product) => id !== product.id))
     }
+
 
     const products = list.map((product) => {
         return <CartItem product={product} key={product.id} deleteProduct={deleteProduct}/>
