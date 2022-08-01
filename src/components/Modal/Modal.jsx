@@ -14,6 +14,8 @@ import { Context } from '../../index'
 import { UserAuth } from '../../context/AuthContext'
 import GoogleButton from 'react-google-button'
 import PhoneInput from 'react-phone-number-input'
+import { db } from '../../firebase'
+import { addDoc, collection } from 'firebase/firestore'
 
 const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleSignOut, handleCallbackResponse}) => {
     // const [user, setUser] = useState({})
@@ -82,6 +84,7 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
         setModalActive(false)
         try {
             await googleSignIn()
+            // handleAdd()
         } catch (error) {
             console.log(error)
         }
@@ -93,6 +96,7 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
         setModalActive(false)
         try {
             await createUser(email, password)
+            // handleAdd()
         } catch(e) {
             setError(e.message)
             console.log(e.message)
@@ -130,6 +134,7 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
         try {
             await confirmObj.confirm(otp)
             setModalActive(false)
+            // handleAdd()
         } catch(err) {
             setError(err.message)
         }
@@ -138,6 +143,14 @@ const Modal = ({modalActive, setModalActive, user, setUser, setLoggedIn, handleS
     const toggleRegisterByPhone = () => {
         setRegisterByPhone(!registerByPhone)
     }
+
+    // const handleAdd = async() => {
+    //     await addDoc(collection(db, 'users'), {
+    //         email: email,
+    //         password: password,
+    //         number: number
+    //     })
+    // }
 
     return (
         <div className={modalActive ? 'modal active' : 'modal'} onClick={() => setModalActive(false)}>

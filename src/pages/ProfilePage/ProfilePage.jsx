@@ -8,11 +8,28 @@ import MyOrders from '../../components/MyOrders/MyOrders'
 import Profile from '../../components/Profile/Profile'
 import DeliveryAddress from '../../components/DeliveryAddress/DeliveryAddress'
 import MyPromotions from '../../components/MyPromotions/MyPromotions'
+import { doc, updateDoc } from 'firebase/firestore'
+import { db } from '../../firebase'
+import { UserAuth } from '../../context/AuthContext'
 
-const ProfilePage = ({name, setName, isActive, toggleClass, user}) => {
+const ProfilePage = ({name, setName, isActive, toggleClass}) => {
     const [changeProfile, setChangeProfile] = useState(false)
     const [changeDelivery, setChangeDeliver] = useState(false)
+
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+
+
+    const {user} = UserAuth()
+
+    const updatePerson = async(email) => {
+        await updateDoc(doc(db, 'users', user.uid), {email, phone})
+    }
     
+    const updatePersonData = async() => {
+        await updatePerson(email)
+        setChangeProfile(false)
+    }
 
     return (
         <section className='popular__events profile-page'>
@@ -34,7 +51,7 @@ const ProfilePage = ({name, setName, isActive, toggleClass, user}) => {
                 <span>Профиль</span>
                 {changeProfile ? 
                     <>
-                    <button className="btn events1 btn-white" onClick={() => setChangeProfile(false)}>Сохранить</button>
+                    <button className="btn events1 btn-white" onClick={updatePersonData}>Сохранить</button>
                     <button className="btn events1 btn-white" onClick={() => setChangeProfile(false)}>Отмена</button>
                     </>
                     :
@@ -42,7 +59,7 @@ const ProfilePage = ({name, setName, isActive, toggleClass, user}) => {
                 }
                 
             </h3>
-            <Profile changeProfile={changeProfile} name={name} user={user} setName={setName}/>
+            <Profile changeProfile={changeProfile} name={name} user={user} setName={setName} email={email} setEmail={setEmail} phone={phone} setPhone={setPhone}/>
             <h3 className="events__title myorders">
                 <img className="mr-2" src={bag} alt="top events" width="28" height="28" />
                 <span>Мои заказы</span>

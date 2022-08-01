@@ -8,6 +8,10 @@ const AuthContext = createContext()
 
 export const AuthContextProvider = ({children}) => {
     const [user, setUser] = useLocalStorage('userLogin', {})
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [phone, setPhone] = useState('')
+
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -22,6 +26,23 @@ export const AuthContextProvider = ({children}) => {
     const googleSignIn = () => {
         const provider = new GoogleAuthProvider()
         signInWithPopup(auth, provider)
+        // .then((userCredential) => {
+        //     // Signed in 
+        //     const user = userCredential.user;
+        //     const uid = user.uid;
+        //     setDoc(doc(db, 'users', uid), {
+        //         // the data you want to store in your document
+        //         email: email,
+        //         password: password,
+        //         phone: phone
+        //     });
+        //     // now the document will have the same ID as the auth user
+        //   })
+        //   .catch((error) => {
+        //     const errorCode = error.code;
+        //     const errorMessage = error.message;
+        //     // ..
+        //   });
     }
 
     const logOut = () => {
@@ -30,6 +51,23 @@ export const AuthContextProvider = ({children}) => {
 
     const createUser = (email, password) => {
         createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            const uid = user.uid;
+            setDoc(doc(db, 'users', uid), {
+                // the data you want to store in your document
+                email: email,
+                password: password,
+                phone: phone
+            });
+            // now the document will have the same ID as the auth user
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+          });
     }
 
     const signInEmail = (email, password) => {
@@ -44,6 +82,23 @@ export const AuthContextProvider = ({children}) => {
         )
         recaptchaVerifier.render()
         return signInWithPhoneNumber(auth, number, recaptchaVerifier)
+        // .then((userCredential) => {
+        //     // Signed in 
+        //     const user = userCredential.user;
+        //     const uid = user.uid;
+        //     setDoc(doc(db, 'users', uid), {
+        //         // the data you want to store in your document
+        //         email: email,
+        //         password: password,
+        //         phone: phone
+        //     });
+        //     // now the document will have the same ID as the auth user
+        //   })
+        //   .catch((error) => {
+        //     const errorCode = error.code;
+        //     const errorMessage = error.message;
+        //     // ..
+        //   });
     }
 
     return (

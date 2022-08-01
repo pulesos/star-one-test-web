@@ -6,10 +6,10 @@ import './Profile.scss'
 import { useState } from 'react'
 import { UserAuth } from '../../context/AuthContext';
 
-const Profile = ({changeProfile, name, setName}) => {
+const Profile = ({changeProfile, name, setName, email, setEmail, phone, setPhone}) => {
     const [instagram, setInstagram] = useLocalStorage('instagram')
-    const [email, setEmail] = useLocalStorage('email')
-    const [phone, setPhone] = useLocalStorage('phone')
+    // const [email, setEmail] = useLocalStorage('email')
+    // const [phone, setPhone] = useLocalStorage('phone')
     const [language, setLanguage] = useLocalStorage('language')
     const [valute, setValute] = useLocalStorage('valute')
 
