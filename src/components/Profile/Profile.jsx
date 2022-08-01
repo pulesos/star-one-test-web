@@ -6,12 +6,12 @@ import './Profile.scss'
 import { useState } from 'react'
 import { UserAuth } from '../../context/AuthContext';
 
-const Profile = ({changeProfile, name, setName, email, setEmail, phone, setPhone}) => {
-    const [instagram, setInstagram] = useLocalStorage('instagram')
+const Profile = ({changeProfile, name, setName, email, setEmail, phone, setPhone, language, setLanguage, valute, setValute, instagram, setInstagram}) => {
+    // const [instagram, setInstagram] = useLocalStorage('instagram')
     // const [email, setEmail] = useLocalStorage('email')
     // const [phone, setPhone] = useLocalStorage('phone')
-    const [language, setLanguage] = useLocalStorage('language')
-    const [valute, setValute] = useLocalStorage('valute')
+    // const [language, setLanguage] = useLocalStorage('language')
+    // const [valute, setValute] = useLocalStorage('valute')
 
     const {user} = UserAuth()
 
@@ -39,7 +39,7 @@ const Profile = ({changeProfile, name, setName, email, setEmail, phone, setPhone
                 <div className="profile__data">
                     {changeProfile ?
                         <>
-                        <input type="text" placeholder={user.displayName || user.email || user.phoneNumber} className='form-control' onChange={(e) => setName(e.target.value)}/>
+                        <input type="text" placeholder={name || user.displayName || user.email || user.phoneNumber} className='form-control' onChange={(e) => setName(e.target.value)}/>
                         <input type="text" placeholder={instagram} className='form-control' onChange={(e) => setInstagram(e.target.value)}/>
                         <input type="text" placeholder={email} className='form-control' onChange={(e) => setEmail(e.target.value)}/>
                         <input type="text" placeholder={phone} className='form-control' onChange={(e) => setPhone(e.target.value)}/>
@@ -48,7 +48,7 @@ const Profile = ({changeProfile, name, setName, email, setEmail, phone, setPhone
                         </>
                         :
                         <>
-                        <h2 className='profile__data__text' id='profile__data__name'><strong>{user.name}</strong></h2>
+                        <h2 className='profile__data__text' id='profile__data__name'><strong>{name || user.displayName || user.email || user.phoneNumber}</strong></h2>
                         <h5 className='profile__data__text' id='profile__data__instagram'>{instagram}</h5>
                         <h5 className='profile__data__text' id='profile__data__email'>{email}</h5>
                         <h5 className='profile__data__text' id='profile__data__phone'>{phone}</h5>

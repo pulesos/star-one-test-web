@@ -37,7 +37,7 @@ import CurrentEventItem from './components/CurrentEventItem/CurrentEventItem';
 
 function App() {
   const [modalActive, setModalActive] = useState(false)
-  const [name, setName] = useLocalStorage('name')
+  const [name, setName] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
   const [list, setList] = useLocalStorage('data', [])
   const [isActive, setActive] = useState(false);
