@@ -3,9 +3,10 @@
 import { useState } from 'react'
 import useLocalStorage from 'use-local-storage';
 import { UserAuth } from '../../context/AuthContext';
+import { useUserData } from '../../hooks/useUserData';
 import './DeliveryAddress.scss'
 
-const DeliveryAddress = ({changeDelivery, recipient, setRecipient, country, setCountry, postCode, setPostCode, town, setTown, street, setStreet, house, setHouse, apartment, setApartment, email, setEmail, phone, setPhone}) => {
+const DeliveryAddress = ({changeDelivery, uid, recipient, setRecipient, country, setCountry, postCode, setPostCode, town, setTown, street, setStreet, house, setHouse, apartment, setApartment, email, setEmail, phone, setPhone}) => {
     // const [recipient, setRecipient] = useLocalStorage('recipient')
     // const [country, setCountry] = useLocalStorage('country')
     // const [postCode, setPostCode] = useLocalStorage('post code')
@@ -17,6 +18,14 @@ const DeliveryAddress = ({changeDelivery, recipient, setRecipient, country, setC
     // const [email, setEmail] = useLocalStorage('email')
 
     const {user} = UserAuth()
+
+    const { isLoading, userData } = useUserData(user.uid);
+    if (isLoading) {
+     return <span>Loading...</span>;
+    }
+    if (!userData) {
+     return <span>Ooops. Profile not found</span>;
+    }
 
     return (
         <div className="address__wrapper">
@@ -35,27 +44,27 @@ const DeliveryAddress = ({changeDelivery, recipient, setRecipient, country, setC
                 <div className="address__input">
                 {changeDelivery ?
                         <>
-                        <input type="text" placeholder={user.recipient} className='form-control' onChange={(e) => setRecipient(e.target.value)}/>
-                        <input type="text" placeholder={user.country} className='form-control' onChange={(e) => setCountry(e.target.value)}/>
-                        <input type="text" placeholder={user.postCode} className='form-control' onChange={(e) => setPostCode(e.target.value)}/>
-                        <input type="text" placeholder={user.town} className='form-control' onChange={(e) => setTown(e.target.value)}/>
-                        <input type="text" placeholder={user.street} className='form-control' onChange={(e) => setStreet(e.target.value)}/>
-                        <input type="text" placeholder={user.house} className='form-control' onChange={(e) => setHouse(e.target.value)}/>
-                        <input type="text" placeholder={user.apartment} className='form-control' onChange={(e) => setApartment(e.target.value)}/>
-                        <input type="text" placeholder={user.phone} className='form-control' onChange={(e) => setPhone(e.target.value)}/>
-                        <input type="text" placeholder={user.email} className='form-control' onChange={(e) => setEmail(e.target.value)}/>
+                        <input type="text" placeholder={userData.recipient} className='form-control' onChange={(e) => setRecipient(e.target.value)}/>
+                        <input type="text" placeholder={userData.country} className='form-control' onChange={(e) => setCountry(e.target.value)}/>
+                        <input type="text" placeholder={userData.postCode} className='form-control' onChange={(e) => setPostCode(e.target.value)}/>
+                        <input type="text" placeholder={userData.town} className='form-control' onChange={(e) => setTown(e.target.value)}/>
+                        <input type="text" placeholder={userData.street} className='form-control' onChange={(e) => setStreet(e.target.value)}/>
+                        <input type="text" placeholder={userData.house} className='form-control' onChange={(e) => setHouse(e.target.value)}/>
+                        <input type="text" placeholder={userData.apartment} className='form-control' onChange={(e) => setApartment(e.target.value)}/>
+                        <input type="text" placeholder={userData.phone} className='form-control' onChange={(e) => setPhone(e.target.value)}/>
+                        <input type="text" placeholder={userData.email} className='form-control' onChange={(e) => setEmail(e.target.value)}/>
                         </>
                         :
                         <>
-                        <h2 className='address__data__text' id='address__data__text__recipient'><strong>{user.recipient}</strong></h2>
-                        <h5 className='address__data__text' id='address__data__text__country'>{user.country}</h5>
-                        <h5 className='address__data__text' id='address__data__text__postcode'>{user.postCode}</h5>
-                        <h5 className='address__data__text' id='address__data__text__town'>{user.town}</h5>
-                        <h5 className='address__data__text' id='address__data__text__street'>{user.street}</h5>
-                        <h5 className='address__data__text' id='address__data__text__house'>{user.house}</h5>
-                        <h5 className='address__data__text' id='address__data__text__apartment'>{user.apartment}</h5>
-                        <h5 className='address__data__text' id='address__data__text__phone'>{user.phone}</h5>
-                        <h5 className='address__data__text' id='address__data__text__email'>{user.email}</h5>
+                        <h2 className='address__data__text' id='address__data__text__recipient'><strong>{userData.recipient}</strong></h2>
+                        <h5 className='address__data__text' id='address__data__text__country'>{userData.country}</h5>
+                        <h5 className='address__data__text' id='address__data__text__postcode'>{userData.postCode}</h5>
+                        <h5 className='address__data__text' id='address__data__text__town'>{userData.town}</h5>
+                        <h5 className='address__data__text' id='address__data__text__street'>{userData.street}</h5>
+                        <h5 className='address__data__text' id='address__data__text__house'>{userData.house}</h5>
+                        <h5 className='address__data__text' id='address__data__text__apartment'>{userData.apartment}</h5>
+                        <h5 className='address__data__text' id='address__data__text__phone'>{userData.phone}</h5>
+                        <h5 className='address__data__text' id='address__data__text__email'>{userData.email}</h5>
                         </>
                     }
 
