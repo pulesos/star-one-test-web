@@ -2,6 +2,10 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> edd1933c32426640db863f8b89446faee5f2f2a5
 export function useUserData(userId) {
     const [userData, setUserData] = useState(undefined);
     const [isLoading, setIsLoading] = useState(true);
