@@ -2,20 +2,7 @@ import { UserAuth } from '../../context/AuthContext';
 import { useUserData } from '../../hooks/useUserData';
 import './DeliveryAddress.scss'
 
-<<<<<<< HEAD
 const DeliveryAddress = ({changeDelivery, setRecipient, setCountry, setPostCode, setTown, setStreet, setHouse, setApartment, setEmail, setPhone}) => {
-=======
-const DeliveryAddress = ({changeDelivery, uid, recipient, setRecipient, country, setCountry, postCode, setPostCode, town, setTown, street, setStreet, house, setHouse, apartment, setApartment, email, setEmail, phone, setPhone}) => {
-    // const [recipient, setRecipient] = useLocalStorage('recipient')
-    // const [country, setCountry] = useLocalStorage('country')
-    // const [postCode, setPostCode] = useLocalStorage('post code')
-    // const [town, setTown] = useLocalStorage('town')
-    // const [street, setStreet] = useLocalStorage('street')
-    // const [house, setHouse] = useLocalStorage('house')
-    // const [apartment, setApartment] = useLocalStorage('apartment') 
-    // const [phone, setPhone] = useLocalStorage('phone')
-    // const [email, setEmail] = useLocalStorage('email')
->>>>>>> edd1933c32426640db863f8b89446faee5f2f2a5
 
     const {user} = UserAuth()
 

@@ -5,16 +5,7 @@ import './Profile.scss'
 import { UserAuth } from '../../context/AuthContext';
 import { useUserData } from '../../hooks/useUserData';
 
-<<<<<<< HEAD
 const Profile = ({changeProfile, name, setName, email, setEmail, phone, setPhone, language, setLanguage, valute, setValute, instagram, setInstagram}) => {
-=======
-const Profile = ({changeProfile, uid, name, setName, email, setEmail, phone, setPhone, language, setLanguage, valute, setValute, instagram, setInstagram}) => {
-    // const [instagram, setInstagram] = useLocalStorage('instagram')
-    // const [email, setEmail] = useLocalStorage('email')
-    // const [phone, setPhone] = useLocalStorage('phone')
-    // const [language, setLanguage] = useLocalStorage('language')
-    // const [valute, setValute] = useLocalStorage('valute')
->>>>>>> edd1933c32426640db863f8b89446faee5f2f2a5
 
     const {user} = UserAuth()
 
