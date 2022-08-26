@@ -4,16 +4,6 @@ import "slick-carousel/slick/slick-theme.css";
 import './SliderItem.scss'
 import prev from '../../../assets/images/prev.svg'
 import next from '../../../assets/images/next.svg'
-import smartphones from '../../../assets/images/smartphones.svg'
-import tablets from '../../../assets/images/tablets.svg'
-import steamcards from '../../../assets/images/steamcards.svg'
-import playstation5 from '../../../assets/images/playstation-5.svg'
-import camera from '../../../assets/images/camera.svg'
-import coffeemaschine from '../../../assets/images/coffeemaschine.svg'
-import notebook from '../../../assets/images/notebook.svg'
-import computer from '../../../assets/images/computer.svg'
-import headphones from '../../../assets/images/headphones.svg'
-
 import { useRef } from "react";
 import useAppContext from "../../../context/AppContext";
 import { Link } from "react-router-dom";

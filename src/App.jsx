@@ -22,10 +22,7 @@ import './App.css';
 import CurrentEventPage from './pages/CurrentEventPage/CurrentEventPage';
 import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
 import MyTurnsPage from './pages/MyTurnsPage/MyTurnsPage';
-import { useContext } from 'react';
-import { Context } from './index';
 import { useEffect } from 'react';
-import { check } from './http/userAPI';
 import { AuthContextProvider } from './context/AuthContext';
 import {db} from './firebase'
 import {collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc, setDoc} from 'firebase/firestore'
@@ -56,15 +53,6 @@ function App() {
     setProducts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
   }
 
-  // const {loginUsers} = useContext(Context)
-
-  // useEffect(() => {
-  //   check().then(data => {
-  //     loginUsers.setLogin(true)
-  //     loginUsers.setIsAuth(true)
-  //   })
-  // }, [])
-
 
   const handleClick = async(item) => {
     const newItem = { ...item, id: v4() }
@@ -94,24 +82,6 @@ function App() {
       setActive(!isActive);
   };
 
-  
-//   function handleCallbackResponse(response) {
-//     console.log("Encoded JWT ID token: " + response.credential)
-//     var userObject = jwt_decode(response.credential)
-//     console.log(userObject)
-//     setUser(userObject)
-//     setLoggedIn(true)
-//     if (user) {
-//       setModalActive(false)
-//     }
-//     document.getElementById("signInDiv").hidden = true
-// }
-
-  // function handleSignOut(e) {
-  //     setUser({})
-  //     setLoggedIn(false)
-  //     document.getElementById("signInDiv").hidden = false
-  // }
 
   return (
     <div className="App">

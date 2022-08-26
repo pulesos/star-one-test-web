@@ -2,17 +2,7 @@ import { useState } from 'react'
 import arrowDown from '../../assets/images/arrow-down.svg'
 import './MyOrders.scss'
 
-const MyOrders = ({isActive, toggleClass}) => {
-    const items = [
-        // {id: 1, order: 24, price: 260, status: 'ждёт оплату'},
-        // {id: 2, order: 24, price: 260, status: 'ждёт оплату'},
-        // {id: 3, order: 24, price: 260, status: 'ждёт оплату'},
-        // {id: 4, order: 24, price: 260, status: 'ждёт оплату'},
-        // {id: 5, order: 24, price: 260, status: 'ждёт оплату'},
-        // {id: 6, order: 24, price: 260, status: 'ждёт оплату'},
-        // {id: 7, order: 24, price: 260, status: 'ждёт оплату'},
-        // {id: 8, order: 24, price: 260, status: 'ждёт оплату'},
-    ]
+const MyOrders = () => {
 
     const [myOrders, setMyOrders] = useState({
         dataType: [

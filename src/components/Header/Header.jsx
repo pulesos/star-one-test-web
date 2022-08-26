@@ -13,7 +13,6 @@ import { UserAuth } from "../../context/AuthContext";
 
 
 const Header = ({setModalActive, size, name, loggedIn,  handleSignOut, handleLoggedIn}) => {
-    const {loginUsers} = useContext(Context)
 
     const {user, logOut} = UserAuth()
 

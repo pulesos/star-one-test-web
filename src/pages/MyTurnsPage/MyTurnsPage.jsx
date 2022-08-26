@@ -1,5 +1,4 @@
 import company from '../../assets/images/company.svg'
-import Description from '../../components/Description/Description'
 
 const MyTurnsPage = () => {
     return (

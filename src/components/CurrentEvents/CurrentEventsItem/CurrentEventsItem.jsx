@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
-import useLocalStorage from 'use-local-storage';
-import {v4} from 'uuid'
 import './CurrentEventsItem.scss'
-import ProductDataService from '../../../services/productServices'
 import {Link} from 'react-router-dom'
 
 

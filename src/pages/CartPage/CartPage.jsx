@@ -6,7 +6,6 @@ import product from '../../assets/images/product.svg'
 import './CartPage.scss'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { v4 } from 'uuid' 
 import { deleteDoc, doc } from 'firebase/firestore'
 import { db } from '../../firebase'
 
@@ -37,15 +36,6 @@ const CartPage = ({list, setList}) => {
             <h3 className="events__title cart__page">
                 <img className="mr-2" src={cartImage} alt="cart" width="28" height="28" />
                 <span>Корзина</span>
-                {/* <label className="checkbox">
-                    <input
-                        type="checkbox"
-                        name="selectAll"
-                        value="all"
-                        className='cart__input'
-                    />
-                    <span className='input__text'>Выбрать всё</span>
-                </label> */}
             </h3>
             <Saldo total={total}/>
             {products}

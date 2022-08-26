@@ -1,19 +1,9 @@
-import { useState } from 'react'
-import sony from '../../assets/images/sony.png'
+
 import quest from '../../assets/images/quest.svg'
 import './ProductDetailsItem.scss'
-import { v4 } from 'uuid'
-import { useParams } from 'react-router-dom'
-import { useEffect } from 'react'
-import { fetchOneProduct } from '../../http/productAPI'
-import { useContext } from 'react'
-import {Context} from '../../index'
-import ProductDataService from '../../services/productServices' 
-import { doc, onSnapshot } from 'firebase/firestore'
-import {db} from '../../firebase'
+
 
 const ProductDetailsItem = ({isActive, toggleClass, product}) => {
-    // const product = {id: v4(), priceTotal: 252, image: sony, category: 'КОНСОЛИ', name: 'Sony PlayStation 5 Digital Edition', oldPrice: 1150}
     const description = [
         {id: 1, title: 'Оперативная память', description: '5 гб'},
         {id: 2, title: 'Камера', description: '12 мп'},
@@ -21,9 +11,6 @@ const ProductDetailsItem = ({isActive, toggleClass, product}) => {
         {id: 4, title: 'Кол-во ядер', description: '2'},
         {id: 5, title: 'Аккумулятор', description: '4000'},
     ]
-
-
-    
 
 
     return (

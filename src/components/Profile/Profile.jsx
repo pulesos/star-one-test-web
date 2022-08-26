@@ -1,17 +1,10 @@
 import {Link} from 'react-router-dom'
-import useLocalStorage from 'use-local-storage';
 import starDark from '../../assets/images/star-dark.svg'
 import moneyDark from '../../assets/images/money-dark.svg'
 import './Profile.scss'
-import { useState } from 'react'
 import { UserAuth } from '../../context/AuthContext';
 
 const Profile = ({changeProfile, name, setName, email, setEmail, phone, setPhone, language, setLanguage, valute, setValute, instagram, setInstagram}) => {
-    // const [instagram, setInstagram] = useLocalStorage('instagram')
-    // const [email, setEmail] = useLocalStorage('email')
-    // const [phone, setPhone] = useLocalStorage('phone')
-    // const [language, setLanguage] = useLocalStorage('language')
-    // const [valute, setValute] = useLocalStorage('valute')
 
     const {user} = UserAuth()
 

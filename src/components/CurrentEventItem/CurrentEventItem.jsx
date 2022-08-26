@@ -9,7 +9,7 @@ import { doc, onSnapshot } from 'firebase/firestore'
 import {useParams} from 'react-router-dom'
 import { UserAuth } from '../../context/AuthContext'
 
-const CurrentEventItem = ({name, disabled, setDisabled, timeLeft}) => {
+const CurrentEventItem = () => {
     const currentTime = null;
     const [ctime, setDate] = useState(currentTime);
     

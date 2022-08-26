@@ -2,7 +2,7 @@ import './Menu.scss'
 import close from '../../../../assets/images/close-white.svg'
 import { Link } from 'react-router-dom'
 
-const Menu = ({publicItems, privateItems, active, setActive, handleGoogleSignOut, loggedIn, handleLoggedIn, user}) => {
+const Menu = ({publicItems, privateItems, active, setActive, handleGoogleSignOut, user}) => {
     return (  
         <div className={active ? 'menu active' : 'menu'} onClick={() => setActive(false)}>
             <img src={close} className={active ? 'btn__close active' : 'btn__close'} alt="close" onClick={() => setActive(false)}/>
@@ -17,7 +17,6 @@ const Menu = ({publicItems, privateItems, active, setActive, handleGoogleSignOut
                             {Object.keys(user).length != 0 && 
                                 <div className='exit' onClick={handleGoogleSignOut}>Выход</div>
                             }
-                            {/* <div className='exit' onClick={handleGoogleSignOut}>Выход</div> */}
 
                         </ul>
                     :
@@ -27,7 +26,6 @@ const Menu = ({publicItems, privateItems, active, setActive, handleGoogleSignOut
                                     <Link to={publicItem.href}>{publicItem.value}</Link>
                                 </li>
                             )}
-                            {/* <div className='signIn' onClick={handleLoggedIn}>Войти</div> */}
                         </ul>
                 }
             </div>

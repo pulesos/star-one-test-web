@@ -7,7 +7,7 @@ import { UserAuth } from "../../context/AuthContext"
 
 
 const MainPage = ({setModalActive, handleClick, loggedIn, products}) => {
-    const {user, logOut} = UserAuth()
+    const {user} = UserAuth()
     return (
         <>
             {user ? 

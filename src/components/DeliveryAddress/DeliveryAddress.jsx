@@ -1,20 +1,7 @@
-
-
-import { useState } from 'react'
-import useLocalStorage from 'use-local-storage';
 import { UserAuth } from '../../context/AuthContext';
 import './DeliveryAddress.scss'
 
-const DeliveryAddress = ({changeDelivery, recipient, setRecipient, country, setCountry, postCode, setPostCode, town, setTown, street, setStreet, house, setHouse, apartment, setApartment, email, setEmail, phone, setPhone}) => {
-    // const [recipient, setRecipient] = useLocalStorage('recipient')
-    // const [country, setCountry] = useLocalStorage('country')
-    // const [postCode, setPostCode] = useLocalStorage('post code')
-    // const [town, setTown] = useLocalStorage('town')
-    // const [street, setStreet] = useLocalStorage('street')
-    // const [house, setHouse] = useLocalStorage('house')
-    // const [apartment, setApartment] = useLocalStorage('apartment') 
-    // const [phone, setPhone] = useLocalStorage('phone')
-    // const [email, setEmail] = useLocalStorage('email')
+const DeliveryAddress = ({changeDelivery, setRecipient, setCountry, setPostCode, setTown, setStreet, setHouse, setApartment, setEmail, setPhone}) => {
 
     const {user} = UserAuth()
 

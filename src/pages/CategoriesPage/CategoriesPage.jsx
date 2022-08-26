@@ -1,24 +1,11 @@
 import {Link} from 'react-router-dom'
 import categoriesPic from '../../assets/images/all-categories.svg'
-import smartphones from '../../assets/images/smartphones.svg'
-import tablets from '../../assets/images/tablets.svg'
-import steamcards from '../../assets/images/steamcards.svg'
-import playstation5 from '../../assets/images/playstation-5.svg'
-import camera from '../../assets/images/camera.svg'
-import coffeemaschine from '../../assets/images/coffeemaschine.svg'
-import notebook from '../../assets/images/notebook.svg'
-import computer from '../../assets/images/computer.svg'
-import headphones from '../../assets/images/headphones.svg'
 import './CategoriesPage.scss'
-import { useContext, useEffect, useMemo } from 'react'
-import { Context } from '../../index'
-import ProductDataService from '../../services/productServices'
 import useAppContext from '../../context/AppContext'
 
 
-const CategoriesPage = ({setProducts}) => {
-    // const {product} = useContext(Context)
-    const { categories, products } = useAppContext();
+const CategoriesPage = () => {
+    const { categories } = useAppContext();
 
 
     return (
@@ -32,13 +19,6 @@ const CategoriesPage = ({setProducts}) => {
                     <Link to={`${category.id}`} className="categories__content" key={category.id}>
                         <h2 className="categories__title">{category.title}</h2>
                         <img className="categories__img" alt={category.title} src={category.imageSrc} />
-                        {/* <ul>
-                            {products
-                                .filter((p) => p.category === category.title)
-                                .map((p) => (
-                                <li key={p.id}>{p.name}</li>
-                            ))}
-                        </ul> */}
                     </Link>
                 ))}
             </div>
